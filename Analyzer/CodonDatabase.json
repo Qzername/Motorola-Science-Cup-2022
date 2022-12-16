@@ -1,0 +1,53 @@
+﻿[
+  {
+    "IDs": [
+      "GAC",
+      "GAU"
+    ],
+    "Letter": "D",
+    "Name": "Aspartate",
+    "CodonType": 1
+  },
+  {
+    "IDs": [
+      "GAA",
+      "GAG"
+    ],
+    "Letter": "E",
+    "Name": "Glutamate",
+    "CodonType": 1
+  },
+  {
+    "IDs": [
+      "GCU",
+      "GCC",
+      "GCA",
+      "GCG"
+    ],
+    "Letter": "A",
+    "Name": "Alanine",
+    "CodonType": 1
+  },
+  {
+    "IDs": [
+      "GGU",
+      "GGC",
+      "GGA",
+      "GGG"
+    ],
+    "Letter": "G",
+    "Name": "Glycine",
+    "CodonType": 1
+  },
+  {
+    "IDs": [
+      "GUU",
+      "GUC",
+      "GUA",
+      "GUG"
+    ],
+    "Letter": "V",
+    "Name": "Valine",
+    "CodonType": 1
+  }
+]
