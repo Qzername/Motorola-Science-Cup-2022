@@ -12,7 +12,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="CodonsAndFullName.txt" />
+    <ProjectReference Include="..\Analyzer\Analyzer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="CodonDatabase\Raw\FullName.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CodonDatabase\Raw\1Letters.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
