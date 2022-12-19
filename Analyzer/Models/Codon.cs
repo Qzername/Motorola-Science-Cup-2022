@@ -8,10 +8,18 @@ namespace Analyzer.Models
 {
     public struct Codon
     {
-        public readonly string[] IDs;
         public readonly string Letter;
         public readonly string Name;
+        public readonly string[] IDs;
         public readonly CodonType CodonType;
+
+        public Codon(string Letter, string Name, string[] IDs, CodonType CodonType)
+        {
+            this.Letter = Letter;
+            this.Name = Name;
+            this.IDs = IDs;
+            this.CodonType = CodonType;
+        }
     }
 
     public enum CodonType
