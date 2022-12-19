@@ -1,4 +1,4 @@
-﻿using Analyzer.Models;
+﻿using Analyzer.Models.Codons;
 using Newtonsoft.Json;
 using System.Security.Cryptography.X509Certificates;
 

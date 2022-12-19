@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Analyzer.Models
+namespace Analyzer.Models.Codons
 {
     public struct Codon
     {
@@ -22,10 +22,4 @@ namespace Analyzer.Models
         }
     }
 
-    public enum CodonType
-    {
-        Start,
-        Normal,
-        End
-    }
 }
