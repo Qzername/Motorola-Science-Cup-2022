@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analyzer", "Analyzer\Analyz
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{A8BD20BF-D5E3-4434-AC2E-4408EE4CF643}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{2482E536-E017-4B49-A2D1-6C176A77C27D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{2482E536-E017-4B49-A2D1-6C176A77C27D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlakApp", "BlakApp\BlakApp.csproj", "{765C30A6-26B5-479D-8833-6E82C3C294C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{2482E536-E017-4B49-A2D1-6C176A77C27D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2482E536-E017-4B49-A2D1-6C176A77C27D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2482E536-E017-4B49-A2D1-6C176A77C27D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{765C30A6-26B5-479D-8833-6E82C3C294C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{765C30A6-26B5-479D-8833-6E82C3C294C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{765C30A6-26B5-479D-8833-6E82C3C294C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{765C30A6-26B5-479D-8833-6E82C3C294C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
