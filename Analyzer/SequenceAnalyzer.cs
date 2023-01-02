@@ -3,15 +3,31 @@ using Analyzer.Models.Codons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Analyzer
 {
-    public class Analizer
+    /// <summary>
+    /// Codon/Sequence Analyzer
+    /// </summary>
+    public class SequenceAnalyzer
     {
+        public Protein[] DetectProteins(Codon[] shift)
+        {
+            return new Protein[0];
+        }
+
+        /// <summary>
+        /// Creates Sequence from raw RNA/DNA code
+        /// </summary>
+        /// <param name="rawSequence">string that contains RNA/DNA code</param>
         public Sequence CreateSequence(string rawSequence)
         {
+            //changing DNA to RNA if sequence is DNA sequence
+            rawSequence = rawSequence.Replace('T', 'U');
+
             Codon[][] shifts = new Codon[3][];
 
             int codonNumber = rawSequence.Length / 3;
@@ -22,6 +38,7 @@ namespace Analyzer
             return new Sequence(rawSequence, shifts[0], shifts[1], shifts[2]);
         }
 
+        //Reading one shift
         Codon[] ReadCodonsFromString(string series)
         {
             List<Codon> codonsID = new List<Codon>();

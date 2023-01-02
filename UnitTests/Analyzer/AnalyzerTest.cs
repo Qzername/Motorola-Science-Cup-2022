@@ -10,7 +10,7 @@ namespace UnitTests.Analyzer
         [TestMethod]
         public void RNASequenceTest()
         {
-            Analizer analizer = new Analizer();
+            SequenceAnalyzer analizer = new SequenceAnalyzer();
             Sequence sequence = analizer.CreateSequence("AAAUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCUACCC");
 
             string shift1 = CodonsToString(sequence.CodonsShift1);

@@ -15,13 +15,9 @@
 
 	<StackPanel Orientation="Horizontal">
 		<Panel Background="Gray" Width="100">
-			<Label Content="content label"/>
+			<Label Content="lorem ipsum w w9fieiopsfheios"/>
 		</Panel>
-		<c:LineBoundsDemoControl TextTest="tawfegsu">
-			<c:LineBoundsDemoControl.Background>
-				<SolidColorBrush Color="Red"/>
-			</c:LineBoundsDemoControl.Background>
-		</c:LineBoundsDemoControl>
+        <c:ProteinControl CodonSequence="{Binding TestSequence}"/>
 	</StackPanel>
 
 </Window>

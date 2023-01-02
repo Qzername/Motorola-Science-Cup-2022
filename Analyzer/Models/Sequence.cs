@@ -16,5 +16,22 @@ namespace Analyzer.Models
             this.CodonsShift2 = CodonShift2;
             this.CodonsShift3 = CodonShift3;
         }
+
+        public static string CodonsToString(Codon[] shift)
+        {
+            string final = string.Empty;
+
+            foreach (var codon in shift)
+            {
+                if (codon.CodonType == CodonType.Start)
+                    final += "M(start)";
+                else if (codon.CodonType == CodonType.End)
+                    final += "[stop]";
+                else
+                    final += codon.Letter;
+            }
+
+            return final;
+        }
     }
 }
