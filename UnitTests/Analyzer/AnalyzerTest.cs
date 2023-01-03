@@ -8,35 +8,24 @@ namespace UnitTests.Analyzer
     public class AnalyzerTest
     {
         [TestMethod]
-        public void RNASequenceTest()
+        public void RNASequenceTest() => SequenceTest("AAAUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCUACCC");
+        
+        [TestMethod]
+        public void DNASequenceTest() => SequenceTest("AAATGAACGAAAATCTGTTCGCTTCATTCATTGCCCCCACAATCCTAGGCCTACCC");
+    
+        public void SequenceTest(string sequenceRaw)
         {
             SequenceAnalyzer analizer = new SequenceAnalyzer();
-            Sequence sequence = analizer.CreateSequence("AAAUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCUACCC");
+            Sequence sequence = analizer.CreateSequence(sequenceRaw);
 
-            string shift1 = CodonsToString(sequence.CodonsShift1);
+            string shift1 = Sequence.CodonsToString(sequence.CodonsShift1);
             string correctShift1 = "K[stop]TKICSLHSLPPQS[stop]AY";
             Assert.AreEqual(shift1, correctShift1);
 
-            string shift3 = CodonsToString(sequence.CodonsShift3);
+            string shift3 = Sequence.CodonsToString(sequence.CodonsShift3);
             string correctShift3 = "M(start)NENLFASFIAPTILGLP";
             Assert.AreEqual(shift3, correctShift3);
-        }
 
-        string CodonsToString(Codon[] shift)
-        {
-            string final = string.Empty;
-
-            foreach (var codon in shift)
-            {
-                if (codon.CodonType == CodonType.Start)
-                    final += "M(start)";
-                else if (codon.CodonType == CodonType.End)
-                    final += "[stop]";
-                else
-                    final += codon.Letter;
-            }
-
-            return final;
         }
     }
 }

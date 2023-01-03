@@ -19,10 +19,14 @@ namespace BlakApp.Controls
 
         public override void Render(DrawingContext context)
         {
-            Pen pen = new Pen(Brushes.Orange);
-            context.DrawLine(pen, new Point(0, 100), new Point(100, 100));
+            Pen pen = new Pen(Brushes.White, 5f, lineCap: PenLineCap.Round);
 
-            context.DrawText(Brushes.Orange, new Point(0, 0), new FormattedText(Sequence.CodonsToString(CodonSequence.CodonsShift1), new Typeface("Arial"), 60d, TextAlignment.Center, TextWrapping.Wrap, Size.Empty));
+            Point offset = new Point(10, 10);
+
+            for(int i = 0; i < CodonSequence.CodonsShift1.Length; i++)
+            {
+                context.DrawLine(pen, new Point(i*50, (1-i%2)*20) + offset, new Point(i*50 + 50, i%2*20) + offset);
+            }
         }
     }
 }
