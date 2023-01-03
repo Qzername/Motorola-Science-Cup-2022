@@ -16,6 +16,8 @@ namespace Analyzer
     {
         public Protein[] DetectProteins(Codon[] shift)
         {
+            throw new Exception("musisz to jeszcze zrobić");
+
             return new Protein[0];
         }
 

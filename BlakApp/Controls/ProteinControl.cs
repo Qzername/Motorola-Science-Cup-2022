@@ -21,12 +21,12 @@ namespace BlakApp.Controls
         {
             Pen pen = new Pen(Brushes.White, 5f, lineCap: PenLineCap.Round);
 
-            Point offset = new Point(10, 10);
+            Point offset = new Point(10, 100);
+
+            context.DrawText(Brushes.White, new Point(10,10), new FormattedText(Sequence.CodonsToString(CodonSequence.CodonsShift1), new Typeface("Arial"), 60f, TextAlignment.Center, TextWrapping.Wrap, Size.Empty));
 
             for(int i = 0; i < CodonSequence.CodonsShift1.Length; i++)
-            {
                 context.DrawLine(pen, new Point(i*50, (1-i%2)*20) + offset, new Point(i*50 + 50, i%2*20) + offset);
-            }
         }
     }
 }
