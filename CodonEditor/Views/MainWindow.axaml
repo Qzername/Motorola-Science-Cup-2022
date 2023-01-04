@@ -3,7 +3,9 @@
         xmlns:vm="using:CodonEditor.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:e="clr-namespace:EventBinder;assembly=EventBinder.Avalonia"
+		xmlns:custom="using:CodonEditor.Controls"
+		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="CodonEditor.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="CodonEditor">
@@ -12,7 +14,7 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-	<Panel PointerPressed="{Binding Clicked}">
-		
+	<Panel Background="Gray" Margin="100">
+	    <custom:DrawingManager/>
 	</Panel>
 </Window>
