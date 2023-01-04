@@ -24,12 +24,16 @@ namespace CodonEditor.Controls
 
         public override void Render(DrawingContext context)
         {
-            var pen = new Pen(Brushes.AliceBlue, 5d);
+            var pen = new Pen(Brushes.Red, 5d);
 
-            context.DrawRectangle(Brushes.Orange, null, new Rect(0, 0, 1000, 500));
-                
+            //if that line wouldnt exist, avalonia would not detect pointer click
+            context.DrawRectangle(Brushes.Transparent, null, new Rect(0, 0, Parent.Bounds.Width, Parent.Bounds.Height));
+
             for (int i = 0; i < lines.Count / 2; i++)
                 context.DrawLine(pen, lines[i * 2], lines[i * 2 + 1]);
+
+            if (lines.Count % 2 == 1)
+                context.DrawEllipse(null, pen, lines[^1], 10d,10d);
         }   
     }
 }
