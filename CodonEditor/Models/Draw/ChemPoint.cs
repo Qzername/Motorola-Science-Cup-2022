@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodonEditor.Models.Drawing
+namespace CodonEditor.Models.Draw
 {
-    public struct ChemPoint
+    public struct ChemPointRaw
     {
         public int ID;
         public Point Position;
         public string MolecularFormula;
-        public byte Charge;
+        public sbyte Charge;
     }
 }

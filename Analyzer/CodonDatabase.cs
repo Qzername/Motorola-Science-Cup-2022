@@ -12,13 +12,6 @@ public static class CodonDatabase
     
     static CodonDatabase()
     {
-        var CodonsJson = JsonConverter.Deserialize<CodonJson[]>(File.ReadAllText("./database.json"));
-        Codons = new Codon[CodonsJson.Length];
-
-        for(int i = 0; i < CodonsJson.Length;i++)
-        {
-            var currentJson = CodonsJson[i];
-            Codons[i] = new Codon(currentJson.Letter, currentJson.Name, currentJson.IDs, currentJson.CodonType);
-        }
+        Codons = JsonConverter.Deserialize<Codon[]>(File.ReadAllText("./database.json"));
     }
 }

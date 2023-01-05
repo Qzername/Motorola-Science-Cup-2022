@@ -14,12 +14,16 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
+	<Window.Styles>
+		<StyleInclude Source="/Views/Style.axaml"/>
+	</Window.Styles>
+
 	<DockPanel>
 		<Panel Background="#101010">
-			<StackPanel DockPanel.Dock="Top" Margin="5" Spacing="5" Width="200">
-				<Button Command="{Binding ReadDatabase}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Content="Read Database"/>
+			<StackPanel DockPanel.Dock="Top" Margin="5" Spacing="5">
+				<Button Classes="Stretched" Command="{Binding ReadDatabase}" Content="Read Database"/>
 				
-				<ComboBox Name="CodonsComboBox" SelectedItem="{Binding CurrentItem}" Items="{Binding Codons}" HorizontalAlignment="Stretch" Margin="0,0,0,20">
+				<ComboBox Name="CodonsComboBox" SelectedIndex="{Binding SelectedIndex}" SelectedItem="{Binding SelectedItem}" Items="{Binding Codons}" HorizontalAlignment="Stretch" Margin="0,0,0,20">
 					<ComboBox.ItemTemplate>
 						<DataTemplate>
 							<TextBlock>
@@ -34,11 +38,18 @@
 					</ComboBox.ItemTemplate>
 				</ComboBox>
 				
-				<TextBox Text="{Binding CurrentItem.Name}" Watermark="Codon Name"/>
-				<TextBox Text="{Binding CurrentItem.Letter}" Watermark="Codon Letter"/>
+				<TextBox Text="{Binding SelectedItem.Name}" Watermark="Codon Name"/>
+				<TextBox Text="{Binding SelectedItem.Letter}" Watermark="Codon Letter"/>
 			</StackPanel>
 
-			<Button Margin="5" VerticalAlignment="Bottom" Content="Save" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+			<StackPanel  VerticalAlignment="Bottom" Margin="5" Spacing="5">
+				<TextBox Text="{Binding Data}" Watermark="Value"/>
+				<Button Command="{Binding AddData}" Content="Add to point" Classes="Stretched" Margin="0,0,0,10"/>
+				<Button Command="{Binding RevertChange}" Content="Revert last change" Classes="Stretched"/>
+				<Button Command="{Binding Clean}" Content="Clean screen" Classes="Stretched" Margin="0,0,0,10"/>
+				<Button Command="{Binding Save}" Content="Save" Classes="Stretched" />
+			</StackPanel>
+
 		</Panel>
 		<custom:DrawingManager/>
 	</DockPanel>

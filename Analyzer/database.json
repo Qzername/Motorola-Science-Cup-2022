@@ -1,1 +1,305 @@
-[{"Letter":"F","Name":"Phenylalanine","IDs":["UUU","UUC"],"CodonType":1},{"Letter":"L","Name":"Leucine","IDs":["UUA","UUG","CUU","CUC","CUA","CUG"],"CodonType":1},{"Letter":"S","Name":"Serine","IDs":["UCU","UCC","UCA","UCG","AGU","AGC"],"CodonType":1},{"Letter":"Y","Name":"Tyrosine","IDs":["UAU","UAC"],"CodonType":1},{"Letter":"STOP","Name":"STOP","IDs":["UAA","UAG","UGA"],"CodonType":2},{"Letter":"C","Name":"Cysteine","IDs":["UGU","UGC"],"CodonType":1},{"Letter":"W","Name":"Tryptophan","IDs":["UGG"],"CodonType":1},{"Letter":"P","Name":"Proline","IDs":["CCU","CCC","CCA","CCG"],"CodonType":1},{"Letter":"H","Name":"Histidine","IDs":["CAU","CAC"],"CodonType":1},{"Letter":"Q","Name":"Glutamine","IDs":["CAA","CAG"],"CodonType":1},{"Letter":"R","Name":"Arginine","IDs":["CGU","CGC","CGA","CGG","AGA","AGG"],"CodonType":1},{"Letter":"I","Name":"Isoleucine","IDs":["AUU","AUC","AUA"],"CodonType":1},{"Letter":"M","Name":"Methionine","IDs":["AUG"],"CodonType":0},{"Letter":"T","Name":"Threonine","IDs":["ACU","ACC","ACA","ACG"],"CodonType":1},{"Letter":"N","Name":"Asparagine","IDs":["AAU","AAC"],"CodonType":1},{"Letter":"K","Name":"Lysine","IDs":["AAA","AAG"],"CodonType":1},{"Letter":"V","Name":"Valine","IDs":["GUU","GUC","GUA","GUG"],"CodonType":1},{"Letter":"A","Name":"Alanine","IDs":["GCU","GCC","GCA","GCG"],"CodonType":1},{"Letter":"D","Name":"Aspartic acid","IDs":["GAU","GAC"],"CodonType":1},{"Letter":"E","Name":"Glutamic acid","IDs":["GAA","GAG"],"CodonType":1},{"Letter":"G","Name":"Glycine","IDs":["GGU","GGC","GGA","GGG"],"CodonType":1}]
+[
+  {
+    "Letter": "F",
+    "Name": "Phenylalanine",
+    "IDs": [ "UUU", "UUC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "PositionX": 0,
+          "PositionY": 0,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "PositionX": 4,
+          "PositionY": 0,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "PositionX": 0,
+          "PositionY": 2,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "PositionX": 4,
+          "PositionY": 2,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "PositionX": 0,
+          "PositionY": 4,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 5,
+          "PositionX": 4,
+          "PositionY": 4,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 6,
+          "PositionX": 0,
+          "PositionY": 6,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 7,
+          "PositionX": 4,
+          "PositionY": 6,
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 4,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 5,
+          "IDChemPoint2": 6,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 6,
+          "IDChemPoint2": 7,
+          "NumberOfBind": 1
+        }
+      ]
+    }
+  },
+  {
+    "Letter": "L",
+    "Name": "Leucine",
+    "IDs": [ "UUA", "UUG", "CUU", "CUC", "CUA", "CUG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "S",
+    "Name": "Serine",
+    "IDs": [ "UCU", "UCC", "UCA", "UCG", "AGU", "AGC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "Y",
+    "Name": "Tyrosine",
+    "IDs": [ "UAU", "UAC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "STOP",
+    "Name": "STOP",
+    "IDs": [ "UAA", "UAG", "UGA" ],
+    "CodonType": 2,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "C",
+    "Name": "Cysteine",
+    "IDs": [ "UGU", "UGC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "W",
+    "Name": "Tryptophan",
+    "IDs": [ "UGG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "P",
+    "Name": "Proline",
+    "IDs": [ "CCU", "CCC", "CCA", "CCG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "H",
+    "Name": "Histidine",
+    "IDs": [ "CAU", "CAC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "Q",
+    "Name": "Glutamine",
+    "IDs": [ "CAA", "CAG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "R",
+    "Name": "Arginine",
+    "IDs": [ "CGU", "CGC", "CGA", "CGG", "AGA", "AGG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "I",
+    "Name": "Isoleucine",
+    "IDs": [ "AUU", "AUC", "AUA" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "M",
+    "Name": "Methionine",
+    "IDs": [ "AUG" ],
+    "CodonType": 0,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "T",
+    "Name": "Threonine",
+    "IDs": [ "ACU", "ACC", "ACA", "ACG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "N",
+    "Name": "Asparagine",
+    "IDs": [ "AAU", "AAC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "K",
+    "Name": "Lysine",
+    "IDs": [ "AAA", "AAG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "V",
+    "Name": "Valine",
+    "IDs": [ "GUU", "GUC", "GUA", "GUG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "A",
+    "Name": "Alanine",
+    "IDs": [ "GCU", "GCC", "GCA", "GCG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "D",
+    "Name": "Aspartic acid",
+    "IDs": [ "GAU", "GAC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "E",
+    "Name": "Glutamic acid",
+    "IDs": [ "GAA", "GAG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  },
+  {
+    "Letter": "G",
+    "Name": "Glycine",
+    "IDs": [ "GGU", "GGC", "GGA", "GGG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null
+    }
+  }
+]

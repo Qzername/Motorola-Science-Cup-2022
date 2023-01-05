@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodonEditor.Models.Draw;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,11 @@ namespace Analyzer.Models.Codons
 {
     public struct Codon
     {
-        public readonly string Letter;
-        public readonly string Name;
-        public readonly string[] IDs;
-        public readonly CodonType CodonType;
+        public string Letter { get; set; }
+        public string Name { get; set; }
+        public string[] IDs { get; set; }
+        public CodonType CodonType { get; set; }
+        public DrawingData DrawingData { get; set; }
 
         public Codon(string Letter, string Name, string[] IDs, CodonType CodonType)
         {
@@ -19,6 +21,16 @@ namespace Analyzer.Models.Codons
             this.Name = Name;
             this.IDs = IDs;
             this.CodonType = CodonType;
+            DrawingData = new DrawingData();
+        }
+        
+        public Codon(string Letter, string Name, string[] IDs, CodonType CodonType, DrawingData DrawingData)
+        {
+            this.Letter = Letter;
+            this.Name = Name;
+            this.IDs = IDs;
+            this.CodonType = CodonType;
+            this.DrawingData = DrawingData;
         }
     }
 

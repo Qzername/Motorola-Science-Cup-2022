@@ -2,13 +2,18 @@ using Analyzer;
 using Analyzer.Models.Codons;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Media;
 using Avalonia.ReactiveUI;
+using CodonEditor.Controls;
 using CodonEditor.Models;
+using CodonEditor.Models.Draw;
+using Newtonsoft.Json;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +24,25 @@ namespace CodonEditor.ViewModels
     {
         ObservableCollection<CodonRaw> Codons { get; set; }
 
-        CodonRaw _currentItem;
-        public CodonRaw CurrentItem
+        CodonRaw _selectedItem;
+        public CodonRaw SelectedItem
         {
-            get => _currentItem;
-            set => this.RaiseAndSetIfChanged(ref _currentItem, value);
+            get => _selectedItem;
+            set => this.RaiseAndSetIfChanged(ref _selectedItem, value);
+        }
+
+        string _data;
+        public string Data
+        {
+            get => _data;
+            set => this.RaiseAndSetIfChanged(ref _data, value);
+        }
+
+        int _selectedIndex;
+        public int SelectedIndex
+        {
+            get => _selectedIndex;
+            set { this.RaiseAndSetIfChanged(ref _selectedIndex, value); CodonChanged();}
         }
 
         public MainWindowViewModel()
@@ -38,12 +57,65 @@ namespace CodonEditor.ViewModels
 
             foreach (Codon codon in CodonDatabase.Codons)
                 Codons.Add(new CodonRaw()
-                    {
-                        Letter = codon.Letter,
-                        Name = codon.Name,
-                        IDs = codon.IDs,
-                        CodonType = codon.CodonType
-                    });
+                {
+                    Letter = codon.Letter,
+                    Name = codon.Name,
+                    IDs = codon.IDs,
+                    CodonType = codon.CodonType,
+                    DrawingData = codon.DrawingData.Lines is not null ? codon.DrawingData : null
+                });
+
+            DrawingManager.Current.CleanDrawing();
+        }
+
+        public void AddData() => DrawingManager.Current.SetAdditionalData(Data);
+        public void RevertChange() => DrawingManager.Current.RevertChange();
+        public void Clean() => DrawingManager.Current.CleanDrawing();
+
+        public void Save()
+        {
+            SaveCurrent();
+            List<Codon> Data = new List<Codon>();
+
+            foreach (var raw in Codons)
+            {
+                if(raw.DrawingData == null)
+                {
+                    Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType));
+                    continue;
+                }
+
+                Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType, raw.DrawingData.Value));
+            }
+
+            string json = JsonConvert.SerializeObject(Data.ToArray());
+
+            File.WriteAllText("./CodonDatabase/database.json", json);
+        }
+
+        void CodonChanged()
+        {
+            //SelectedItem happens to change before CurrentItem to im using that to save the old drawing to old codon and read new drawing from new codon
+            //saving old codon
+            SaveCurrent();
+
+            //reading new codon
+            if (SelectedIndex != -1 && Codons[SelectedIndex].DrawingData != null)
+                DrawingManager.Current.SetRecalculatedDrawing(Codons[SelectedIndex].DrawingData.Value, new Avalonia.Point(5, 5));
+            else
+                DrawingManager.Current.CleanDrawing();
+        }
+
+        void SaveCurrent()
+        {
+            int index = Codons.IndexOf(SelectedItem);
+
+            if (index != -1)
+            {
+                var copy = Codons[index];
+                copy.DrawingData = DrawingManager.Current.GetRecalculatedDrawing();
+                Codons[index] = copy;
+            }
         }
     }
 }
