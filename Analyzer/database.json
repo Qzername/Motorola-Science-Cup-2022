@@ -8,66 +8,94 @@
       "Points": [
         {
           "ID": 0,
-          "PositionX": 0,
+          "PositionX": 4,
           "PositionY": 0,
-          "MolecularFormula": null,
+          "MolecularFormula": "O",
           "Charge": 0
         },
         {
           "ID": 1,
           "PositionX": 4,
-          "PositionY": 0,
+          "PositionY": 2,
           "MolecularFormula": null,
           "Charge": 0
         },
         {
           "ID": 2,
-          "PositionX": 0,
-          "PositionY": 2,
-          "MolecularFormula": null,
-          "Charge": 0
+          "PositionX": 6,
+          "PositionY": 3,
+          "MolecularFormula": "O",
+          "Charge": -1
         },
         {
           "ID": 3,
-          "PositionX": 4,
-          "PositionY": 2,
+          "PositionX": 2,
+          "PositionY": 3,
           "MolecularFormula": null,
           "Charge": 0
         },
         {
           "ID": 4,
-          "PositionX": 0,
-          "PositionY": 4,
+          "PositionX": 2,
+          "PositionY": 5,
           "MolecularFormula": null,
           "Charge": 0
         },
         {
           "ID": 5,
           "PositionX": 4,
-          "PositionY": 4,
+          "PositionY": 6,
           "MolecularFormula": null,
           "Charge": 0
         },
         {
           "ID": 6,
-          "PositionX": 0,
-          "PositionY": 6,
+          "PositionX": 6,
+          "PositionY": 5,
           "MolecularFormula": null,
           "Charge": 0
         },
         {
           "ID": 7,
-          "PositionX": 4,
+          "PositionX": 8,
           "PositionY": 6,
           "MolecularFormula": null,
           "Charge": 0
+        },
+        {
+          "ID": 8,
+          "PositionX": 8,
+          "PositionY": 8,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 9,
+          "PositionX": 6,
+          "PositionY": 9,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 10,
+          "PositionX": 4,
+          "PositionY": 8,
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 11,
+          "PositionX": 0,
+          "PositionY": 2,
+          "MolecularFormula": "H2N",
+          "Charge": 1
         }
       ],
       "Lines": [
         {
           "IDChemPoint1": 0,
           "IDChemPoint2": 1,
-          "NumberOfBind": 1
+          "NumberOfBind": 2
         },
         {
           "IDChemPoint1": 1,
@@ -75,7 +103,7 @@
           "NumberOfBind": 1
         },
         {
-          "IDChemPoint1": 2,
+          "IDChemPoint1": 1,
           "IDChemPoint2": 3,
           "NumberOfBind": 1
         },
@@ -97,6 +125,31 @@
         {
           "IDChemPoint1": 6,
           "IDChemPoint2": 7,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 7,
+          "IDChemPoint2": 8,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 8,
+          "IDChemPoint2": 9,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 9,
+          "IDChemPoint2": 10,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 10,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 11,
           "NumberOfBind": 1
         }
       ]
