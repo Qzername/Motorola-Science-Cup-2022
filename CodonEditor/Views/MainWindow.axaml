@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:e="clr-namespace:EventBinder;assembly=EventBinder.Avalonia"
 		xmlns:custom="using:CodonEditor.Controls"
-		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
         x:Class="CodonEditor.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="CodonEditor">
@@ -14,7 +14,32 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-	<Border BorderBrush="Red" BorderThickness="5" CornerRadius="10" Margin="100">
-	    <custom:DrawingManager/>
-	</Border>
+	<DockPanel>
+		<Panel Background="#101010">
+			<StackPanel DockPanel.Dock="Top" Margin="5" Spacing="5" Width="200">
+				<Button Command="{Binding ReadDatabase}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Content="Read Database"/>
+				
+				<ComboBox Name="CodonsComboBox" SelectedItem="{Binding CurrentItem}" Items="{Binding Codons}" HorizontalAlignment="Stretch" Margin="0,0,0,20">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock>
+								<TextBlock.Text>
+									<MultiBinding StringFormat="{}{0} - {1}">
+										<Binding Path="Letter" />
+										<Binding Path="Name" />
+									</MultiBinding>
+								</TextBlock.Text>
+							</TextBlock>
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+				</ComboBox>
+				
+				<TextBox Text="{Binding CurrentItem.Name}" Watermark="Codon Name"/>
+				<TextBox Text="{Binding CurrentItem.Letter}" Watermark="Codon Letter"/>
+			</StackPanel>
+
+			<Button Margin="5" VerticalAlignment="Bottom" Content="Save" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+		</Panel>
+		<custom:DrawingManager/>
+	</DockPanel>
 </Window>
