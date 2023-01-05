@@ -162,13 +162,21 @@ namespace CodonEditor.Controls
 
             lines.AddRange(data.Lines);
 
+            int maxID = 0;
+
             for (int i = 0; i < data.Points.Length; i++)
             {
                 var copy = data.Points[i];
                 copy.Position = new Point((copy.Position.X + GridOffest.X) * GridCellSize.X, (copy.Position.Y + GridOffest.Y) * GridCellSize.Y);
+
+                if (copy.ID > maxID)
+                    maxID = copy.ID+1;
+
                 chemPoints.Add(copy);
             }
-           
+
+            nextID = maxID; 
+
             InvalidateVisual();
         }
 
