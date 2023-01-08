@@ -175,7 +175,9 @@ namespace CodonEditor.Controls
                 chemPoints.Add(copy);
             }
 
-            nextID = maxID; 
+            //for some reason i need to add +1 to this because it can cause application to crash
+            //due to fact that for some reason there will be two points with same ID
+            nextID = maxID+1; 
 
             InvalidateVisual();
         }
