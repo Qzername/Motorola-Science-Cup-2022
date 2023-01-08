@@ -17,7 +17,7 @@
 		<Panel Background="Gray" Width="100">
 			<Label Content="lorem ipsum w w9fieiopsfheios"/>
 		</Panel>
-        <c:ProteinControl CodonSequence="{Binding TestSequence}"/>
+        <c:ProteinDrawingManager CodonSequence="{Binding TestSequence}"/>
 	</StackPanel>
 
 </Window>
