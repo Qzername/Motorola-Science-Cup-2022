@@ -15,8 +15,7 @@ namespace UnitTests.Analyzer
     
         public void SequenceTest(string sequenceRaw)
         {
-            SequenceAnalyzer analizer = new SequenceAnalyzer();
-            Sequence sequence = analizer.CreateSequence(sequenceRaw);
+            Sequence sequence = SequenceAnalyzer.CreateSequence(sequenceRaw);
 
             string shift1 = Sequence.CodonsToString(sequence.CodonsShift1);
             string correctShift1 = "K[stop]TKICSLHSLPPQS[stop]AY";

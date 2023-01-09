@@ -13,10 +13,11 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-	<StackPanel Orientation="Horizontal">
-		<Panel Background="Gray" Width="100">
-			<Label Content="lorem ipsum w w9fieiopsfheios"/>
-		</Panel>
+	<StackPanel>
+		<StackPanel Orientation="Horizontal" Height="100">
+			<Button Content="Test" Command="{Binding Test}"/>
+			<TextBlock Text="{Binding ProteinTest}"/>
+		</StackPanel>
         <c:ProteinDrawingManager CodonSequence="{Binding TestSequence}"/>
 	</StackPanel>
 

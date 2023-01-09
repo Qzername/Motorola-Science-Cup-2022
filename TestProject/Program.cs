@@ -11,8 +11,7 @@ namespace TestProject
         {
             //DatabaseCreator.CreateCodonDatabase();
             
-            SequenceAnalyzer analizer = new SequenceAnalyzer();
-            Sequence sequence = analizer.CreateSequence("AAAUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCUACCC");
+            Sequence sequence = SequenceAnalyzer.CreateSequence("AAAUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCUACCC");
 
             string shift1 = Sequence.CodonsToString(sequence.CodonsShift1);
             string correctShift1 = "K[stop]TKICSLHSLPPQS[stop]AY";

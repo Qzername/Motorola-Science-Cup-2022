@@ -12,20 +12,40 @@ namespace Analyzer
     /// <summary>
     /// Codon/Sequence Analyzer
     /// </summary>
-    public class SequenceAnalyzer
+    public static class SequenceAnalyzer
     {
-        public Protein[] DetectProteins(Codon[] shift)
+        /// <summary>
+        /// Detect proteins in codon sequence
+        /// </summary>
+        public static Protein[] DetectProteins(Codon[] shift)
         {
-            throw new Exception("musisz to jeszcze zrobić");
+            List<Protein> proteins = new List<Protein>();
+            List<Codon> currentProtein = new List<Codon>();
 
-            return new Protein[0];
+            for(int i = 0; i < shift.Length; i++)
+            {
+                var current = shift[i];
+
+                if (currentProtein.Count == 0 && current.CodonType != CodonType.Start)
+                    continue;
+
+                currentProtein.Add(current);
+
+                if (current.CodonType == CodonType.End)
+                {
+                    proteins.Add(new Protein(currentProtein.ToArray()));
+                    currentProtein.Clear();
+                }
+            }
+
+            return proteins.ToArray();
         }
 
         /// <summary>
         /// Creates Sequence from raw RNA/DNA code
         /// </summary>
         /// <param name="rawSequence">string that contains RNA/DNA code</param>
-        public Sequence CreateSequence(string rawSequence)
+        public static Sequence CreateSequence(string rawSequence)
         {
             //changing DNA to RNA if sequence is DNA sequence
             rawSequence = rawSequence.Replace('T', 'U');
@@ -41,7 +61,7 @@ namespace Analyzer
         }
 
         //Reading one shift
-        Codon[] ReadCodonsFromString(string series)
+        static Codon[] ReadCodonsFromString(string series)
         {
             List<Codon> codonsID = new List<Codon>();
 

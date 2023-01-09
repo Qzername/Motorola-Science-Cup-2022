@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Analyzer.Models.Codons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace CodonEditor.Models.Draw
         {
             this.Points = Points;
             this.Lines = Lines;
+        }
+
+        public static DrawingData CombineCodonDrawings(Codon[] codons)
+        {
+            throw new Exception("nie zrobione");
+            return new DrawingData();
         }
     }
 }

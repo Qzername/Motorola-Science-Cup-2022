@@ -1,5 +1,6 @@
 using Analyzer;
 using Analyzer.Models;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,28 @@ namespace BlakApp.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public Sequence TestSequence => new SequenceAnalyzer().CreateSequence("AAAUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCUACCCUGA");
+        Sequence _testSequence;
+        public Sequence TestSequence
+        {
+            get => _testSequence;
+            set => this.RaiseAndSetIfChanged(ref _testSequence, value);
+        }
+
+        string _proteinTest;
+        public string ProteinTest
+        {
+            get => _proteinTest;
+            set => this.RaiseAndSetIfChanged(ref _proteinTest, value);
+        }
+
+        public MainWindowViewModel()
+        {
+            TestSequence = SequenceAnalyzer.CreateSequence("AAAAUGACGAAAAUCUGUUGAUCGCUUCAUUCAUUGAUGCCCCCACAAUCCUAGGCCUACCCUGA");
+        }
+
+        public void Test()
+        {
+            ProteinTest = analyzer.DetectProteins(TestSequence.CodonsShift1).Length.ToString();
+        }
     }
 }
