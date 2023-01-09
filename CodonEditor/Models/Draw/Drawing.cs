@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Analyzer.Models.Drawing;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -50,7 +51,7 @@ namespace CodonEditor.Models.Draw
                     ID = current.ID,
                     Charge = current.Charge,
                     MolecularFormula = current.MolecularFormula,
-                    Position = new Avalonia.Point(current.PositionX, current.PositionY)
+                    Position = new Avalonia.Point(current.Position.X, current.Position.Y)
                 };
             }
                
@@ -71,14 +72,19 @@ namespace CodonEditor.Models.Draw
                     ID = rawPoints[i].ID,
                     Charge = rawPoints[i].Charge,
                     MolecularFormula = rawPoints[i].MolecularFormula,
-                    PositionX = Convert.ToInt32(rawPoints[i].Position.X),
-                    PositionY = Convert.ToInt32(rawPoints[i].Position.Y)
+                    Position = new Analyzer.Models.Position(Convert.ToInt32(rawPoints[i].Position.X), Convert.ToInt32(rawPoints[i].Position.Y))
                 };
 
             for (int i = 0; i < lines.Length; i++)
                 lines[i] = new Line(rawLines[i].IDChemPoint1, rawLines[i].IDChemPoint2, rawLines[i].NumberOfBind);
 
-            return new DrawingData(points, lines);
+            return new DrawingData(points, lines, CalculateCodonData(points));
+        }
+
+        static Data CalculateCodonData(ChemPoint[] points)
+        {
+            throw new Exception("do zaimplementowania");
+            return new Data();
         }
     }
 }

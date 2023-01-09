@@ -101,6 +101,6 @@ namespace BlakApp.Controls
         /// <summary>
         /// Return chempoint position as Avalonia's Point multipled by pointOffset
         /// </summary>
-        Point ChemPointPosition(ChemPoint point, Point pointOffest) => new Point(point.PositionX * pointOffest.X, point.PositionY * pointOffest.Y);
+        Point ChemPointPosition(ChemPoint point, Point pointOffest) => new Point(point.Position.X * pointOffest.X, point.Position.Y * pointOffest.Y);
     }
 }

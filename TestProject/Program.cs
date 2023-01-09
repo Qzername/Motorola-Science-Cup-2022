@@ -1,7 +1,10 @@
 ﻿using Analyzer;
 using Analyzer.Models;
 using Analyzer.Models.Codons;
+using CodonEditor.Models.Draw;
+using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 
 namespace TestProject
 {
@@ -10,19 +13,49 @@ namespace TestProject
         public static void Main()
         {
             //DatabaseCreator.CreateCodonDatabase();
-            
-            Sequence sequence = SequenceAnalyzer.CreateSequence("AAAUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCUACCC");
 
-            string shift1 = Sequence.CodonsToString(sequence.CodonsShift1);
-            string correctShift1 = "K[stop]TKICSLHSLPPQS[stop]AY";
-            Console.WriteLine($"{shift1}\n{correctShift1}\n{shift1 == correctShift1}\n------------------------");
+            /*List<Codon> codons = new List<Codon>();
 
-            string shift2 = Sequence.CodonsToString(sequence.CodonsShift2);
-            Console.WriteLine($"{shift2}\n------------------------");
+            foreach (var codon in CodonDatabase.Codons)
+            {
+                List<ChemPoint> points = new List<ChemPoint>();
 
-            string shift3 = Sequence.CodonsToString(sequence.CodonsShift3);
-            string correctShift3 = "M(start)NENLFASFIAPTILGLP";
-            Console.WriteLine($"{shift3}\n{correctShift3}\n{shift3 == correctShift3}");
+                if (codon.CodonType == CodonType.End)
+                    continue;
+
+                foreach (var point in codon.DrawingData.Points)
+                    points.Add(new ChemPoint()
+                    {
+                        ID = point.ID,
+                        Charge = point.Charge,
+                        MolecularFormula = point.MolecularFormula,
+                        Position = new Position(point.PositionX, point.PositionY)
+                    });
+
+                Codon newCodon = new Codon(codon.Letter, codon.Name, codon.IDs, codon.CodonType, new DrawingData(points.ToArray(), codon.DrawingData.Lines));
+                codons.Add(newCodon);
+            }
+
+            string json = JsonConvert.SerializeObject(codons.ToArray());
+            File.WriteAllText("./CodonDatabase/database.json", json);
+        */
+
+            int totalPoints = 0;
+            int totalLines = 0;
+
+            foreach(var codon in CodonDatabase.Codons)
+            {
+                totalPoints += codon.DrawingData.Points.Length;
+                totalLines += codon.DrawingData.Lines.Length;
+            }
+
+            float avgPoints = Convert.ToSingle(totalPoints) / CodonDatabase.Codons.Length;
+            float avgLines = Convert.ToSingle(totalLines) / CodonDatabase.Codons.Length;
+
+            Console.WriteLine("total points: " + totalPoints);
+            Console.WriteLine("total lines: " + totalLines);
+            Console.WriteLine("avg points: " + avgPoints);
+            Console.WriteLine("avg lines: " + avgLines);
         }
     }
 }
