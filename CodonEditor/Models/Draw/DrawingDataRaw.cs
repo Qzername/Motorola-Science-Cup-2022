@@ -1,4 +1,6 @@
-﻿using Analyzer.Models.Drawing;
+﻿using Analyzer;
+using Analyzer.Models.Draw;
+using Analyzer.Models.Drawing;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -78,13 +80,45 @@ namespace CodonEditor.Models.Draw
             for (int i = 0; i < lines.Length; i++)
                 lines[i] = new Line(rawLines[i].IDChemPoint1, rawLines[i].IDChemPoint2, rawLines[i].NumberOfBind);
 
-            return new DrawingData(points, lines, CalculateCodonData(points));
+            return new DrawingData(points, lines, CalculateCodonData(points, lines));
         }
 
-        static Data CalculateCodonData(ChemPoint[] points)
+        static Data CalculateCodonData(ChemPoint[] points, Line[] lines)
         {
-            throw new Exception("do zaimplementowania");
-            return new Data();
+            //if this method causes any problems it is because we didnt completly think how this project should be made
+
+            //mass calculation
+            double mass = 0;
+
+            foreach(var point in points)
+            {
+                string Compound = string.Empty;
+
+                if(string.IsNullOrEmpty(point.MolecularFormula))
+                {
+                    Compound = "C";
+
+                    var valency = 4-lines.Where(x=>x.IDChemPoint1 == point.ID || x.IDChemPoint2 == point.ID).Sum(x=>x.NumberOfBind);
+
+                    if (valency < 4)
+                        Compound += "H" + valency;
+                }
+                else
+                    Compound = point.MolecularFormula;
+
+                if (point.Charge < 0)
+                    mass += 1d;
+
+                mass += MassesOfElements.GetCompoundMass(Compound);
+            }
+
+            //these lines are here just because i didnt want to make proper tool to sign which codon is start codon and which one is end
+            //because it would take to much time and we have to finish this project as quickly as we can
+            //P codon has moved start and end points one to the right, thats why i am checking for both 0 and 1 AND 6 and 7
+            int IDstart = points.Single(x=>(x.Position.X == 0 || x.Position.X == 1) && x.Position.Y == 2).ID; 
+            int IDend = points.Single(x => (x.Position.X == 6 || x.Position.X == 7) && x.Position.Y == 3).ID;
+
+            return new Data() { Mass = mass, ChemPointStart = IDstart, ChemPointEnd = IDend };
         }
     }
 }

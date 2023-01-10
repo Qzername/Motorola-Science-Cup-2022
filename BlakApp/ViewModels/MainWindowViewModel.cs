@@ -30,7 +30,7 @@ namespace BlakApp.ViewModels
 
         public void Test()
         {
-            ProteinTest = SequenceAnalyzer.DetectProteins(TestSequence.CodonsShift1).Length.ToString();
+            ProteinTest = SequenceAnalyzer.CalculateCodonSequenceMass(TestSequence.CodonsShift1).ToString();
         }
     }
 }

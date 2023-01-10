@@ -1,5 +1,6 @@
 ﻿using Analyzer.Models;
 using Analyzer.Models.Codons;
+using Analyzer.Models.Draw;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,6 +41,19 @@ namespace Analyzer
             }
 
             return proteins.ToArray();
+        }
+
+        /// <summary>
+        /// Calculate mass of codon sequence
+        /// </summary>
+        public static double CalculateCodonSequenceMass(Codon[] sequence)
+        {
+            double singleConnection = MassesOfElements.GetCompoundMass("H2O");
+
+            double mass = sequence.Sum(x => x.DrawingData.Data.Mass);
+            mass -= singleConnection * (sequence.Length - 1);
+
+            return mass;
         }
 
         /// <summary>

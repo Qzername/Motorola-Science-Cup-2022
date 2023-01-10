@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodonEditor.Models.Draw
+namespace Analyzer.Models.Draw
 {
     public struct DrawingData
     {
@@ -19,11 +19,6 @@ namespace CodonEditor.Models.Draw
             this.Points = Points;
             this.Lines = Lines;
             this.Data = Data;
-        }
-
-        public static DrawingData CombineCodonDrawings(Codon[] codons)
-        {
-            return new DrawingData();
         }
     }
 }

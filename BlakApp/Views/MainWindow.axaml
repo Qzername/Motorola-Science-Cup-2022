@@ -12,13 +12,19 @@
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-	<StackPanel>
-		<StackPanel Orientation="Horizontal" Height="100">
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="100">
 			<Button Content="Test" Command="{Binding Test}"/>
 			<TextBlock Text="{Binding ProteinTest}"/>
 		</StackPanel>
-        <c:ProteinDrawingManager CodonSequence="{Binding TestSequence}"/>
-	</StackPanel>
+		<Panel DockPanel.Dock="Bottom">
+			<ScrollViewer  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Visible">
+
+				<c:ProteinDrawingManager HorizontalAlignment="Left" CodonSequence="{Binding TestSequence}"/>
+
+			</ScrollViewer>
+		</Panel>
+
+	</DockPanel>
 
 </Window>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodonEditor.Models.Draw
+namespace Analyzer.Models.Draw
 {
     public struct ChemPoint
     {

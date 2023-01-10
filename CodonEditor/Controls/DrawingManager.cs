@@ -150,6 +150,8 @@ namespace CodonEditor.Controls
 
         public void CleanDrawing()
         {
+            nextID = 0;
+
             lines.Clear();
             chemPoints.Clear();
             InvalidateVisual();

@@ -5,6 +5,7 @@ using CodonEditor.Models.Draw;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using CodonEditor;
 
 namespace TestProject
 {
@@ -12,34 +13,44 @@ namespace TestProject
     {
         public static void Main()
         {
-            //DatabaseCreator.CreateCodonDatabase();
+            Console.WriteLine(MassesOfElements.GetCompoundMass("H3"));
+            Console.WriteLine(MassesOfElements.GetCompoundMass("H2N"));
+            Console.WriteLine(MassesOfElements.GetCompoundMass("H2"));
+            Console.WriteLine(MassesOfElements.GetCompoundMass("CH3"));
+            Console.WriteLine(MassesOfElements.GetCompoundMass("C"));
+            Console.WriteLine(MassesOfElements.GetCompoundMass("H"));
+        }
+    }
+}
 
-            /*List<Codon> codons = new List<Codon>();
+//DatabaseCreator.CreateCodonDatabase();
 
-            foreach (var codon in CodonDatabase.Codons)
-            {
-                List<ChemPoint> points = new List<ChemPoint>();
+/*List<Codon> codons = new List<Codon>();
 
-                if (codon.CodonType == CodonType.End)
-                    continue;
+foreach (var codon in CodonDatabase.Codons)
+{
+    List<ChemPoint> points = new List<ChemPoint>();
 
-                foreach (var point in codon.DrawingData.Points)
-                    points.Add(new ChemPoint()
-                    {
-                        ID = point.ID,
-                        Charge = point.Charge,
-                        MolecularFormula = point.MolecularFormula,
-                        Position = new Position(point.PositionX, point.PositionY)
-                    });
+    if (codon.CodonType == CodonType.End)
+        continue;
 
-                Codon newCodon = new Codon(codon.Letter, codon.Name, codon.IDs, codon.CodonType, new DrawingData(points.ToArray(), codon.DrawingData.Lines));
-                codons.Add(newCodon);
-            }
+    foreach (var point in codon.DrawingData.Points)
+        points.Add(new ChemPoint()
+        {
+            ID = point.ID,
+            Charge = point.Charge,
+            MolecularFormula = point.MolecularFormula,
+            Position = new Position(point.PositionX, point.PositionY)
+        });
 
-            string json = JsonConvert.SerializeObject(codons.ToArray());
-            File.WriteAllText("./CodonDatabase/database.json", json);
-        */
+    Codon newCodon = new Codon(codon.Letter, codon.Name, codon.IDs, codon.CodonType, new DrawingData(points.ToArray(), codon.DrawingData.Lines));
+    codons.Add(newCodon);
+}
 
+string json = JsonConvert.SerializeObject(codons.ToArray());
+File.WriteAllText("./CodonDatabase/database.json", json);
+*/
+/*
             int totalPoints = 0;
             int totalLines = 0;
 
@@ -55,7 +66,4 @@ namespace TestProject
             Console.WriteLine("total points: " + totalPoints);
             Console.WriteLine("total lines: " + totalLines);
             Console.WriteLine("avg points: " + avgPoints);
-            Console.WriteLine("avg lines: " + avgLines);
-        }
-    }
-}
+            Console.WriteLine("avg lines: " + avgLines);*/
