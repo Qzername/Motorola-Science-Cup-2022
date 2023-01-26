@@ -3,28 +3,40 @@
         xmlns:vm="using:BlakApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:c="using:BlakApp.Controls"
 		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="BlakApp.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="BlakApp">
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
 
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
 	<DockPanel>
-		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="100">
-			<Button Content="Test" Command="{Binding Test}"/>
-			<TextBlock Text="{Binding ProteinTest}"/>
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="50">
+			<Label VerticalAlignment="Center" Content="TO JEST PANEL DEBUGOWY, PÓŹNIEJ ZOSTANIE ZASTĄPIONY: "/>
+			<Button Command="{Binding AddTestPanel}">test panel</Button>
+			<Button Command="{Binding AddPeptidePanel}">analize peptide panel</Button>
 		</StackPanel>
-		<Panel DockPanel.Dock="Bottom">
-			<ScrollViewer  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Visible">
+		
+		<StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+			<ItemsControl Items="{Binding Pages}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<WrapPanel />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
 
-				<c:ProteinDrawingManager HorizontalAlignment="Left" CodonSequence="{Binding TestSequence}"/>
-
-			</ScrollViewer>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Button Command="{Binding $parent[ItemsControl].DataContext.ChangePage}" CommandParameter="{Binding}" Margin="15,0,0,0" Foreground="{Binding Color}" Classes="Choose" Content="{Binding Name}"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</StackPanel>
+		
+		<Panel>
+			<ContentControl Content="{Binding CurrentPage}"/>
 		</Panel>
-
 	</DockPanel>
 
 </Window>

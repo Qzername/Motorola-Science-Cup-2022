@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+			 xmlns:c="using:BlakApp.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BlakApp.Views.TestView">
+	
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="100">
+			<Button Content="Test" Command="{Binding Test}"/>
+			<TextBlock Text="{Binding ProteinTest}"/>
+		</StackPanel>
+		<Panel DockPanel.Dock="Bottom">
+			<ScrollViewer  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Visible">
+				<c:ProteinDrawingManager HorizontalAlignment="Left" CodonSequence="{Binding TestSequence}"/>
+			</ScrollViewer>
+		</Panel>
+
+	</DockPanel>
+</UserControl>

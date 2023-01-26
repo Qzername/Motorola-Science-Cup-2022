@@ -1,5 +1,6 @@
 using Analyzer;
 using Analyzer.Models;
+using BlakApp.ViewModels.Pages;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -7,30 +8,20 @@ using System.Text;
 
 namespace BlakApp.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : PageChanger
     {
-        Sequence _testSequence;
-        public Sequence TestSequence
+        public MainWindowViewModel() : base()
         {
-            get => _testSequence;
-            set => this.RaiseAndSetIfChanged(ref _testSequence, value);
         }
 
-        string _proteinTest;
-        public string ProteinTest
+        public void AddTestPanel()
         {
-            get => _proteinTest;
-            set => this.RaiseAndSetIfChanged(ref _proteinTest, value);
+            Pages.Add(new Page("1", new TestViewModel()));
         }
 
-        public MainWindowViewModel()
+        public void AddPeptidePanel()
         {
-            TestSequence = SequenceAnalyzer.CreateSequence("AAAAUGACGAAAAUCUGUUGAUCGCUUCAUUCAUUGAUGCCCCCACAAUCCUAGGCCUACCCUGA");
-        }
-
-        public void Test()
-        {
-            ProteinTest = SequenceAnalyzer.CalculateCodonSequenceMass(TestSequence.CodonsShift1).ToString();
+            Pages.Add(new Page("2", new AnalizePeptideViewModel()));
         }
     }
 }
