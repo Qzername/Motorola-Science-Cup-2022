@@ -90,9 +90,6 @@ namespace BlakApp.Controls
                 if (point.Charge == 0 && string.IsNullOrEmpty(point.MolecularFormula))
                     continue;
 
-                if (point.ID == data.Data.ChemPointStart || point.ID == data.Data.ChemPointEnd)
-                    continue;
-
                 text.Text = point.MolecularFormula;
                 context.DrawText(Brushes.Red, ChemPointPosition(point, pointOffset) + offset, text);
             }

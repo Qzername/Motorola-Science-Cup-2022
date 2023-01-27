@@ -99,7 +99,7 @@ namespace CodonEditor.ViewModels
 
             //reading new codon
             if (SelectedIndex != -1 && Codons[SelectedIndex].DrawingData is not null)
-                DrawingManager.Current.SetRecalculatedDrawing(Codons[SelectedIndex].DrawingData.Value, new Avalonia.Point(5, 5));
+                DrawingManager.Current.SetRecalculatedDrawing(Codons[SelectedIndex].DrawingData.Value);
             else
                 DrawingManager.Current.CleanDrawing();
         }

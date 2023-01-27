@@ -2,8 +2,8 @@
    {
       "Name":"H2N",
       "TerminusType":0,
-      "ExitPoint": 0,
-      "ConnectionPoint":1,
+      "ExitPoint": 1,
+      "ConnectionPoint":0,
       "DrawingData":{
          "Points":[
             {

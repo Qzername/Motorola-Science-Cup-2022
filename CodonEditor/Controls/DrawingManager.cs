@@ -1,9 +1,12 @@
-﻿using Analyzer.Analyzers;
+﻿using Analyzer;
+using Analyzer.Analyzers;
 using Analyzer.Models;
 using Analyzer.Models.Draw;
+using Analyzer.Models.Terminuses;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Microsoft.CodeAnalysis.Emit;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,9 +19,12 @@ namespace CodonEditor.Controls
         public static DrawingManager Current;
 
         Point GridCellSize;
+        Point GridOffest;
 
         int nextID;
         Point? SelectedPoint;
+
+        DrawingData terminusTemplate;
 
         List<ChemPoint> chemPoints;
         List<Line> lines;
@@ -30,6 +36,7 @@ namespace CodonEditor.Controls
             Current = this;
 
             GridCellSize = new Point(25, 25);
+            GridOffest = new Avalonia.Point(10, 10);
 
             nextID = 0;
             SelectedPoint = null;
@@ -41,7 +48,39 @@ namespace CodonEditor.Controls
             moreBind = new Pen(Brushes.Orange, 5d);
             errorBind = new Pen(Brushes.Red, 5d);
 
+            terminusTemplate = CreateTerminus(DatabaseReader.Terminuses[0], DatabaseReader.Terminuses[1]);
+
             PointerPressed += DrawingManager_PointerPressed;
+        }
+
+        DrawingData CreateTerminus(Terminus A, Terminus B)
+        {
+            int IDoffset = A.DrawingData.Points.Max(x => x.ID) +1;
+            Position PositionOffset = A.DrawingData.Points[A.ExitPoint].Position - B.DrawingData.Points[B.ConnectionPoint].Position;
+
+            List<ChemPoint> points = new List<ChemPoint>();
+            List<Line> lines = new List<Line>();
+
+            points.AddRange(A.DrawingData.Points);
+            lines.AddRange(A.DrawingData.Lines);
+
+            foreach(var point in B.DrawingData.Points)
+            {
+                var copy = point;
+                copy.ID += IDoffset;
+                copy.Position += PositionOffset;
+                points.Add(copy);
+            }
+            
+            foreach(var line in B.DrawingData.Lines)
+            {
+                var copy = line;
+                copy.IDChemPoint1 += IDoffset;
+                copy.IDChemPoint2 += IDoffset;
+                lines.Add(copy);
+            }
+
+            return new DrawingData(points.ToArray(), lines.ToArray(), new Analyzer.Models.Drawing.Data());
         }
 
         private void DrawingManager_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
@@ -92,7 +131,25 @@ namespace CodonEditor.Controls
                     context.DrawEllipse(Brushes.Orange, null, new Point(x * GridCellSize.X, y * GridCellSize.Y), 1f, 1f);
 
             //draw lines
-            for(int i = 0; i < lines.Count;i++)
+            //codon
+            DrawLines(context, lines.ToArray(), chemPoints.ToArray());
+            //terminus
+            DrawLines(context, terminusTemplate.Lines, terminusTemplate.Points);
+
+            //drawing points and their additional data (charges and special formulas)
+            //codon
+            DrawPoints(context, chemPoints.ToArray());
+            //terminus
+            DrawPoints(context, terminusTemplate.Points);
+
+            //draw selected point
+            if (SelectedPoint is not null)
+                context.DrawEllipse(null, singleBind, SelectedPoint.Value, 10d,10d);
+        }
+
+        public void DrawLines(DrawingContext context, Line[] lines, ChemPoint[] chemPoints)
+        {
+            for (int i = 0; i < lines.Length; i++)
             {
                 Line line = lines[i];
 
@@ -105,35 +162,35 @@ namespace CodonEditor.Controls
                 else
                     drawPen = errorBind;
 
-                context.DrawLine(drawPen, 
-                    ComparisonTools.Convert(chemPoints.Single(x => x.ID == line.IDChemPoint1).Position), 
-                    ComparisonTools.Convert(chemPoints.Single(x => x.ID == line.IDChemPoint2).Position));
+                context.DrawLine(drawPen,
+                    GetRealPosition(chemPoints.Single(x => x.ID == line.IDChemPoint1).Position),
+                    GetRealPosition(chemPoints.Single(x => x.ID == line.IDChemPoint2).Position));
             }
+        }
 
-            //drawing points and their additional data (charges and special formulas)
-            for(int i = 0; i <chemPoints.Count;i++)
+        public void DrawPoints(DrawingContext context, ChemPoint[] chemPoints)
+        {
+            for (int i = 0; i < chemPoints.Length; i++)
             {
                 var current = chemPoints[i];
 
-                context.DrawEllipse(Brushes.Red, null, ComparisonTools.Convert(current.Position), 5f, 5f);
+                var realPosition = GetRealPosition(current.Position);
+
+                context.DrawEllipse(Brushes.Red, null, realPosition, 5f, 5f);
 
                 if (current.Charge != 0)
                 {
                     int diff = Math.Abs(current.Charge);
 
                     if (current.Charge < 0)
-                        context.DrawText(diff <= 1 ? Brushes.Aqua : errorBind.Brush, new Point(current.Position.X-10f, current.Position.Y -15), new FormattedText("-", Typeface.Default, 42, TextAlignment.Center, TextWrapping.Wrap, new Size(20,20)));
+                        context.DrawText(diff <= 1 ? Brushes.Aqua : errorBind.Brush, new Point(realPosition.X - 10f, realPosition.Y - 15), new FormattedText("-", Typeface.Default, 42, TextAlignment.Center, TextWrapping.Wrap, new Size(20, 20)));
                     else
-                        context.DrawText(diff <= 1 ? Brushes.Aqua : errorBind.Brush, new Point(current.Position.X - 10f, current.Position.Y-10), new FormattedText("+", Typeface.Default, 36, TextAlignment.Center, TextWrapping.Wrap, new Size(20, 20)));
+                        context.DrawText(diff <= 1 ? Brushes.Aqua : errorBind.Brush, new Point(realPosition.X - 10f, realPosition.Y - 10), new FormattedText("+", Typeface.Default, 36, TextAlignment.Center, TextWrapping.Wrap, new Size(20, 20)));
                 }
 
                 if (!string.IsNullOrEmpty(current.MolecularFormula))
-                    context.DrawText(Brushes.Aqua, new Point(current.Position.X - 50, current.Position.Y - 35f), new FormattedText(current.MolecularFormula, Typeface.Default, 21, TextAlignment.Center, TextWrapping.Wrap, new Size(100, 20)));
+                    context.DrawText(Brushes.Aqua, new Point(realPosition.X - 50, realPosition.Y - 35f), new FormattedText(current.MolecularFormula, Typeface.Default, 21, TextAlignment.Center, TextWrapping.Wrap, new Size(100, 20)));
             }
-
-            //draw selected point
-            if (SelectedPoint is not null)
-                context.DrawEllipse(null, singleBind, SelectedPoint.Value, 10d,10d);
         }
 
         public void RevertChange()
@@ -159,7 +216,7 @@ namespace CodonEditor.Controls
             InvalidateVisual();
         }
 
-        public void SetRecalculatedDrawing(DrawingData data, Point GridOffest)
+        public void SetRecalculatedDrawing(DrawingData data)
         {
             lines.Clear();
             chemPoints.Clear();
@@ -171,7 +228,6 @@ namespace CodonEditor.Controls
             for (int i = 0; i < data.Points.Length; i++)
             {
                 var copy = data.Points[i];
-                copy.Position = ComparisonTools.Convert(new Point((copy.Position.X + GridOffest.X) * GridCellSize.X, (copy.Position.Y + GridOffest.Y) * GridCellSize.Y));
 
                 if (copy.ID > maxID)
                     maxID = copy.ID+1;
@@ -194,23 +250,10 @@ namespace CodonEditor.Controls
             DrawingData data = new DrawingData()
             {
                 Lines = lines.ToArray(),
-                Points = new ChemPoint[chemPoints.Count],
+                Points = chemPoints.ToArray(),
             };
 
             data.Data = CodonAnalyzer.CreateCodonData(data);
-
-            Point offset = new Point(chemPoints.Min(x=>x.Position.X), chemPoints.Min(y=>y.Position.Y));
-
-            for(int i = 0;i<chemPoints.Count;i++)
-            {
-                var copy = chemPoints[i];
-
-                copy.Position = ComparisonTools.Subtraction(copy.Position, offset);
-
-                copy.Position = new Position(Convert.ToInt32(copy.Position.X / GridCellSize.X), Convert.ToInt32(copy.Position.Y / GridCellSize.Y));
-
-                data.Points[i] = copy;
-            }
 
             return data;
         }
@@ -236,6 +279,9 @@ namespace CodonEditor.Controls
             InvalidateVisual();
         }
 
+        Point GetRealPosition(Position position) => new Point((position.X + GridOffest.X) * GridCellSize.X, (position.Y + GridOffest.Y) * GridCellSize.Y);
+        Position GetRawPosition(Point point) => ComparisonTools.Convert(new Point((point.X / GridCellSize.X) - GridOffest.X, (point.Y / GridCellSize.Y) - GridOffest.Y));
+
         ChemPoint GetChemPoint(Point Point)
         {
             ChemPoint chemPoint;
@@ -244,7 +290,7 @@ namespace CodonEditor.Controls
                 chemPoint = chemPoints.Single(x => ComparisonTools.IsEqual(x.Position, Point));
             else
             {
-                chemPoint = new ChemPoint() { ID = nextID++, Position = ComparisonTools.Convert(Point) };
+                chemPoint = new ChemPoint() { ID = nextID++, Position = GetRawPosition(Point) };
                 chemPoints.Add(chemPoint);
             }
 
