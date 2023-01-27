@@ -13,7 +13,7 @@ namespace Analyzer.Models.Codons
         public string Name { get; set; }
         public string[] IDs { get; set; }
         public CodonType CodonType { get; set; }
-        public DrawingData DrawingData { get; set; }
+        public DrawingData? DrawingData { get; set; }
 
         public Codon(string Letter, string Name, string[] IDs, CodonType CodonType)
         {

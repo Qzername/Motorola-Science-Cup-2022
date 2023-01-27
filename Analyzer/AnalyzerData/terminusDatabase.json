@@ -1,0 +1,106 @@
+[
+   {
+      "Name":"H2N",
+      "TerminusType":0,
+      "ExitPoint": 0,
+      "ConnectionPoint":1,
+      "DrawingData":{
+         "Points":[
+            {
+               "ID":0,
+               "Position":{
+                  "X":0,
+                  "Y":0
+               },
+               "MolecularFormula":"H2N",
+               "Charge":1
+            },
+            {
+               "ID":1,
+               "Position":{
+                  "X":2,
+                  "Y":1
+               },
+               "MolecularFormula":null,
+               "Charge":0
+            }
+         ],
+        "Lines": [
+          {
+            "IDChemPoint1": 0,
+            "IDChemPoint2": 1,
+            "NumberOfBind": 1
+          }
+        ],
+        "Data": {
+          "Mass": 28.3338
+        }
+      }
+   },
+   {
+      "Name":"COOH",
+      "TerminusType":1,
+      "ExitPoint":2,
+      "ConnectionPoint":0,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 0,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 2
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 3
+          },
+          "MolecularFormula": "O",
+          "Charge": -1
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 2,
+            "Y": 0
+          },
+          "MolecularFormula": "O",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 2
+        }
+      ],
+      "Data": {
+        "Mass": 44.009
+      }
+    }
+   }
+]

@@ -1,7 +1,9 @@
-﻿using Avalonia;
+﻿using Analyzer.Analyzers;
+using Analyzer.Models;
+using Analyzer.Models.Draw;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
-using CodonEditor.Models.Draw;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,8 +20,8 @@ namespace CodonEditor.Controls
         int nextID;
         Point? SelectedPoint;
 
-        List<ChemPointRaw> chemPoints;
-        List<LineRaw> lines;
+        List<ChemPoint> chemPoints;
+        List<Line> lines;
 
         Pen singleBind, moreBind, errorBind;
 
@@ -32,8 +34,8 @@ namespace CodonEditor.Controls
             nextID = 0;
             SelectedPoint = null;
 
-            lines = new List<LineRaw>();
-            chemPoints = new List<ChemPointRaw>();
+            lines = new List<Line>();
+            chemPoints = new List<ChemPoint>();
 
             singleBind = new Pen(Brushes.White, 5d);
             moreBind = new Pen(Brushes.Orange, 5d);
@@ -55,13 +57,13 @@ namespace CodonEditor.Controls
                 SelectedPoint = null;
             else
             {
-                ChemPointRaw point1 = GetChemPoint(SelectedPoint.Value);
-                ChemPointRaw point2 = GetChemPoint(correctedMousePosition);
+                ChemPoint point1 = GetChemPoint(SelectedPoint.Value);
+                ChemPoint point2 = GetChemPoint(correctedMousePosition);
 
                 if(lines.Any(x=>(x.IDChemPoint1 == point1.ID || x.IDChemPoint2 == point1.ID) && (x.IDChemPoint1 == point2.ID || x.IDChemPoint2 == point2.ID)))
                 {
                     //im not proud of this section, but this app is not something that will user use so yeah.
-                    LineRaw line = lines.Single(x => (x.IDChemPoint1 == point1.ID || x.IDChemPoint2 == point1.ID) && (x.IDChemPoint1 == point2.ID || x.IDChemPoint2 == point2.ID));
+                    Line line = lines.Single(x => (x.IDChemPoint1 == point1.ID || x.IDChemPoint2 == point1.ID) && (x.IDChemPoint1 == point2.ID || x.IDChemPoint2 == point2.ID));
                     int index = lines.IndexOf(line);
 
                     var copy = lines[index];
@@ -69,7 +71,7 @@ namespace CodonEditor.Controls
                     lines[index] = copy;
                 }
                 else
-                    lines.Add(new LineRaw(point1.ID, point2.ID));
+                    lines.Add(new Line(point1.ID, point2.ID));
                 
                 SelectedPoint = null;
             }
@@ -92,7 +94,7 @@ namespace CodonEditor.Controls
             //draw lines
             for(int i = 0; i < lines.Count;i++)
             {
-                LineRaw line = lines[i];
+                Line line = lines[i];
 
                 Pen drawPen;
 
@@ -104,8 +106,8 @@ namespace CodonEditor.Controls
                     drawPen = errorBind;
 
                 context.DrawLine(drawPen, 
-                    chemPoints.Single(x => x.ID == line.IDChemPoint1).Position, 
-                    chemPoints.Single(x => x.ID == line.IDChemPoint2).Position);
+                    ComparisonTools.Convert(chemPoints.Single(x => x.ID == line.IDChemPoint1).Position), 
+                    ComparisonTools.Convert(chemPoints.Single(x => x.ID == line.IDChemPoint2).Position));
             }
 
             //drawing points and their additional data (charges and special formulas)
@@ -113,7 +115,7 @@ namespace CodonEditor.Controls
             {
                 var current = chemPoints[i];
 
-                context.DrawEllipse(Brushes.Red, null, current.Position, 5f, 5f);
+                context.DrawEllipse(Brushes.Red, null, ComparisonTools.Convert(current.Position), 5f, 5f);
 
                 if (current.Charge != 0)
                 {
@@ -136,7 +138,7 @@ namespace CodonEditor.Controls
 
         public void RevertChange()
         {
-            LineRaw lineToRevert = lines.Last();
+            Line lineToRevert = lines.Last();
 
             if (lines.Count(x => x.IDChemPoint1 == lineToRevert.IDChemPoint1 || x.IDChemPoint2 == lineToRevert.IDChemPoint1) == 1)
                 chemPoints.Remove(chemPoints.Single(x => x.ID == lineToRevert.IDChemPoint1));
@@ -157,7 +159,7 @@ namespace CodonEditor.Controls
             InvalidateVisual();
         }
 
-        public void SetRecalculatedDrawing(DrawingDataRaw data, Point GridOffest)
+        public void SetRecalculatedDrawing(DrawingData data, Point GridOffest)
         {
             lines.Clear();
             chemPoints.Clear();
@@ -169,7 +171,7 @@ namespace CodonEditor.Controls
             for (int i = 0; i < data.Points.Length; i++)
             {
                 var copy = data.Points[i];
-                copy.Position = new Point((copy.Position.X + GridOffest.X) * GridCellSize.X, (copy.Position.Y + GridOffest.Y) * GridCellSize.Y);
+                copy.Position = ComparisonTools.Convert(new Point((copy.Position.X + GridOffest.X) * GridCellSize.X, (copy.Position.Y + GridOffest.Y) * GridCellSize.Y));
 
                 if (copy.ID > maxID)
                     maxID = copy.ID+1;
@@ -184,16 +186,18 @@ namespace CodonEditor.Controls
             InvalidateVisual();
         }
 
-        public DrawingDataRaw? GetRecalculatedDrawing()
+        public DrawingData? GetRecalculatedDrawing()
         {
             if (chemPoints.Count == 0)
                 return null;
 
-            DrawingDataRaw data = new DrawingDataRaw()
+            DrawingData data = new DrawingData()
             {
                 Lines = lines.ToArray(),
-                Points = new ChemPointRaw[chemPoints.Count]
+                Points = new ChemPoint[chemPoints.Count],
             };
+
+            data.Data = CodonAnalyzer.CreateCodonData(data);
 
             Point offset = new Point(chemPoints.Min(x=>x.Position.X), chemPoints.Min(y=>y.Position.Y));
 
@@ -201,8 +205,9 @@ namespace CodonEditor.Controls
             {
                 var copy = chemPoints[i];
 
-                copy.Position -= offset;
-                copy.Position = new Point(copy.Position.X / GridCellSize.X, copy.Position.Y / GridCellSize.Y);
+                copy.Position = ComparisonTools.Subtraction(copy.Position, offset);
+
+                copy.Position = new Position(Convert.ToInt32(copy.Position.X / GridCellSize.X), Convert.ToInt32(copy.Position.Y / GridCellSize.Y));
 
                 data.Points[i] = copy;
             }
@@ -212,10 +217,10 @@ namespace CodonEditor.Controls
 
         public void SetAdditionalData(string data)
         {
-            if (SelectedPoint == null || !chemPoints.Any(x=>x.Position == SelectedPoint))
+            if (SelectedPoint == null || !chemPoints.Any(x=> ComparisonTools.IsEqual(x.Position, SelectedPoint.Value)))
                 return;
 
-            ChemPointRaw point = chemPoints.Single(x => x.Position == SelectedPoint);
+            ChemPoint point = chemPoints.Single(x =>ComparisonTools.IsEqual(x.Position, SelectedPoint.Value));
             int index = chemPoints.IndexOf(point);
 
             if (data == "+")
@@ -231,19 +236,33 @@ namespace CodonEditor.Controls
             InvalidateVisual();
         }
 
-        ChemPointRaw GetChemPoint(Point Point)
+        ChemPoint GetChemPoint(Point Point)
         {
-            ChemPointRaw chemPoint;
+            ChemPoint chemPoint;
 
-            if (chemPoints.Any(x => x.Position == Point))
-                chemPoint = chemPoints.Single(x => x.Position == Point);
+            if (chemPoints.Any(x => ComparisonTools.IsEqual(x.Position, Point)))
+                chemPoint = chemPoints.Single(x => ComparisonTools.IsEqual(x.Position, Point));
             else
             {
-                chemPoint = new ChemPointRaw() { ID = nextID++, Position = Point };
+                chemPoint = new ChemPoint() { ID = nextID++, Position = ComparisonTools.Convert(Point) };
                 chemPoints.Add(chemPoint);
             }
 
             return chemPoint;
+        }
+
+        /// <summary>
+        /// Ready methods for comparing Avalonia's Point and Analyzer's Position
+        /// I'm not proud of the fact that this class exists,
+        /// but it's only solution I could find
+        /// </summary>
+        internal static class ComparisonTools
+        {
+            public static bool IsEqual(Position position, Point point) => position.X == point.X && position.Y == point.Y;
+            public static Position Convert(Point point) => new Position(System.Convert.ToInt32(point.X), System.Convert.ToInt32(point.Y));
+            public static Point Convert(Position position) => new Point(position.X, position.Y);
+            public static Position Subtraction(Position position, Point point) => new Position(System.Convert.ToInt32(position.X - point.X), System.Convert.ToInt32(position.Y - point.Y));
+            public static Point Subtraction(Point point, Position position) => new Point(point.X - position.X, point.Y - position.Y);
         }
     }
 }

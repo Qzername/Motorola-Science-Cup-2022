@@ -1,11 +1,11 @@
 ﻿using Analyzer.Models;
-using Analyzer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ReactiveUI;
+using Analyzer.Analyzers;
 
 namespace BlakApp.ViewModels
 {
@@ -32,7 +32,7 @@ namespace BlakApp.ViewModels
 
         public void Test()
         {
-            ProteinTest = SequenceAnalyzer.CalculateCodonSequenceMass(TestSequence.CodonsShift1).ToString();
+            ProteinTest = PeptideAnalyzer.CalculateMass(TestSequence.CodonsShift1).ToString();
         }
     }
 }

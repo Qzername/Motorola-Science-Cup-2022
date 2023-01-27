@@ -56,7 +56,7 @@ namespace BlakApp.Controls
 
                 Point codonOffset = (codon.Letter == "P" ? new Point(-pointOffset.X, 0) : new Point(0, 0));
 
-                DrawCodon(context, codon.DrawingData, offset + new Point(i* sizeOfOneCodon, (i % 2 == 1 ? 5*pointOffset.Y : 0)) + codonOffset, (i % 2 == 0 ? pointOffset : pointFlipedOffset));
+                DrawCodon(context, codon.DrawingData.Value, offset + new Point(i* sizeOfOneCodon, (i % 2 == 1 ? 5*pointOffset.Y : 0)) + codonOffset, (i % 2 == 0 ? pointOffset : pointFlipedOffset));
             }
 
             Width = CodonSequence.CodonsShift1.Length * sizeOfOneCodon + offset.X +100;

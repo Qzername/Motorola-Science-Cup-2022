@@ -11,10 +11,17 @@ namespace Analyzer.Models
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Position(int x, int y)
+        public Position(int X, int Y)
         {
-            X = x;
-            Y = y;
+            this.X = X;
+            this.Y = Y;
+        }
+
+        public static Position operator-(Position pos, int value)
+        {
+            pos.X -= value;
+            pos.Y -= value;
+            return pos;
         }
     }
 }

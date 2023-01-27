@@ -1,4 +1,4 @@
-using Analyzer;
+using Analyzer.Analyzers;
 using Analyzer.Models;
 using Analyzer.Models.Codons;
 

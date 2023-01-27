@@ -5,8 +5,6 @@ using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.ReactiveUI;
 using CodonEditor.Controls;
-using CodonEditor.Models;
-using CodonEditor.Models.Draw;
 using Newtonsoft.Json;
 using ReactiveUI;
 using System;
@@ -22,10 +20,10 @@ namespace CodonEditor.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        ObservableCollection<CodonRaw> Codons { get; set; }
+        ObservableCollection<Codon> Codons { get; set; }
 
-        CodonRaw _selectedItem;
-        public CodonRaw SelectedItem
+        Codon _selectedItem;
+        public Codon SelectedItem
         {
             get => _selectedItem;
             set => this.RaiseAndSetIfChanged(ref _selectedItem, value);
@@ -47,7 +45,7 @@ namespace CodonEditor.ViewModels
 
         public MainWindowViewModel()
         {
-            Codons = new ObservableCollection<CodonRaw>();
+            Codons = new ObservableCollection<Codon>();
         }
 
         public void ReadDatabase()
@@ -55,14 +53,14 @@ namespace CodonEditor.ViewModels
             while (Codons.Count > 0)
                 Codons.RemoveAt(0);
 
-            foreach (Codon codon in CodonDatabase.Codons)
-                Codons.Add(new CodonRaw()
+            foreach (Codon codon in DatabaseReader.Codons)
+                Codons.Add(new Codon()
                 {
                     Letter = codon.Letter,
                     Name = codon.Name,
                     IDs = codon.IDs,
                     CodonType = codon.CodonType,
-                    DrawingData = codon.DrawingData.Lines is not null ? codon.DrawingData : null
+                    DrawingData = codon.DrawingData
                 });
 
             DrawingManager.Current.CleanDrawing();
@@ -100,7 +98,7 @@ namespace CodonEditor.ViewModels
             SaveCurrent();
 
             //reading new codon
-            if (SelectedIndex != -1 && Codons[SelectedIndex].DrawingData != null)
+            if (SelectedIndex != -1 && Codons[SelectedIndex].DrawingData is not null)
                 DrawingManager.Current.SetRecalculatedDrawing(Codons[SelectedIndex].DrawingData.Value, new Avalonia.Point(5, 5));
             else
                 DrawingManager.Current.CleanDrawing();

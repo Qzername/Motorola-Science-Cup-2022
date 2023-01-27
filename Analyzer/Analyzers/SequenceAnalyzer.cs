@@ -9,7 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Analyzer
+namespace Analyzer.Analyzers
 {
     /// <summary>
     /// Codon/Sequence Analyzer
@@ -24,7 +24,7 @@ namespace Analyzer
             List<Protein> proteins = new List<Protein>();
             List<Codon> currentProtein = new List<Codon>();
 
-            for(int i = 0; i < shift.Length; i++)
+            for (int i = 0; i < shift.Length; i++)
             {
                 var current = shift[i];
 
@@ -42,20 +42,6 @@ namespace Analyzer
 
             return proteins.ToArray();
         }
-
-        /// <summary>
-        /// Calculate mass of codon sequence
-        /// </summary>
-        public static double CalculateCodonSequenceMass(Codon[] sequence)
-        {
-            double singleConnection = MassesOfElements.GetCompoundMass("H2O");
-
-            double mass = sequence.Sum(x => x.DrawingData.Data.Mass);
-            mass -= singleConnection * (sequence.Length - 1);
-
-            return mass;
-        }
-
         /// <summary>
         /// Creates Sequence from raw RNA/DNA code
         /// </summary>
@@ -69,8 +55,8 @@ namespace Analyzer
 
             int codonNumber = rawSequence.Length / 3;
 
-            for (int i = 0; i < rawSequence.Length % 3+1;i++)
-                shifts[i] = ReadCodonsFromString(rawSequence.Substring(i, codonNumber*3));
+            for (int i = 0; i < rawSequence.Length % 3 + 1; i++)
+                shifts[i] = ReadCodonsFromString(rawSequence.Substring(i, codonNumber * 3));
 
             return new Sequence(rawSequence, shifts[0], shifts[1], shifts[2]);
         }
@@ -80,14 +66,14 @@ namespace Analyzer
         {
             List<Codon> codonsID = new List<Codon>();
 
-            for (int i = 0; i < series.Length/3; i++)
+            for (int i = 0; i < series.Length / 3; i++)
             {
                 string ID = string.Empty;
 
                 for (int j = 0; j < 3; j++)
                     ID += series[i * 3 + j];
 
-                Codon codon = CodonDatabase.Codons.Single(x => x.IDs.Contains(ID));
+                Codon codon = DatabaseReader.Codons.Single(x => x.IDs.Contains(ID));
                 codonsID.Add(codon);
             }
 

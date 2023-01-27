@@ -4,10 +4,10 @@ namespace Analyzer.Models
 {
     public struct Sequence
     {
-        public readonly string RawSequence;
-        public readonly Codon[] CodonsShift1;
-        public readonly Codon[] CodonsShift2;
-        public readonly Codon[] CodonsShift3;
+        public string RawSequence;
+        public Codon[] CodonsShift1;
+        public Codon[] CodonsShift2;
+        public Codon[] CodonsShift3;
 
         public Sequence(string RawSequence, Codon[] CodonsShift1, Codon[] CodonShift2, Codon[] CodonShift3)
         {

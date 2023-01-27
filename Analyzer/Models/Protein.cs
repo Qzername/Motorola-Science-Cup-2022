@@ -9,7 +9,7 @@ namespace Analyzer.Models
 {
     public struct Protein
     {
-        public readonly Codon[] Codons;
+        public Codon[] Codons;
 
         public Protein(Codon[] Codons)
         {

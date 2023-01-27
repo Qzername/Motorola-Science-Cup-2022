@@ -1,11 +1,10 @@
-﻿using Analyzer;
+﻿
 using Analyzer.Models;
 using Analyzer.Models.Codons;
-using CodonEditor.Models.Draw;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
-using CodonEditor;
+using Analyzer;
 
 namespace TestProject
 {
@@ -13,12 +12,8 @@ namespace TestProject
     {
         public static void Main()
         {
-            Console.WriteLine(MassesOfElements.GetCompoundMass("H3"));
-            Console.WriteLine(MassesOfElements.GetCompoundMass("H2N"));
-            Console.WriteLine(MassesOfElements.GetCompoundMass("H2"));
-            Console.WriteLine(MassesOfElements.GetCompoundMass("CH3"));
-            Console.WriteLine(MassesOfElements.GetCompoundMass("C"));
-            Console.WriteLine(MassesOfElements.GetCompoundMass("H"));
+            Console.WriteLine(MassesOfElements.GetCompoundMass("H2NC"));
+            Console.WriteLine(MassesOfElements.GetCompoundMass("CO2"));
         }
     }
 }
