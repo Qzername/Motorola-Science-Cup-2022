@@ -11,6 +11,8 @@ using Line = Analyzer.Models.Draw.Line;
 using System.Linq;
 using System;
 using System.Diagnostics;
+using Analyzer.Models.Terminuses;
+using Analyzer.Analyzers;
 
 namespace BlakApp.Controls
 {
@@ -31,6 +33,9 @@ namespace BlakApp.Controls
         Point pointOffset;
         Point pointFlipedOffset { get => new Point(pointOffset.X, -pointOffset.Y); }
 
+        FullTerminus terminus;
+        DrawingData[] dataToDraw;
+
         public ProteinDrawingManager()
         {
             offset = new Point(10, 200);
@@ -40,23 +45,36 @@ namespace BlakApp.Controls
             moreBind = new Pen(Brushes.Orange);
 
             text = new FormattedText("ABC", Typeface.Default, 12f, TextAlignment.Center, TextWrapping.NoWrap, Size.Empty);
+
+            terminus = DrawingHelper.ConnectTerminuses(DatabaseReader.Terminuses[0], DatabaseReader.Terminuses[1]);
         }
 
-        public override void Render(DrawingContext context)
+        public void CalculateDrawingData()
         {
-            context.DrawText(Brushes.White, new Point(10,10), new FormattedText(Sequence.CodonsToString(CodonSequence.CodonsShift1), new Typeface("Arial"), 60f, TextAlignment.Center, TextWrapping.Wrap, Size.Empty));
-
-            double sizeOfOneCodon = 6 * pointOffset.X;
-
             var sequenceToDraw = CodonSequence.CodonsShift1.Where(x => x.CodonType != CodonType.End).ToArray();
+
+            dataToDraw = new DrawingData[sequenceToDraw.Length];
 
             for (int i = 0; i < sequenceToDraw.Length; i++)
             {
                 var codon = sequenceToDraw[i];
+                dataToDraw[i] = DrawingHelper.ConnectCodonWithTerminus(codon, terminus);
+            }
+        }
 
-                Point codonOffset = (codon.Letter == "P" ? new Point(-pointOffset.X, 0) : new Point(0, 0));
+        public override void Render(DrawingContext context)
+        {
+            if (dataToDraw is null)
+                CalculateDrawingData();
 
-                DrawCodon(context, codon.DrawingData.Value, offset + new Point(i* sizeOfOneCodon, (i % 2 == 1 ? 5*pointOffset.Y : 0)) + codonOffset, (i % 2 == 0 ? pointOffset : pointFlipedOffset));
+            context.DrawText(Brushes.White, new Point(10,10), new FormattedText(Sequence.CodonsToString(CodonSequence.CodonsShift1), new Typeface("Arial"), 60f, TextAlignment.Center, TextWrapping.Wrap, Size.Empty));
+
+            double sizeOfOneCodon = 6 * pointOffset.X;
+
+            for (int i = 0; i < dataToDraw.Length; i++)
+            {
+                var codon = dataToDraw[i];
+                DrawCodon(context, codon, offset + new Point(i* sizeOfOneCodon,0) + (i % 2 == 0? new Point(0,0) : new Point(0, pointOffset.Y)), (i % 2 == 0 ? pointOffset : pointFlipedOffset));
             }
 
             Width = CodonSequence.CodonsShift1.Length * sizeOfOneCodon + offset.X +100;

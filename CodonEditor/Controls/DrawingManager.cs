@@ -48,39 +48,9 @@ namespace CodonEditor.Controls
             moreBind = new Pen(Brushes.Orange, 5d);
             errorBind = new Pen(Brushes.Red, 5d);
 
-            terminusTemplate = CreateTerminus(DatabaseReader.Terminuses[0], DatabaseReader.Terminuses[1]);
+            terminusTemplate = DrawingHelper.ConnectTerminuses(DatabaseReader.Terminuses[0], DatabaseReader.Terminuses[1]).DrawingData;
 
             PointerPressed += DrawingManager_PointerPressed;
-        }
-
-        DrawingData CreateTerminus(Terminus A, Terminus B)
-        {
-            int IDoffset = A.DrawingData.Points.Max(x => x.ID) +1;
-            Position PositionOffset = A.DrawingData.Points[A.ExitPoint].Position - B.DrawingData.Points[B.ConnectionPoint].Position;
-
-            List<ChemPoint> points = new List<ChemPoint>();
-            List<Line> lines = new List<Line>();
-
-            points.AddRange(A.DrawingData.Points);
-            lines.AddRange(A.DrawingData.Lines);
-
-            foreach(var point in B.DrawingData.Points)
-            {
-                var copy = point;
-                copy.ID += IDoffset;
-                copy.Position += PositionOffset;
-                points.Add(copy);
-            }
-            
-            foreach(var line in B.DrawingData.Lines)
-            {
-                var copy = line;
-                copy.IDChemPoint1 += IDoffset;
-                copy.IDChemPoint2 += IDoffset;
-                lines.Add(copy);
-            }
-
-            return new DrawingData(points.ToArray(), lines.ToArray(), new Analyzer.Models.Drawing.Data());
         }
 
         private void DrawingManager_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)

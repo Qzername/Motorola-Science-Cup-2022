@@ -13,6 +13,7 @@ namespace BlakApp.ViewModels
     {
         public MainWindowViewModel() : base()
         {
+            CreatePage(3);
         }
 
         public void CreatePage(int id)
@@ -28,6 +29,7 @@ namespace BlakApp.ViewModels
             };
 
             Pages.Add(page);
+            ChangePage(page);
         }
 
         public void RemovePage(Page page)
