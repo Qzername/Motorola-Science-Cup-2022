@@ -11,14 +11,8 @@
 		<vm:MainWindowViewModel/>
 	</Design.DataContext>
 
-	<DockPanel>
-		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="50">
-			<Label VerticalAlignment="Center" Content="TO JEST PANEL DEBUGOWY, PÓŹNIEJ ZOSTANIE ZASTĄPIONY: "/>
-			<Button Command="{Binding AddTestPanel}">test panel</Button>
-			<Button Command="{Binding AddPeptidePanel}">analize peptide panel</Button>
-		</StackPanel>
-		
-		<StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+	<DockPanel Name="MainStackPanel">
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
 			<ItemsControl Items="{Binding Pages}">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
@@ -28,10 +22,27 @@
 
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<Button Command="{Binding $parent[ItemsControl].DataContext.ChangePage}" CommandParameter="{Binding}" Margin="15,0,0,0" Foreground="{Binding Color}" Classes="Choose" Content="{Binding Name}"/>
+						<Button Command="{Binding $parent[ItemsControl].DataContext.ChangePage}" CommandParameter="{Binding}" Foreground="{Binding Color}" Content="{Binding Name}" > 
+							<TextBlock Text="{Binding Name}"/>
+							<Button.ContextMenu>
+								<ContextMenu Padding="0,0,-24,0">
+									<MenuItem Command="{Binding #MainStackPanel.DataContext.RemovePage}" CommandParameter="{Binding}" Header="Close"/>
+								</ContextMenu>
+							</Button.ContextMenu>
+						</Button>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
+			<Button Content="+" Click="AddNewPanelContextMenuClicked">
+				<Button.ContextMenu >
+					<ContextMenu Name="AddNewPanelContextMenu" Padding="0,0,-24,0">
+						<MenuItem Command="{Binding CreatePage}" CommandParameter="0" Header="Sequence Analyzer"/>
+						<MenuItem Command="{Binding CreatePage}" CommandParameter="1" Header="Peptide Draw Tool"/>
+						<MenuItem Command="{Binding CreatePage}" CommandParameter="2" Header="Peptide Analyzer" />
+						<MenuItem Command="{Binding CreatePage}" CommandParameter="3" Header="Test view" />
+					</ContextMenu>
+				</Button.ContextMenu>
+			</Button>
 		</StackPanel>
 		
 		<Panel>

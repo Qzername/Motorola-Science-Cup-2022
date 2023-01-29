@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlakApp.ViewModels.Pages
 {
-    internal class AnalizePeptideViewModel :ViewModelBase
+    internal class PeptideDrawToolViewModel : ViewModelBase
     {
     }
 }
