@@ -260,10 +260,15 @@ namespace CodonEditor.Controls
 
         public void SetAdditionalData(string data)
         {
-            if (SelectedPoint == null || !chemPoints.Any(x=> ComparisonTools.IsEqual(x.Position, SelectedPoint.Value)))
+            if (SelectedPoint == null)
                 return;
 
-            ChemPoint point = chemPoints.Single(x =>ComparisonTools.IsEqual(x.Position, SelectedPoint.Value));
+            var rawPosition = GetRawPosition(SelectedPoint.Value);
+
+            if (!chemPoints.Any(x => x.Position == rawPosition))
+                return;
+
+            ChemPoint point = chemPoints.Single(x => x.Position == rawPosition);
             int index = chemPoints.IndexOf(point);
 
             if (data == "+")
@@ -280,7 +285,7 @@ namespace CodonEditor.Controls
         }
 
         Point GetRealPosition(Position position) => new Point((position.X + GridOffest.X) * GridCellSize.X, (position.Y + GridOffest.Y) * GridCellSize.Y);
-        Position GetRawPosition(Point point) => ComparisonTools.Convert(new Point((point.X / GridCellSize.X) - GridOffest.X, (point.Y / GridCellSize.Y) - GridOffest.Y));
+        Position GetRawPosition(Point point) => new Position(Convert.ToInt32(((point.X / GridCellSize.X) - GridOffest.X)), Convert.ToInt32(((point.Y / GridCellSize.Y) - GridOffest.Y)));
 
         ChemPoint GetChemPoint(Point Point)
         {
@@ -297,20 +302,6 @@ namespace CodonEditor.Controls
             }
 
             return chemPoint;
-        }
-
-        /// <summary>
-        /// Ready methods for comparing Avalonia's Point and Analyzer's Position
-        /// I'm not proud of the fact that this class exists,
-        /// but it's only solution I could find
-        /// </summary>
-        internal static class ComparisonTools
-        {
-            public static bool IsEqual(Position position, Point point) => position.X == point.X && position.Y == point.Y;
-            public static Position Convert(Point point) => new Position(System.Convert.ToInt32(point.X), System.Convert.ToInt32(point.Y));
-            public static Point Convert(Position position) => new Point(position.X, position.Y);
-            public static Position Subtraction(Position position, Point point) => new Position(System.Convert.ToInt32(position.X - point.X), System.Convert.ToInt32(position.Y - point.Y));
-            public static Point Subtraction(Point point, Position position) => new Point(point.X - position.X, point.Y - position.Y);
         }
     }
 }
