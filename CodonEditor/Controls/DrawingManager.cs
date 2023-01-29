@@ -286,11 +286,13 @@ namespace CodonEditor.Controls
         {
             ChemPoint chemPoint;
 
-            if (chemPoints.Any(x => ComparisonTools.IsEqual(x.Position, Point)))
-                chemPoint = chemPoints.Single(x => ComparisonTools.IsEqual(x.Position, Point));
+            var rawPosition = GetRawPosition(Point);
+
+            if (chemPoints.Any(x => x.Position == rawPosition))
+                chemPoint = chemPoints.Single(x => x.Position == rawPosition);
             else
             {
-                chemPoint = new ChemPoint() { ID = nextID++, Position = GetRawPosition(Point) };
+                chemPoint = new ChemPoint() { ID = nextID++, Position = rawPosition };
                 chemPoints.Add(chemPoint);
             }
 
