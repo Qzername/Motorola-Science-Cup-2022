@@ -72,10 +72,7 @@ namespace Analyzer.Analyzers
         /// </summary>
         public static DrawingData ConnectCodonWithTerminus(Codon codon, FullTerminus fullTerminus)
         {
-            var codonDrawingData = codon.DrawingData == null ? new DrawingData() : codon.DrawingData.Value;
-
-            int IDoffset = fullTerminus.DrawingData.Points.Max(x => x.ID) + 1;
-            Position PositionOffset = fullTerminus.DrawingData.Points[fullTerminus.CodonConnectionPoint].Position - codonDrawingData.Points[0].Position;
+            var codonDrawingData = !codon.DrawingData.HasValue ? new DrawingData() : codon.DrawingData.Value;
 
             List<ChemPoint> points = new List<ChemPoint>();
             List<Line> lines = new List<Line>();
@@ -86,8 +83,11 @@ namespace Analyzer.Analyzers
             if (codon.CodonType == CodonType.End)
                 return new DrawingData();
 
-            if (codon.DrawingData == null)
+            if (!codon.DrawingData.HasValue || codon.Letter == "G")
                 return new DrawingData(points.ToArray(), lines.ToArray(), new Data());
+
+            int IDoffset = fullTerminus.DrawingData.Points.Max(x => x.ID) + 1;
+            Position PositionOffset = fullTerminus.DrawingData.Points[fullTerminus.CodonConnectionPoint].Position - codonDrawingData.Points[0].Position;
 
             foreach (var point in codonDrawingData.Points.Skip(1))
             {

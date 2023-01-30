@@ -17,8 +17,6 @@ namespace Analyzer.Analyzers
         /// </summary>
         public static double CalculateMass(Codon[] sequence)
         {
-            Debug.WriteLine(Sequence.CodonsToString(sequence));
-
             string terminusFormula = DatabaseReader.Terminuses[0].Name + DatabaseReader.Terminuses[1].Name;
             double terminusMass = MassesOfElements.GetCompoundMass(terminusFormula);
 
@@ -26,14 +24,12 @@ namespace Analyzer.Analyzers
 
             string formula = string.Empty;
 
-            sequence = sequence.Except(sequence.Where(x => !x.DrawingData.HasValue)).ToArray();
-
-            foreach (Codon codon in sequence)
-                formula += codon.DrawingData.Value.Data.Formula;
+            foreach (Codon codon in sequence.Where(x => x.DrawingData.HasValue))
+                formula += codon.DrawingData.Value.Data.Formula + " ";
 
             double formulaMass = MassesOfElements.GetCompoundMass(formula);
 
-            double mass = formulaMass + terminusMass * sequence.Length;
+            double mass = formulaMass + (terminusMass- MassesOfElements.GetCompoundMass("H2")) * sequence.Where(x=>x.CodonType != CodonType.End).Count();
             mass -= singleConnection * (sequence.Length - 1);
 
             return mass;

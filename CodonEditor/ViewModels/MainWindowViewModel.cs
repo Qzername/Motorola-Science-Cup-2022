@@ -77,13 +77,29 @@ namespace CodonEditor.ViewModels
 
             foreach (var raw in Codons)
             {
+                
+
                 if(raw.DrawingData == null)
                 {
                     Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType));
                     continue;
                 }
 
-                Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType, raw.DrawingData.Value));
+                if (raw.Letter == "G")
+                {
+                    var copy = raw.DrawingData.Value.Data;
+                    copy.Formula = "CH4";
+                    Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType, new Analyzer.Models.Draw.DrawingData(null, null, copy)));
+                }
+                else if(raw.Letter == "P")
+                {
+                    var copy = raw.DrawingData.Value.Data;
+                    copy.Formula = "C-1H-4";
+                    Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType, new Analyzer.Models.Draw.DrawingData(null, null, copy)));
+
+                }
+                else
+                   Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType, raw.DrawingData.Value));
             }
 
             string json = JsonConvert.SerializeObject(Data.ToArray());

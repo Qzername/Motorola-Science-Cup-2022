@@ -61,6 +61,21 @@ namespace Analyzer.Analyzers
             return new Sequence(rawSequence, shifts[0], shifts[1], shifts[2]);
         }
 
+        /// <summary>
+        /// Creates rna code from codon Sequence
+        /// </summary>
+        /// <param name="codons"></param>
+        /// <returns></returns>
+        public static string CreateCode(Codon[] codons)
+        {
+            string sequence = string.Empty;
+
+            foreach (var codon in codons)
+                sequence += codon.IDs[0];
+
+            return sequence;
+        }
+
         //Reading one shift
         static Codon[] ReadCodonsFromString(string series)
         {

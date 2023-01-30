@@ -30,7 +30,11 @@ namespace Analyzer
         {
             double mass = 0;
 
+            Dictionary<string, int> elements = new Dictionary<string, int>();
+
             string currentElement = string.Empty;
+            string number = string.Empty;
+
             compound += " ";
 
             for (int i = 0; i < compound.Length; i++)
@@ -43,11 +47,23 @@ namespace Analyzer
                     continue;
                 }
 
-                mass += GetElementMass(currentElement) * (char.IsDigit(currentChar) ? int.Parse(currentChar.ToString()) : 1);
+                if(char.IsNumber(currentChar)|| currentChar=='-')
+                {
+                    number += currentChar;
+                    continue;
+                }
+
+                if (!elements.ContainsKey(currentElement))
+                    elements[currentElement] = 0;
+
+                elements[currentElement] += (number != string.Empty ? int.Parse(number) : 1);
+
+                mass += Math.Round(GetElementMass(currentElement) * (number!=string.Empty? int.Parse(number) : 1),5);
                 currentElement = currentChar.ToString();
+                number = string.Empty;
             }
 
-            return mass;
+            return Math.Round(mass,3);
         }
 
         /// <summary>

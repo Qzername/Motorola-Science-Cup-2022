@@ -1,4 +1,5 @@
 ﻿using Analyzer.Models;
+using Analyzer.Models.Codons;
 using Analyzer.Models.Draw;
 using Analyzer.Models.Drawing;
 using System;
@@ -16,7 +17,17 @@ namespace Analyzer.Analyzers
     /// Use only if you changed library's database
     /// </summary>
     public static class CodonAnalyzer
-    {
+    { 
+        public static Codon[] CreateCodonsFromString(string codonLetters)
+        {
+            List<Codon> codons = new List<Codon>();
+
+            foreach(char c in codonLetters)
+                codons.Add(DatabaseReader.Codons.Single(x => x.Letter == c.ToString()));
+
+            return codons.ToArray();
+        }
+
         public static Data CreateCodonData(DrawingData data)
         {
             Data final = new Data()
@@ -79,6 +90,9 @@ namespace Analyzer.Analyzers
                     Compound = point.MolecularFormula;
 
                 formula += Compound;
+
+                if(point.Charge !=0)
+                    formula += "H" + (point.Charge < 0 ? "" : "-") + "1";
             }
 
             return formula;

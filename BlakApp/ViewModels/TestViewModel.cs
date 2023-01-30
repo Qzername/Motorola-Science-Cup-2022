@@ -28,7 +28,9 @@ namespace BlakApp.ViewModels
 
         public TestViewModel()
         {
-            TestSequence = SequenceAnalyzer.CreateSequence("AAAUUU");/*AUGACGAAAAUCUGUUGAUCGCUUCAUUCAUUGAUGCCCCCACAAUCCUAGGCCUACCCUGA*/
+            string code = SequenceAnalyzer.CreateCode(CodonAnalyzer.CreateCodonsFromString("ARNDCQEGHILKMFPSTWYV"));
+            Debug.WriteLine(code);
+            TestSequence =/**/ SequenceAnalyzer.CreateSequence(code);/**/
         }
 
         public void Test()
