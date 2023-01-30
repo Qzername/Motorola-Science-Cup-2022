@@ -12,8 +12,7 @@ namespace TestProject
     {
         public static void Main()
         {
-            Console.WriteLine(MassesOfElements.GetCompoundMass("H2NC"));
-            Console.WriteLine(MassesOfElements.GetCompoundMass("CO2"));
+            Console.WriteLine(MassesOfElements.GetCompoundMass("C6H13NO2C"));
         }
     }
 }

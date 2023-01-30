@@ -191,6 +191,9 @@ namespace CodonEditor.Controls
             lines.Clear();
             chemPoints.Clear();
 
+            if (data.Lines is null)
+                return;
+
             lines.AddRange(data.Lines);
 
             int maxID = 0;

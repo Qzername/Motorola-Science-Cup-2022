@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ReactiveUI;
 using Analyzer.Analyzers;
+using System.Diagnostics;
 
 namespace BlakApp.ViewModels
 {
@@ -27,7 +28,7 @@ namespace BlakApp.ViewModels
 
         public TestViewModel()
         {
-            TestSequence = SequenceAnalyzer.CreateSequence("AAAUUUAUGACGAAAAUCUGUUGAUCGCUUCAUUCAUUGAUGCCCCCACAAUCCUAGGCCUACCCUGA");
+            TestSequence = SequenceAnalyzer.CreateSequence("AAAUUU");/*AUGACGAAAAUCUGUUGAUCGCUUCAUUCAUUGAUGCCCCCACAAUCCUAGGCCUACCCUGA*/
         }
 
         public void Test()

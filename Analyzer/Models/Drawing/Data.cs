@@ -13,10 +13,12 @@ namespace Analyzer.Models.Drawing
     public struct Data
     {
         public double Mass { get; set; }
+        public string Formula { get; set; }
 
-        public Data(double Mass)
+        public Data(double Mass, string Formula)
         {
             this.Mass = Mass;
+            this.Formula = Formula;
         }
     }
 }

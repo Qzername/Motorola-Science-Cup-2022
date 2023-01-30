@@ -88,6 +88,7 @@ namespace CodonEditor.ViewModels
 
             string json = JsonConvert.SerializeObject(Data.ToArray());
 
+            Directory.CreateDirectory("./CodonDatabase/");
             File.WriteAllText("./CodonDatabase/database.json", json);
         }
 

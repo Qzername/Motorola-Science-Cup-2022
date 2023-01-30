@@ -1,1 +1,1748 @@
-[{"Letter":"F","Name":"Phenylalanine","IDs":["UUU","UUC"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":6,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":8,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":5,"Position":{"X":8,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":6,"Position":{"X":6,"Y":7},"MolecularFormula":null,"Charge":0},{"ID":7,"Position":{"X":4,"Y":6},"MolecularFormula":null,"Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":3,"IDChemPoint2":4,"NumberOfBind":2},{"IDChemPoint1":4,"IDChemPoint2":5,"NumberOfBind":1},{"IDChemPoint1":5,"IDChemPoint2":6,"NumberOfBind":2},{"IDChemPoint1":6,"IDChemPoint2":7,"NumberOfBind":1},{"IDChemPoint1":7,"IDChemPoint2":2,"NumberOfBind":2}],"Data":{"Mass":106.16639999999998}}},{"Letter":"L","Name":"Leucine","IDs":["UUA","UUG","CUU","CUC","CUA","CUG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":4,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":6,"Y":4},"MolecularFormula":null,"Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":4,"NumberOfBind":1}],"Data":{"Mass":72.14908}}},{"Letter":"S","Name":"Serine","IDs":["UCU","UCC","UCA","UCG","AGU","AGC"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":"OH","Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1}],"Data":{"Mass":46.068039999999996}}},{"Letter":"Y","Name":"Tyrosine","IDs":["UAU","UAC"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":6,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":5,"Position":{"X":4,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":6,"Position":{"X":8,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":7,"Position":{"X":8,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":8,"Position":{"X":6,"Y":7},"MolecularFormula":null,"Charge":0},{"ID":9,"Position":{"X":10,"Y":7},"MolecularFormula":"OH","Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":5,"NumberOfBind":2},{"IDChemPoint1":3,"IDChemPoint2":6,"NumberOfBind":2},{"IDChemPoint1":6,"IDChemPoint2":7,"NumberOfBind":1},{"IDChemPoint1":7,"IDChemPoint2":8,"NumberOfBind":2},{"IDChemPoint1":8,"IDChemPoint2":5,"NumberOfBind":1},{"IDChemPoint1":7,"IDChemPoint2":9,"NumberOfBind":1}],"Data":{"Mass":122.16539999999998}}},{"Letter":"STOP","Name":"STOP","IDs":["UAA","UAG","UGA"],"CodonType":2,"DrawingData":{"Points":null,"Lines":null,"Data":{"Mass":0.0}}},{"Letter":"C","Name":"Cysteine","IDs":["UGU","UGC"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":"SH","Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1}],"Data":{"Mass":62.13404}}},{"Letter":"W","Name":"Tryptophan","IDs":["UGG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":6,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":8,"Y":4},"MolecularFormula":"HN","Charge":0},{"ID":5,"Position":{"X":7,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":6,"Position":{"X":5,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":7,"Position":{"X":4,"Y":8},"MolecularFormula":null,"Charge":0},{"ID":8,"Position":{"X":8,"Y":8},"MolecularFormula":null,"Charge":0},{"ID":9,"Position":{"X":7,"Y":10},"MolecularFormula":null,"Charge":0},{"ID":10,"Position":{"X":5,"Y":10},"MolecularFormula":null,"Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":2},{"IDChemPoint1":3,"IDChemPoint2":4,"NumberOfBind":1},{"IDChemPoint1":4,"IDChemPoint2":5,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":6,"NumberOfBind":1},{"IDChemPoint1":6,"IDChemPoint2":5,"NumberOfBind":2},{"IDChemPoint1":6,"IDChemPoint2":7,"NumberOfBind":1},{"IDChemPoint1":5,"IDChemPoint2":8,"NumberOfBind":1},{"IDChemPoint1":8,"IDChemPoint2":9,"NumberOfBind":2},{"IDChemPoint1":9,"IDChemPoint2":10,"NumberOfBind":1},{"IDChemPoint1":10,"IDChemPoint2":7,"NumberOfBind":2}],"Data":{"Mass":145.20293999999998}}},{"Letter":"P","Name":"Proline","IDs":["CCU","CCC","CCA","CCG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":0,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":-1,"Y":2},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":0,"Y":0},"MolecularFormula":null,"Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":3,"IDChemPoint2":4,"NumberOfBind":1}],"Data":{"Mass":72.14908}}},{"Letter":"H","Name":"Histidine","IDs":["CAU","CAC"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":6,"Y":4},"MolecularFormula":"N","Charge":0},{"ID":4,"Position":{"X":7,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":5,"Position":{"X":3,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":6,"Position":{"X":5,"Y":7},"MolecularFormula":"HN","Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":3,"IDChemPoint2":4,"NumberOfBind":2},{"IDChemPoint1":2,"IDChemPoint2":5,"NumberOfBind":2},{"IDChemPoint1":5,"IDChemPoint2":6,"NumberOfBind":1},{"IDChemPoint1":6,"IDChemPoint2":4,"NumberOfBind":1}],"Data":{"Mass":96.13112}}},{"Letter":"Q","Name":"Glutamine","IDs":["CAA","CAG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":4,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":8,"Position":{"X":2,"Y":7},"MolecularFormula":"O","Charge":0},{"ID":9,"Position":{"X":6,"Y":7},"MolecularFormula":"NH2","Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":4,"NumberOfBind":1},{"IDChemPoint1":4,"IDChemPoint2":8,"NumberOfBind":2},{"IDChemPoint1":4,"IDChemPoint2":9,"NumberOfBind":1}],"Data":{"Mass":87.12025999999999}}},{"Letter":"R","Name":"Arginine","IDs":["CGU","CGC","CGA","CGG","AGA","AGG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":4,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":6,"Y":7},"MolecularFormula":"NH","Charge":0},{"ID":5,"Position":{"X":6,"Y":9},"MolecularFormula":null,"Charge":0},{"ID":6,"Position":{"X":4,"Y":10},"MolecularFormula":"NH","Charge":0},{"ID":7,"Position":{"X":8,"Y":10},"MolecularFormula":"NH2","Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":3,"IDChemPoint2":4,"NumberOfBind":1},{"IDChemPoint1":4,"IDChemPoint2":5,"NumberOfBind":1},{"IDChemPoint1":5,"IDChemPoint2":6,"NumberOfBind":2},{"IDChemPoint1":5,"IDChemPoint2":7,"NumberOfBind":1}],"Data":{"Mass":115.17701999999998}}},{"Letter":"I","Name":"Isoleucine","IDs":["AUU","AUC","AUA"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":0,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":4,"Y":6},"MolecularFormula":null,"Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":3,"IDChemPoint2":4,"NumberOfBind":1}],"Data":{"Mass":72.14908}}},{"Letter":"M","Name":"Methionine","IDs":["AUG"],"CodonType":0,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":"S","Charge":0},{"ID":3,"Position":{"X":4,"Y":6},"MolecularFormula":null,"Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1}],"Data":{"Mass":76.16072}}},{"Letter":"T","Name":"Threonine","IDs":["ACU","ACC","ACA","ACG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":0,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":4,"Y":4},"MolecularFormula":"OH","Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":3,"NumberOfBind":1}],"Data":{"Mass":60.094719999999995}}},{"Letter":"N","Name":"Asparagine","IDs":["AAU","AAC"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":6,"Y":4},"MolecularFormula":"NH2","Charge":0},{"ID":5,"Position":{"X":4,"Y":6},"MolecularFormula":"O","Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":4,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":5,"NumberOfBind":2}],"Data":{"Mass":73.09357999999999}}},{"Letter":"K","Name":"Lysine","IDs":["AAA","AAG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":4,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":6,"Y":7},"MolecularFormula":null,"Charge":0},{"ID":5,"Position":{"X":6,"Y":9},"MolecularFormula":"NH3","Charge":1}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":3,"IDChemPoint2":4,"NumberOfBind":1},{"IDChemPoint1":4,"IDChemPoint2":5,"NumberOfBind":1}],"Data":{"Mass":88.17146}}},{"Letter":"V","Name":"Valine","IDs":["GUU","GUC","GUA","GUG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":0,"Y":4},"MolecularFormula":null,"Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":3,"NumberOfBind":1}],"Data":{"Mass":58.1224}}},{"Letter":"A","Name":"Alanine","IDs":["GCU","GCC","GCA","GCG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1}],"Data":{"Mass":30.06904}}},{"Letter":"D","Name":"Aspartic acid","IDs":["GAU","GAC"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":6,"Y":4},"MolecularFormula":"O","Charge":0},{"ID":4,"Position":{"X":4,"Y":6},"MolecularFormula":"O","Charge":0}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":4,"NumberOfBind":2}],"Data":{"Mass":73.0702}}},{"Letter":"E","Name":"Glutamic acid","IDs":["GAA","GAG"],"CodonType":1,"DrawingData":{"Points":[{"ID":0,"Position":{"X":2,"Y":1},"MolecularFormula":null,"Charge":0},{"ID":1,"Position":{"X":2,"Y":3},"MolecularFormula":null,"Charge":0},{"ID":2,"Position":{"X":4,"Y":4},"MolecularFormula":null,"Charge":0},{"ID":3,"Position":{"X":4,"Y":6},"MolecularFormula":null,"Charge":0},{"ID":4,"Position":{"X":2,"Y":7},"MolecularFormula":"O","Charge":0},{"ID":5,"Position":{"X":6,"Y":7},"MolecularFormula":"O","Charge":-1}],"Lines":[{"IDChemPoint1":0,"IDChemPoint2":1,"NumberOfBind":1},{"IDChemPoint1":1,"IDChemPoint2":2,"NumberOfBind":1},{"IDChemPoint1":2,"IDChemPoint2":3,"NumberOfBind":1},{"IDChemPoint1":3,"IDChemPoint2":4,"NumberOfBind":2},{"IDChemPoint1":3,"IDChemPoint2":5,"NumberOfBind":1}],"Data":{"Mass":88.09687999999998}}},{"Letter":"G","Name":"Glycine","IDs":["GGU","GGC","GGA","GGG"],"CodonType":1,"DrawingData":{"Points":null,"Lines":null,"Data":{"Mass":0.0}}}]
+[
+  {
+    "Letter": "F",
+    "Name": "Phenylalanine",
+    "IDs": [ "UUU", "UUC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 6,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 8,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 5,
+          "Position": {
+            "X": 8,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 6,
+          "Position": {
+            "X": 6,
+            "Y": 7
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 7,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 4,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 5,
+          "IDChemPoint2": 6,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 6,
+          "IDChemPoint2": 7,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 7,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 2
+        }
+      ],
+      "Data": {
+        "Mass": 106.16639999999998,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "L",
+    "Name": "Leucine",
+    "IDs": [ "UUA", "UUG", "CUU", "CUC", "CUA", "CUG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 6,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 72.14908,
+        "Formula": "CH3CH2CH1CH3CH3"
+      }
+    }
+  },
+  {
+    "Letter": "S",
+    "Name": "Serine",
+    "IDs": [ "UCU", "UCC", "UCA", "UCG", "AGU", "AGC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": "OH",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 46.068039999999996,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "Y",
+    "Name": "Tyrosine",
+    "IDs": [ "UAU", "UAC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 6,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 5,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 6,
+          "Position": {
+            "X": 8,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 7,
+          "Position": {
+            "X": 8,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 8,
+          "Position": {
+            "X": 6,
+            "Y": 7
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 9,
+          "Position": {
+            "X": 10,
+            "Y": 7
+          },
+          "MolecularFormula": "OH",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 6,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 6,
+          "IDChemPoint2": 7,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 7,
+          "IDChemPoint2": 8,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 8,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 7,
+          "IDChemPoint2": 9,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 122.16539999999998,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "STOP",
+    "Name": "STOP",
+    "IDs": [ "UAA", "UAG", "UGA" ],
+    "CodonType": 2,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null,
+      "Data": {
+        "Mass": 0.0,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "C",
+    "Name": "Cysteine",
+    "IDs": [ "UGU", "UGC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": "SH",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 62.13404,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "W",
+    "Name": "Tryptophan",
+    "IDs": [ "UGG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 6,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 8,
+            "Y": 4
+          },
+          "MolecularFormula": "HN",
+          "Charge": 0
+        },
+        {
+          "ID": 5,
+          "Position": {
+            "X": 7,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 6,
+          "Position": {
+            "X": 5,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 7,
+          "Position": {
+            "X": 4,
+            "Y": 8
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 8,
+          "Position": {
+            "X": 8,
+            "Y": 8
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 9,
+          "Position": {
+            "X": 7,
+            "Y": 10
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 10,
+          "Position": {
+            "X": 5,
+            "Y": 10
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 4,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 6,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 6,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 6,
+          "IDChemPoint2": 7,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 5,
+          "IDChemPoint2": 8,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 8,
+          "IDChemPoint2": 9,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 9,
+          "IDChemPoint2": 10,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 10,
+          "IDChemPoint2": 7,
+          "NumberOfBind": 2
+        }
+      ],
+      "Data": {
+        "Mass": 145.20293999999998,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "P",
+    "Name": "Proline",
+    "IDs": [ "CCU", "CCC", "CCA", "CCG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 0,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": -1,
+            "Y": 2
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 0,
+            "Y": 0
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 72.14908,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "H",
+    "Name": "Histidine",
+    "IDs": [ "CAU", "CAC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 6,
+            "Y": 4
+          },
+          "MolecularFormula": "N",
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 7,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 5,
+          "Position": {
+            "X": 3,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 6,
+          "Position": {
+            "X": 5,
+            "Y": 7
+          },
+          "MolecularFormula": "HN",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 5,
+          "IDChemPoint2": 6,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 6,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 96.13112,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "Q",
+    "Name": "Glutamine",
+    "IDs": [ "CAA", "CAG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 8,
+          "Position": {
+            "X": 2,
+            "Y": 7
+          },
+          "MolecularFormula": "O",
+          "Charge": 0
+        },
+        {
+          "ID": 9,
+          "Position": {
+            "X": 6,
+            "Y": 7
+          },
+          "MolecularFormula": "NH2",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 4,
+          "IDChemPoint2": 8,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 4,
+          "IDChemPoint2": 9,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 87.12025999999999,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "R",
+    "Name": "Arginine",
+    "IDs": [ "CGU", "CGC", "CGA", "CGG", "AGA", "AGG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 6,
+            "Y": 7
+          },
+          "MolecularFormula": "NH",
+          "Charge": 0
+        },
+        {
+          "ID": 5,
+          "Position": {
+            "X": 6,
+            "Y": 9
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 6,
+          "Position": {
+            "X": 4,
+            "Y": 10
+          },
+          "MolecularFormula": "NH",
+          "Charge": 0
+        },
+        {
+          "ID": 7,
+          "Position": {
+            "X": 8,
+            "Y": 10
+          },
+          "MolecularFormula": "NH2",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 4,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 5,
+          "IDChemPoint2": 6,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 5,
+          "IDChemPoint2": 7,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 115.17701999999998,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "I",
+    "Name": "Isoleucine",
+    "IDs": [ "AUU", "AUC", "AUA" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 0,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 72.14908,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "M",
+    "Name": "Methionine",
+    "IDs": [ "AUG" ],
+    "CodonType": 0,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": "S",
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 76.16072,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "T",
+    "Name": "Threonine",
+    "IDs": [ "ACU", "ACC", "ACA", "ACG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 0,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": "OH",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 60.094719999999995,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "N",
+    "Name": "Asparagine",
+    "IDs": [ "AAU", "AAC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 6,
+            "Y": 4
+          },
+          "MolecularFormula": "NH2",
+          "Charge": 0
+        },
+        {
+          "ID": 5,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": "O",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 2
+        }
+      ],
+      "Data": {
+        "Mass": 73.09357999999999,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "K",
+    "Name": "Lysine",
+    "IDs": [ "AAA", "AAG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 6,
+            "Y": 7
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 5,
+          "Position": {
+            "X": 6,
+            "Y": 9
+          },
+          "MolecularFormula": "NH3",
+          "Charge": 1
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 4,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 88.17146,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "V",
+    "Name": "Valine",
+    "IDs": [ "GUU", "GUC", "GUA", "GUG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 0,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 58.1224,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "A",
+    "Name": "Alanine",
+    "IDs": [ "GCU", "GCC", "GCA", "GCG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 30.06904,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "D",
+    "Name": "Aspartic acid",
+    "IDs": [ "GAU", "GAC" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 6,
+            "Y": 4
+          },
+          "MolecularFormula": "O",
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": "O",
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 2
+        }
+      ],
+      "Data": {
+        "Mass": 73.0702,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "E",
+    "Name": "Glutamic acid",
+    "IDs": [ "GAA", "GAG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 4,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": 4,
+            "Y": 6
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 2,
+            "Y": 7
+          },
+          "MolecularFormula": "O",
+          "Charge": 0
+        },
+        {
+          "ID": 5,
+          "Position": {
+            "X": 6,
+            "Y": 7
+          },
+          "MolecularFormula": "O",
+          "Charge": -1
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 2
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 5,
+          "NumberOfBind": 1
+        }
+      ],
+      "Data": {
+        "Mass": 88.09687999999998,
+        "Formula": null
+      }
+    }
+  },
+  {
+    "Letter": "G",
+    "Name": "Glycine",
+    "IDs": [ "GGU", "GGC", "GGA", "GGG" ],
+    "CodonType": 1,
+    "DrawingData": {
+      "Points": null,
+      "Lines": null,
+      "Data": {
+        "Mass": 0.0,
+        "Formula": null
+      }
+    }
+  }
+]
