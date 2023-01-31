@@ -136,23 +136,49 @@ namespace BlakApp.Controls
                 {
                     ChemPoint point = data.Points[i];
 
+                    if (string.IsNullOrEmpty(point.MolecularFormula))
+                        continue;
+
                     if (c != 0 && point.ID == terminus.ConnectionPoint)
                         continue;
                     if (c != dataToDraw.Length - 1 && point.ID == terminus.ExitPoint)
+                    {
                         point.MolecularFormula = "NH";
+                        point.Charge = 0;
+                    }
 
-                    if (point.Charge == 0 && string.IsNullOrEmpty(point.MolecularFormula))
-                        continue;
-
-                    text.Text = point.MolecularFormula;
+                    text.Text = ReplaceNumbersWithSubscripts(point.MolecularFormula);
 
                     var position = ChemPointPosition(point, codonPointOffset) + codonOffset;
 
-                    context.DrawRectangle(Brushes.Black, null, new Rect(position.X - 13, position.Y - 5, 26, 15));
-                    context.DrawText(Brushes.White, position - new Point(10,5), text);
+                    context.DrawRectangle(Brushes.Black, null, new Rect(position.X - (point.MolecularFormula.Length > 1 ? 13:6), position.Y - 5, (point.MolecularFormula.Length > 1?26:15), 15));
+                    context.DrawText(Brushes.White, position - new Point(10,7), text);
+
+                    if (point.Charge == 0)
+                        continue;
+
+                    text.Text = (point.Charge < 0 ? "-" : "+");
+
+                    context.DrawText(Brushes.White, position + new Point(3 * (point.MolecularFormula.Length > 1 ? 1:-1), -15), text);
                 }
             }
             Width = CodonSequence.CodonsShift1.Length * sizeOfOneCodon + offset.X + 100;
+        }
+
+        string ReplaceNumbersWithSubscripts(string text)
+        {
+            text = text.Replace('0', '₀');
+            text = text.Replace('1', '₁');
+            text = text.Replace('2', '₂');
+            text = text.Replace('3', '₃');
+            text = text.Replace('4', '₄');
+            text = text.Replace('5', '₅');
+            text = text.Replace('6', '₆');
+            text = text.Replace('7', '₇');
+            text = text.Replace('8', '₈');
+            text = text.Replace('9', '₉');
+
+            return text;
         }
 
         /// <summary>

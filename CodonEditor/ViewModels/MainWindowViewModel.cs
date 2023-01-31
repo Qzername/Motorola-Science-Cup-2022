@@ -77,8 +77,6 @@ namespace CodonEditor.ViewModels
 
             foreach (var raw in Codons)
             {
-                
-
                 if(raw.DrawingData == null)
                 {
                     Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType));
