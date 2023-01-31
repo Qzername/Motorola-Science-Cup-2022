@@ -13,6 +13,7 @@ using System;
 using System.Diagnostics;
 using Analyzer.Models.Terminuses;
 using Analyzer.Analyzers;
+using Analyzer.Models.Drawing;
 
 namespace BlakApp.Controls
 {
@@ -26,12 +27,14 @@ namespace BlakApp.Controls
             set { SetValue(CodonSequenceProperty, value); }
         }
 
-        Pen singleBind, moreBind;
+        Pen drawPen;
         FormattedText text;
 
         Point offset;
         Point pointOffset;
         Point pointFlipedOffset { get => new Point(pointOffset.X, -pointOffset.Y); }
+        Point lineOffset;
+
 
         FullTerminus terminus;
         DrawingData[] dataToDraw;
@@ -40,11 +43,11 @@ namespace BlakApp.Controls
         {
             offset = new Point(10, 200);
             pointOffset = new Point(20, 20);
+            lineOffset = new Point(2, 0);
 
-            singleBind = new Pen(Brushes.White);
-            moreBind = new Pen(Brushes.Orange);
-
-            text = new FormattedText("ABC", Typeface.Default, 12f, TextAlignment.Center, TextWrapping.NoWrap, Size.Empty);
+            drawPen = new Pen(Brushes.White, 2d);
+            
+            text = new FormattedText("ABC", Typeface.Default, 12f, TextAlignment.Center, TextWrapping.NoWrap, new Size(20,10));
 
             terminus = DrawingHelper.ConnectTerminuses(DatabaseReader.Terminuses[0], DatabaseReader.Terminuses[1]);
         }
@@ -67,50 +70,89 @@ namespace BlakApp.Controls
             if (dataToDraw is null)
                 CalculateDrawingData();
 
-            context.DrawText(Brushes.White, new Point(10,10), new FormattedText(Sequence.CodonsToString(CodonSequence.CodonsShift1), new Typeface("Arial"), 60f, TextAlignment.Center, TextWrapping.Wrap, Size.Empty));
+            context.DrawText(Brushes.White, new Point(10, 10), new FormattedText(Sequence.CodonsToString(CodonSequence.CodonsShift1), new Typeface("Arial"), 60f, TextAlignment.Center, TextWrapping.Wrap, Size.Empty));
 
             double sizeOfOneCodon = 6 * pointOffset.X;
 
-            for (int i = 0; i < dataToDraw.Length; i++)
+            for (int c = 0; c < dataToDraw.Length; c++)
             {
-                var codon = dataToDraw[i];
-                DrawCodon(context, codon, offset + new Point(i* sizeOfOneCodon,0) + (i % 2 == 0? new Point(0,0) : new Point(0, pointOffset.Y)), (i % 2 == 0 ? pointOffset : pointFlipedOffset));
-            }
+                var data = dataToDraw[c];
+                var codonOffset = offset + new Point(c * sizeOfOneCodon, 0) + (c % 2 == 0 ? new Point(0, 0) : new Point(0, pointOffset.Y));
+                var codonPointOffset = (c % 2 == 0 ? pointOffset : pointFlipedOffset);
 
-            Width = CodonSequence.CodonsShift1.Length * sizeOfOneCodon + offset.X +100;
-        }
+                //draw lines
+                for (int i = 0; i < data.Lines.Length; i++)
+                {
+                    Line line = data.Lines[i];
 
-        void DrawCodon(DrawingContext context, DrawingData data, Point offset, Point pointOffset)
-        {
-            //draw lines
-            for (int i = 0; i < data.Lines.Length; i++)
-            {
-                Line line = data.Lines[i];
+                    Point pos1 = ChemPointPosition(data.Points.Single(x => x.ID == line.IDChemPoint1), codonPointOffset);
+                    Point pos2 = ChemPointPosition(data.Points.Single(x => x.ID == line.IDChemPoint2), codonPointOffset);
 
-                Pen drawPen;
+                    if (line.NumberOfBind == 1)
+                        context.DrawLine(drawPen, pos1 + codonOffset, pos2 + codonOffset);
+                    else
+                    {
+                        Point specialCase = pos1 - pos2;
 
-                if (line.NumberOfBind == 1)
-                    drawPen = singleBind;
-                else
-                    drawPen = moreBind;
+                        bool isSpecialCase = Math.Abs(specialCase.X) == 2 * pointOffset.X && Math.Abs(specialCase.Y) == 1 * pointOffset.Y;
 
-                Point pos1 = ChemPointPosition(data.Points.Single(x => x.ID == line.IDChemPoint1), pointOffset);
-                Point pos2 = ChemPointPosition(data.Points.Single(x => x.ID == line.IDChemPoint2), pointOffset);
+                        if (isSpecialCase)
+                        {
+                            pos1 = pos1 - new Point(lineOffset.Y,lineOffset.X);
+                            pos2 = pos2 - new Point(lineOffset.Y, lineOffset.X);
+                        }
+                        else
+                        {
+                            pos1 = pos1 - lineOffset;
+                            pos2 = pos2 - lineOffset;
+                        }
 
-                context.DrawLine(drawPen, pos1 + offset, pos2 + offset);
+                        context.DrawLine(drawPen, pos1 + codonOffset, pos2 + codonOffset);
+                        
+                        if(isSpecialCase)
+                        {
+                            pos1 = pos1 + new Point(lineOffset.Y, lineOffset.X*2);
+                            pos2 = pos2 + new Point(lineOffset.Y, lineOffset.X*2);
+                        }
+                        else
+                        {
+                            pos1 = pos1 + new Point(lineOffset.X * 2, lineOffset.Y);
+                            pos2 = pos2 + new Point(lineOffset.X * 2, lineOffset.Y);
+                        }
+
+                        context.DrawLine(drawPen, pos1 + codonOffset, pos2 + codonOffset);
+                    }
+                }
             }
 
             //draw texts
-            for(int i = 0; i < data.Points.Length;i++)
+            for (int c = 0; c < dataToDraw.Length; c++)
             {
-                ChemPoint point = data.Points[i];
+                var data = dataToDraw[c];
+                var codonOffset = offset + new Point(c * sizeOfOneCodon, 0) + (c % 2 == 0 ? new Point(0, 0) : new Point(0, pointOffset.Y));
+                var codonPointOffset = (c % 2 == 0 ? pointOffset : pointFlipedOffset);
 
-                if (point.Charge == 0 && string.IsNullOrEmpty(point.MolecularFormula))
-                    continue;
+                for (int i = 0; i < data.Points.Length; i++)
+                {
+                    ChemPoint point = data.Points[i];
 
-                text.Text = point.MolecularFormula;
-                context.DrawText(Brushes.Red, ChemPointPosition(point, pointOffset) + offset, text);
+                    if (c != 0 && point.ID == terminus.ConnectionPoint)
+                        continue;
+                    if (c != dataToDraw.Length - 1 && point.ID == terminus.ExitPoint)
+                        point.MolecularFormula = "NH";
+
+                    if (point.Charge == 0 && string.IsNullOrEmpty(point.MolecularFormula))
+                        continue;
+
+                    text.Text = point.MolecularFormula;
+
+                    var position = ChemPointPosition(point, codonPointOffset) + codonOffset;
+
+                    context.DrawRectangle(Brushes.Black, null, new Rect(position.X - 13, position.Y - 5, 26, 15));
+                    context.DrawText(Brushes.White, position - new Point(10,5), text);
+                }
             }
+            Width = CodonSequence.CodonsShift1.Length * sizeOfOneCodon + offset.X + 100;
         }
 
         /// <summary>
