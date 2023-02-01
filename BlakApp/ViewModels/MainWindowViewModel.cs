@@ -1,5 +1,6 @@
 using Analyzer;
 using Analyzer.Models;
+using Avalonia.Controls;
 using BlakApp.ViewModels.Pages;
 using ReactiveUI;
 using System;
@@ -47,5 +48,6 @@ namespace BlakApp.ViewModels
         {
             CurrentPage = defaultVM;
         }
+
     }
 }

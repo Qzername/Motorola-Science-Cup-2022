@@ -6,12 +6,25 @@
 		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="BlakApp.Views.MainWindow"
         Icon="/Assets/icon.ico"
-        Title="BlakApp">
+        Title="BlakApp"
+		ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="20">
 	<Design.DataContext>
 		<vm:MainWindowViewModel/>
 	</Design.DataContext>
+	
+	<Window.Styles>
+		<StyleInclude Source="/Views/Style/Main.axaml" />
+	</Window.Styles>
 
 	<DockPanel Name="MainStackPanel">
+		<Panel DockPanel.Dock="Top" Height="20">
+			<!--Toolbar-->
+			<Label VerticalAlignment="Center" Content="BlakApp" FontSize="11"/>
+			<!--<Button Click="Exit" Classes="ToolBar" Content="X"/>
+			<Button Click="WindowSize" Classes="ToolBar" Margin="0,0,20,0" Content="○"/>
+			<Button Click="Minimalize" Classes="ToolBar" Margin="0,0,40,0" Content="-"/>
+		-->	</Panel>
 		<Menu DockPanel.Dock="Top">
 			<MenuItem Header="Data"/>
 			<MenuItem Header="Theme"/>

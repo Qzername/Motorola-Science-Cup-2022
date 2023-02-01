@@ -20,5 +20,5 @@ namespace BlakApp.Views
             contextMenu.Open();
             e.Handled = true;
         }
-    }
+   }
 }
