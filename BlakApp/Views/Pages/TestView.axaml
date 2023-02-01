@@ -13,7 +13,7 @@
 			<TextBlock Text="{Binding ProteinTest}"/>
 		</StackPanel>
 		<Panel DockPanel.Dock="Bottom">
-			<ScrollViewer  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Visible">
+			<ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Visible">
 				<c:ProteinDrawingManager HorizontalAlignment="Left" CodonSequence="{Binding TestSequence}"/>
 			</ScrollViewer>
 		</Panel>
