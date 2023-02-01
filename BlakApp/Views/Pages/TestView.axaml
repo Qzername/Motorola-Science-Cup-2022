@@ -5,7 +5,7 @@
 
 			 xmlns:c="using:BlakApp.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="BlakApp.Views.TestView">
+             x:Class="BlakApp.Views.Pages.TestView">
 	
 	<DockPanel>
 		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="100">

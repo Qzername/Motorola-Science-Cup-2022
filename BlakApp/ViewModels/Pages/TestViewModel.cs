@@ -8,7 +8,7 @@ using ReactiveUI;
 using Analyzer.Analyzers;
 using System.Diagnostics;
 
-namespace BlakApp.ViewModels
+namespace BlakApp.ViewModels.Pages
 {
     internal class TestViewModel : ViewModelBase
     {

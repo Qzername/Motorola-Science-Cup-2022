@@ -11,9 +11,12 @@ namespace BlakApp.ViewModels
 {
     public class MainWindowViewModel : PageChanger
     {
+        DefaultViewModel defaultVM;
+
         public MainWindowViewModel() : base()
         {
-            CreatePage(3);
+            defaultVM = new DefaultViewModel();
+            GoToDefault();    
         }
 
         public void CreatePage(int id)
@@ -35,6 +38,14 @@ namespace BlakApp.ViewModels
         public void RemovePage(Page page)
         {
             Pages.Remove(page);
+
+            if (Pages.Count == 0)
+                GoToDefault();
+        }
+
+        public void GoToDefault()
+        {
+            CurrentPage = defaultVM;
         }
     }
 }

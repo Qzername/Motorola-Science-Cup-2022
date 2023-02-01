@@ -18,7 +18,7 @@ namespace BlakApp.ViewModels
         public ViewModelBase CurrentPage
         {
             get => _currentPage;
-            private set => this.RaiseAndSetIfChanged(ref _currentPage, value);
+            protected set => this.RaiseAndSetIfChanged(ref _currentPage, value);
         }
 
         ObservableCollection<Page> _pages;

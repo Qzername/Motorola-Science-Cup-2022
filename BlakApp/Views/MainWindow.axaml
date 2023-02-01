@@ -5,14 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="BlakApp.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/icon.ico"
         Title="BlakApp">
 	<Design.DataContext>
 		<vm:MainWindowViewModel/>
 	</Design.DataContext>
 
 	<DockPanel Name="MainStackPanel">
+		<Menu DockPanel.Dock="Top">
+			<MenuItem Header="Data"/>
+			<MenuItem Header="Theme"/>
+			<MenuItem Header="About"/>
+		</Menu>
 		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+			<Button Command="{Binding GoToDefault}" Content="H"/>
 			<ItemsControl Items="{Binding Pages}">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
