@@ -17,16 +17,16 @@ namespace Analyzer.Models
             this.CodonsShift3 = CodonShift3;
         }
 
-        public static string CodonsToString(Codon[] shift)
+        public static string CodonsToString(Codon[] shift, bool isVerbose = true)
         {
             string final = string.Empty;
 
             foreach (var codon in shift)
             {
-                if (codon.CodonType == CodonType.Start)
+                if (codon.CodonType == CodonType.Start && isVerbose)
                     final += "M(start)";
                 else if (codon.CodonType == CodonType.End)
-                    final += "[stop]";
+                    final += isVerbose ? "[stop]" : "-";
                 else
                     final += codon.Letter;
             }

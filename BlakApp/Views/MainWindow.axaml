@@ -27,7 +27,6 @@
 			<Label Padding="10,0,0,0" VerticalAlignment="Center" Content="BlakApp" FontSize="16"/>
 		</Panel>
 		<Menu DockPanel.Dock="Top">
-			<MenuItem Header="Data"/>
 			<MenuItem Header="Theme"/>
 			<MenuItem Header="About"/>
 		</Menu>

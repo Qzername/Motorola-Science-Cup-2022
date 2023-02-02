@@ -2,7 +2,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="420"
              x:Class="BlakApp.Views.Pages.SequenceAnalyzerView">
-  Sequence Analyzer
+	<ScrollViewer>
+		<StackPanel>
+			<Border CornerRadius="12" Background="#333333" Margin="10,5,10,5">
+				<DockPanel Margin="5">
+					<TextBlock DockPanel.Dock="Top" Padding="5,2,2,5" FontSize="24" Text="Sequence analyzer"/>
+
+					<TextBlock HorizontalAlignment="Center" DockPanel.Dock="Bottom" Text="{Binding Error}" Foreground="Red"/>
+
+					<Panel DockPanel.Dock="Bottom" Margin="0,5,0,5">
+						<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+							<Button Command="{Binding Reset}" Content="Reset" Width="100" HorizontalContentAlignment="Center"/>
+							<Button Command="{Binding Translate}" Content="Translate" Width="100" HorizontalContentAlignment="Center"/>
+						</StackPanel>
+					</Panel>
+
+					<StackPanel DockPanel.Dock="Bottom" Spacing="5" Margin="5,5,0,0">
+						<TextBlock Text="Output format:" FontSize="16"/>
+						<CheckBox IsChecked="{Binding IsVerboseSelected}" Content="Verbose: M(start), [stop]"/>
+						<CheckBox IsChecked="{Binding !IsVerboseSelected}" Content="Compact: M, -"/>
+						<TextBlock Text="Analyzer:" FontSize="16"/>
+						<CheckBox IsChecked="{Binding CheckForward}" Content="Check forward"/>
+						<CheckBox IsChecked="{Binding CheckBackwards}" Content="Check backwards"/>
+					</StackPanel>
+
+					<TextBox Text="{Binding SequenceRaw}" Height="120" TextWrapping="Wrap" Watermark="Enter DNA or RNA code. Blanks and numbers will be ignored."/>
+				</DockPanel>
+			</Border>
+
+			<ItemsControl Items="{Binding Shifts}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Border CornerRadius="12" Background="#202020" Margin="10,5,10,5" >
+							<StackPanel Margin="5">
+								<TextBlock Text="{Binding Name}" FontSize="24"/>
+								<TextBox IsReadOnly="True" Text="{Binding Shift}" TextWrapping="Wrap"/>
+							</StackPanel>
+						</Border>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+
+		</StackPanel>
+	</ScrollViewer>
 </UserControl>

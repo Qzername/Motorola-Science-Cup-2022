@@ -35,7 +35,7 @@ namespace Analyzer.Analyzers
 
                 if (current.CodonType == CodonType.End)
                 {
-                    proteins.Add(new Protein(currentProtein.ToArray()));
+                    proteins.Add(new Protein(i-currentProtein.Count+1, currentProtein.ToArray()));
                     currentProtein.Clear();
                 }
             }
@@ -49,14 +49,13 @@ namespace Analyzer.Analyzers
         public static Sequence CreateSequence(string rawSequence)
         {
             //changing DNA to RNA if sequence is DNA sequence
+            rawSequence = rawSequence.ToUpper();
             rawSequence = rawSequence.Replace('T', 'U');
 
             Codon[][] shifts = new Codon[3][];
 
-            int codonNumber = rawSequence.Length / 3;
-
-            for (int i = 0; i < rawSequence.Length % 3 + 1; i++)
-                shifts[i] = ReadCodonsFromString(rawSequence.Substring(i, codonNumber * 3));
+            for (int i = 0; i < 3; i++)
+                shifts[i] = ReadCodonsFromString(rawSequence.Substring(i, rawSequence.Length-i));
 
             return new Sequence(rawSequence, shifts[0], shifts[1], shifts[2]);
         }
@@ -84,6 +83,9 @@ namespace Analyzer.Analyzers
             for (int i = 0; i < series.Length / 3; i++)
             {
                 string ID = string.Empty;
+
+                if (series.Length < i * 3 + 3)
+                    break;
 
                 for (int j = 0; j < 3; j++)
                     ID += series[i * 3 + j];

@@ -32,7 +32,6 @@ namespace Analyzer.Analyzers
         {
             Data final = new Data()
             {
-                Mass = CalculateMass(data),
                 Formula = CalculateFormula(data),
             };
 

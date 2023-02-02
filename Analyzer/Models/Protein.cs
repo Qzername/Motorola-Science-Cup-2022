@@ -9,10 +9,12 @@ namespace Analyzer.Models
 {
     public struct Protein
     {
+        public int StartPosition;
         public Codon[] Codons;
 
-        public Protein(Codon[] Codons)
+        public Protein(int StartPosition, Codon[] Codons)
         {
+            this.StartPosition = StartPosition;
             this.Codons = Codons;
         }
     }
