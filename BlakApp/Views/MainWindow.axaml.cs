@@ -9,7 +9,28 @@ namespace BlakApp.Views
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            
+            PropertyChanged += MainWindow_PropertyChanged;
+        }
+
+        private void MainWindow_PropertyChanged(object? sender, Avalonia.AvaloniaPropertyChangedEventArgs e)
+        {
+            //hacky approach to avalonia's bug
+            //see: https://github.com/AvaloniaUI/Avalonia/issues/9042 for more info
+            if (e.Property.PropertyType == typeof(WindowState))
+            {
+                if ((WindowState)e.NewValue == WindowState.Maximized)
+                {
+                    Padding = new Avalonia.Thickness(7);
+                    ExtendClientAreaTitleBarHeightHint = 37;
+                }
+                else
+                {
+                    Padding = new Avalonia.Thickness(0);
+                    ExtendClientAreaTitleBarHeightHint = 30;
+                }
+            }
         }
 
         public void AddNewPanelContextMenuClicked(object sender, RoutedEventArgs e)

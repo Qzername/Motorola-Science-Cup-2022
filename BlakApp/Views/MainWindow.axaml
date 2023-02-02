@@ -56,8 +56,10 @@
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>
-			
-				<Button Height="30" Width="30" FontSize="20" Padding="2" Background="Transparent" Content="+" Click="AddNewPanelContextMenuClicked">
+
+				<Button Height="30" Width="30" FontSize="20" Padding="4" Background="Transparent" Click="AddNewPanelContextMenuClicked">
+					<Image Source="avares://BlakApp/Assets/Plus.png"/>
+					
 					<Button.ContextMenu >
 						<ContextMenu Name="AddNewPanelContextMenu" Padding="0,0,-24,0">
 							<MenuItem Command="{Binding CreatePage}" CommandParameter="0" Header="Sequence Analyzer"/>

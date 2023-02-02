@@ -38,13 +38,37 @@
 						<Border CornerRadius="12" Background="#202020" Margin="10,5,10,5" >
 							<StackPanel Margin="5">
 								<TextBlock Text="{Binding Name}" FontSize="24"/>
-								<TextBox IsReadOnly="True" Text="{Binding Shift}" TextWrapping="Wrap"/>
+
+								<WrapPanel>
+									<ItemsControl Items="{Binding Elements}">
+										<ItemsControl.ItemsPanel>
+											<ItemsPanelTemplate >
+												<WrapPanel  Orientation="Horizontal"  />
+											</ItemsPanelTemplate>
+										</ItemsControl.ItemsPanel>
+										<ItemsControl.ItemTemplate>
+											<DataTemplate>
+												<TextBlock TextWrapping="Wrap" Text="{Binding Text}" Foreground="{Binding TextColor}"/>					
+											</DataTemplate>
+										</ItemsControl.ItemTemplate>
+									</ItemsControl>
+								</WrapPanel>
 							</StackPanel>
 						</Border>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
 
+			<Border CornerRadius="12" Background="#202020" Margin="10,5,10,5" >
+				<StackPanel Margin="5">
+					<TextBlock Text="{Binding Name}" FontSize="24"/>
+
+
+					<TextBox>
+						sdfdsfd 
+					</TextBox>
+				</StackPanel>
+			</Border>
 		</StackPanel>
 	</ScrollViewer>
 </UserControl>

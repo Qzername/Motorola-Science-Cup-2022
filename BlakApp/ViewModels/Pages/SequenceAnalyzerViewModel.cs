@@ -1,6 +1,7 @@
 ﻿using Analyzer.Analyzers;
 using Analyzer.Models;
 using Analyzer.Models.Codons;
+using Avalonia.Media;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -124,34 +125,77 @@ namespace BlakApp.ViewModels.Pages
                 var proteins = SequenceAnalyzer.DetectProteins(shift);
                 var final = Sequence.CodonsToString(shift, false);
 
+                List<ProteinElement> elements = new List<ProteinElement>();
+
+                int lastOne = shift.Length;
+
                 for(int i = proteins.Length-1;i>-1;i--)
                 {
                     var protein = proteins[i];
-                    
-                    final = final.Insert(protein.StartPosition + protein.Codons.Length, "        [protein end]        ");
-                    final = final.Insert(protein.StartPosition, "        [protein start]        ");
+
+                    int endLength = protein.StartPosition + protein.Codons.Length;
+                    int startLength = protein.StartPosition;
+
+                    elements.Add(new ProteinElement()
+                    {
+                        TextColor = ProteinElement.NormalColor,
+                        Text = StyleCheck(final.Substring(endLength, lastOne - endLength)),
+                    });
+
+                    elements.Add(new ProteinElement()
+                    {
+                        TextColor = ProteinElement.ProteinColor,
+                        Text = StyleCheck(final.Substring(startLength, endLength-startLength)),
+                    });
+
+                    lastOne = startLength;
                 }
 
-                if(IsVerboseSelected)
+                if(lastOne != 0)
                 {
-                    final = final.Replace("M", "M(start)");
-                    final = final.Replace("-", "[stop]");
+                    elements.Add(new ProteinElement()
+                    {
+                        TextColor = ProteinElement.NormalColor,
+                        Text = StyleCheck(final.Substring(0, lastOne)),
+                    });
                 }
+
+                elements.Reverse();
 
                 ShiftObject obj = new ShiftObject()
                 {
                     Name = name,
-                    Shift = final,
+                    Elements = elements.ToArray(),
                 };
 
                 Shifts.Add(obj);
             }
         }
 
+        string StyleCheck(string text)
+        {
+            if (IsVerboseSelected)
+            {
+                text = text.Replace("M", "M(start)");
+                text = text.Replace("-", "[stop]");
+            }
+
+            return text;
+        }
+
         public struct ShiftObject
         {
             public string Name { get; set; }
-            public string Shift { get; set; }
+            public ProteinElement[] Elements { get; set; }
+        }
+
+        public struct ProteinElement
+        {
+            public static readonly SolidColorBrush ProteinColor = new SolidColorBrush(Colors.Red);
+            public static readonly SolidColorBrush NormalColor = new SolidColorBrush(Colors.White);
+
+            public SolidColorBrush TextColor { get; set; }
+            public string Text { get; set; }
         }
     }
 }
