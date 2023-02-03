@@ -17,7 +17,11 @@ namespace BlakApp.ViewModels
         public MainWindowViewModel() : base()
         {
             defaultVM = new DefaultViewModel();
-            GoToDefault();    
+            GoToDefault();
+
+#if DEBUG
+            CreatePage(0);
+#endif
         }
 
         public void CreatePage(int id)

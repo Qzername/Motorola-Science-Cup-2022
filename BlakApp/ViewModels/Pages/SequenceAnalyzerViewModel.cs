@@ -1,6 +1,7 @@
 ﻿using Analyzer.Analyzers;
 using Analyzer.Models;
 using Analyzer.Models.Codons;
+using Avalonia.Controls;
 using Avalonia.Media;
 using ReactiveUI;
 using System;
@@ -125,39 +126,40 @@ namespace BlakApp.ViewModels.Pages
                 var proteins = SequenceAnalyzer.DetectProteins(shift);
                 var final = Sequence.CodonsToString(shift, false);
 
+                //this is hacky way to have good wrapping
+                char[] raw = new char[final.Length * 2];
+
+                for(int i = 0; i<final.Length;i++)
+                {
+                    raw[i * 2] = final[i];
+                    raw[i * 2 + 1] = '­';
+                }
+
+                final = new string(raw);
+
                 List<ProteinElement> elements = new List<ProteinElement>();
 
-                int lastOne = shift.Length;
+                int lastOne = shift.Length*2;
+
+                string text = string.Empty;
 
                 for(int i = proteins.Length-1;i>-1;i--)
                 {
                     var protein = proteins[i];
 
-                    int endLength = protein.StartPosition + protein.Codons.Length;
-                    int startLength = protein.StartPosition;
+                    int endLength = (protein.StartPosition + protein.Codons.Length)*2;
+                    int startLength = (protein.StartPosition)*2;
 
-                    elements.Add(new ProteinElement()
-                    {
-                        TextColor = ProteinElement.NormalColor,
-                        Text = StyleCheck(final.Substring(endLength, lastOne - endLength)),
-                    });
+                    text += StyleCheck(final.Substring(endLength, lastOne - endLength));
+                    text += "%{color:red}" + StyleCheck(final.Substring(startLength, endLength - startLength)) + "%";
 
-                    elements.Add(new ProteinElement()
-                    {
-                        TextColor = ProteinElement.ProteinColor,
-                        Text = StyleCheck(final.Substring(startLength, endLength-startLength)),
-                    });
 
                     lastOne = startLength;
                 }
 
                 if(lastOne != 0)
                 {
-                    elements.Add(new ProteinElement()
-                    {
-                        TextColor = ProteinElement.NormalColor,
-                        Text = StyleCheck(final.Substring(0, lastOne)),
-                    });
+                    text += StyleCheck(final.Substring(0, lastOne));
                 }
 
                 elements.Reverse();
@@ -165,7 +167,7 @@ namespace BlakApp.ViewModels.Pages
                 ShiftObject obj = new ShiftObject()
                 {
                     Name = name,
-                    Elements = elements.ToArray(),
+                    Text = text
                 };
 
                 Shifts.Add(obj);
@@ -186,7 +188,7 @@ namespace BlakApp.ViewModels.Pages
         public struct ShiftObject
         {
             public string Name { get; set; }
-            public ProteinElement[] Elements { get; set; }
+            public string Text { get; set; }
         }
 
         public struct ProteinElement
