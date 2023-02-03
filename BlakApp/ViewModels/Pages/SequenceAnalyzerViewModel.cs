@@ -132,7 +132,7 @@ namespace BlakApp.ViewModels.Pages
                 for(int i = 0; i<final.Length;i++)
                 {
                     raw[i * 2] = final[i];
-                    raw[i * 2 + 1] = '­';
+                    raw[i * 2 + 1] = ' ';
                 }
 
                 final = new string(raw);
@@ -178,8 +178,8 @@ namespace BlakApp.ViewModels.Pages
         {
             if (IsVerboseSelected)
             {
-                text = text.Replace("M", "M(start)");
-                text = text.Replace("-", "[stop]");
+                text = text.Replace("M", "M ( s t a r t ) ");
+                text = text.Replace("-", "[ s t o p ] ");
             }
 
             return text;

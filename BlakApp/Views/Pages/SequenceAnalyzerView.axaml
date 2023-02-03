@@ -42,21 +42,19 @@
 							<StackPanel Margin="5">
 								<TextBlock Text="{Binding Name}" FontSize="24"/>
 								<md:MarkdownScrollViewer Markdown="{Binding Text}">
+									
+									<md:MarkdownScrollViewer.Styles>
+										<Style Selector="ctxt|CTextBlock">
+											<Setter Property="FontFamily" Value="Courier New"/>
+										</Style>
+									</md:MarkdownScrollViewer.Styles>
+									
 								</md:MarkdownScrollViewer>
 							</StackPanel>
 						</Border>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
-
-			<Border CornerRadius="12" Background="#202020" Margin="10,5,10,5" >
-				<StackPanel Margin="5">
-					<TextBlock Text="tesdfksdfdsklfklsdfst" FontFamily="Cascadia" Name="example" Foreground="Red" FontSize="24"/>
-					<md:MarkdownScrollViewer  >
-						ADJFNFJDKFKJNSDJFKSDNJNFN%{color:red}IASFSDI%USHFDSVBDSJV­JSDBVJASLCASBCJKLSJLCKA­BJSLCBLASBCLASLDJLLAJSLBFJHJHARVJADHVFHDAHDVASHVUSHFDSVBDSJVJSDBVJASLCASBCJKLSJLUSHFDSVBDSJVJSDBVJASLCASBCJKLSJLCKABJSLCBLASBCLASLDJLLAJSLBFJHJHARVJADHVFHDAHDVASHVUSHFDSVBDSJVJSDBVJASLCASBCJKLSJL	%{color:red}IASFSDI%CKABJSLCBLASBCLASLDJLLAJSLBFJHJHARVJADHVFHDAHDVASHV
-					</md:MarkdownScrollViewer>
-				</StackPanel>
-			</Border>
 		</StackPanel>
 	</ScrollViewer>
 </UserControl>

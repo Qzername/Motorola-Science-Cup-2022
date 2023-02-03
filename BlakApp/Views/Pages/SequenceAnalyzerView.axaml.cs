@@ -3,7 +3,9 @@ using Avalonia.Media;
 using Avalonia.Media.TextFormatting;
 using AvaloniaEdit;
 using AvaloniaEdit.Highlighting;
+using AvaloniaEdit.Highlighting.Xshd;
 using Microsoft.Win32;
+using System.Xml;
 
 namespace BlakApp.Views.Pages
 {
@@ -35,8 +37,9 @@ namespace BlakApp.Views.Pages
             });
 
             HighlightingEngine engine = new HighlightingEngine(rulesSet);
+            HighlightingManager.RegisterHighlighting("codon", null, HighlightingLoader.Load(new XshdSyntaxDefinition(, HighlightingManager.Instance));
 
-            textEditor.SyntaxHighlighting = rulesSet;*/
+            textEditor.hig = highlight;*/
         }
     }
 }
