@@ -29,6 +29,11 @@
 						<TextBlock Text="Analyzer:" FontSize="16"/>
 						<CheckBox IsChecked="{Binding CheckForward}" Content="Check forward"/>
 						<CheckBox IsChecked="{Binding CheckBackwards}" Content="Check backwards"/>
+						<ComboBox SelectedIndex="{Binding TypeOfProteinShowing}" Margin="0,10" PlaceholderText="Type of proteins visualization">
+							<ComboBoxItem>Show proteins by adding spaces</ComboBoxItem>
+							<ComboBoxItem>Show proteins by adding tags</ComboBoxItem>
+							<ComboBoxItem>Do not show proteins</ComboBoxItem>
+						</ComboBox>
 					</StackPanel>
 
 					<TextBox Text="{Binding SequenceRaw}" Height="120" TextWrapping="Wrap" Watermark="Enter DNA or RNA code. Blanks and numbers will be ignored."/>
@@ -41,15 +46,7 @@
 						<Border CornerRadius="12" Background="#202020" Margin="10,5,10,5" >
 							<StackPanel Margin="5">
 								<TextBlock Text="{Binding Name}" FontSize="24"/>
-								<md:MarkdownScrollViewer Markdown="{Binding Text}">
-									
-									<md:MarkdownScrollViewer.Styles>
-										<Style Selector="ctxt|CTextBlock">
-											<Setter Property="FontFamily" Value="Courier New"/>
-										</Style>
-									</md:MarkdownScrollViewer.Styles>
-									
-								</md:MarkdownScrollViewer>
+								<ae:TextEditor IsReadOnly="True" FontFamily="Courier New" WordWrap="True" SyntaxHighlighting="{Binding Syntax}" Document="{Binding Text}"/>
 							</StackPanel>
 						</Border>
 					</DataTemplate>

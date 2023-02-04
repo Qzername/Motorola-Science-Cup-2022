@@ -3,15 +3,22 @@ using Analyzer.Models;
 using Analyzer.Models.Codons;
 using Avalonia.Controls;
 using Avalonia.Media;
+using AvaloniaEdit;
+using AvaloniaEdit.Document;
+using AvaloniaEdit.Highlighting;
+using AvaloniaEdit.Highlighting.Xshd;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace BlakApp.ViewModels.Pages
@@ -52,6 +59,13 @@ namespace BlakApp.ViewModels.Pages
             get => _error;
             set => this.RaiseAndSetIfChanged(ref _error, value);
         }
+        
+        int? _typeOfProteinShowing;
+        public int? TypeOfProteinShowing
+        {
+            get => _typeOfProteinShowing;
+            set => this.RaiseAndSetIfChanged(ref _typeOfProteinShowing, value);
+        }
 
         ObservableCollection<ShiftObject> _shifts;
         /// <summary>
@@ -89,9 +103,15 @@ namespace BlakApp.ViewModels.Pages
                 return;
             }
 
-            if(SequenceRaw?.Length == 0)
+            if(SequenceRaw == null || SequenceRaw.Length == 0)
             {
                 Error = "Sequence is empty";
+                return;
+            }
+
+            if(TypeOfProteinShowing == null)
+            {
+                Error = "Choose type of protein visualization";
                 return;
             }
 
@@ -100,13 +120,20 @@ namespace BlakApp.ViewModels.Pages
 
             SequenceRaw = new string(SequenceRaw.Where(char.IsLetter).ToArray());
 
-            if (CheckForward)
-                AnalyzeSequence("Forward", SequenceRaw);
-
-            if(CheckBackwards)
+            try
             {
-                var reverse = new string(SequenceRaw.Reverse().ToArray());
-                AnalyzeSequence("Backwards", reverse);
+                if (CheckForward)
+                    AnalyzeSequence("Forward", SequenceRaw);
+
+                if (CheckBackwards)
+                {
+                    var reverse = new string(SequenceRaw.Reverse().ToArray());
+                    AnalyzeSequence("Backwards", reverse);
+                }
+            }
+            catch(Exception)
+            {
+                Error = "Sequence contains illegal characters";
             }
         }
 
@@ -137,11 +164,9 @@ namespace BlakApp.ViewModels.Pages
 
                 final = new string(raw);
 
-                List<ProteinElement> elements = new List<ProteinElement>();
-
                 int lastOne = shift.Length*2;
 
-                string text = string.Empty;
+                List<string> elements = new List<string>();
 
                 for(int i = proteins.Length-1;i>-1;i--)
                 {
@@ -150,36 +175,47 @@ namespace BlakApp.ViewModels.Pages
                     int endLength = (protein.StartPosition + protein.Codons.Length)*2;
                     int startLength = (protein.StartPosition)*2;
 
-                    text += StyleCheck(final.Substring(endLength, lastOne - endLength));
-                    text += "%{color:red}" + StyleCheck(final.Substring(startLength, endLength - startLength)) + "%";
-
+                    elements.Add(StyleCheck(final.Substring(endLength, lastOne - endLength)));
+                    elements.Add(ProteinShowingCheck(StyleCheck(final.Substring(startLength, endLength - startLength))));
 
                     lastOne = startLength;
                 }
 
                 if(lastOne != 0)
                 {
-                    text += StyleCheck(final.Substring(0, lastOne));
+                    elements.Add(StyleCheck(final.Substring(0, lastOne)));
                 }
 
                 elements.Reverse();
 
+                string text = string.Empty;
+
+                foreach (string element in elements)
+                    text += element;
+
                 ShiftObject obj = new ShiftObject()
                 {
                     Name = name,
-                    Text = text
+                    Text = new TextDocument() { Text = text }
                 };
 
                 Shifts.Add(obj);
             }
         }
 
+        string ProteinShowingCheck(string text) => TypeOfProteinShowing switch
+        {
+            0 => "\n\nProtein:\n\n" + text + "\n\nRest:\n\n",
+            1 => "***PROTEIN START*** " +text + "***PROTEIN END*** ",
+            _ => text,
+        };
+
         string StyleCheck(string text)
         {
             if (IsVerboseSelected)
             {
-                text = text.Replace("M", "M ( s t a r t ) ");
-                text = text.Replace("-", "[ s t o p ] ");
+                text = text.Replace("M", "M ( s t a r t )");
+                text = text.Replace("-", "[ s t o p ]");
             }
 
             return text;
@@ -188,16 +224,7 @@ namespace BlakApp.ViewModels.Pages
         public struct ShiftObject
         {
             public string Name { get; set; }
-            public string Text { get; set; }
-        }
-
-        public struct ProteinElement
-        {
-            public static readonly SolidColorBrush ProteinColor = new SolidColorBrush(Colors.Red);
-            public static readonly SolidColorBrush NormalColor = new SolidColorBrush(Colors.White);
-
-            public SolidColorBrush TextColor { get; set; }
-            public string Text { get; set; }
+            public TextDocument Text { get; set; }
         }
     }
 }
