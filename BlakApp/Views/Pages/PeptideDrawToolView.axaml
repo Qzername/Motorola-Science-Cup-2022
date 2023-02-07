@@ -2,7 +2,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             
+			 xmlns:c="using:BlakApp.Controls"
+			 mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
              x:Class="BlakApp.Views.Pages.PeptideDrawToolView">
-  Peptide Draw Tool
+	<ScrollViewer>
+		<DockPanel >
+			<Border DockPanel.Dock="Top" CornerRadius="12" Background="#333333" Margin="10,5,10,5">
+				<StackPanel Spacing="5" Margin="5,2,2,5" >
+					<TextBlock FontSize="24" Text="Peptide draw tool"/>
+					<TextBox Text="{Binding SequenceRaw}" Height="120" TextWrapping="Wrap" Watermark="Enter sequence of codons. Blanks and numbers will be ignored."/>
+					<Button Content="Draw" HorizontalAlignment="Center" Command="{Binding GenerateSequence}"/>
+				</StackPanel>
+			</Border>
+			<Panel Margin="10,0,0,0">
+				<ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Visible">
+					<c:ProteinDrawingManager HorizontalAlignment="Left" PeptideSequence="{Binding DrawSequence, Mode=TwoWay}"/>
+				</ScrollViewer>
+			</Panel>
+		</DockPanel>
+	</ScrollViewer>
 </UserControl>

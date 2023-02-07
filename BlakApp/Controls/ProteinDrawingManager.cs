@@ -19,12 +19,15 @@ namespace BlakApp.Controls
 {
     public class ProteinDrawingManager : Control
     {
-        public static readonly AvaloniaProperty<Sequence> CodonSequenceProperty = AvaloniaProperty.RegisterAttached<ProteinDrawingManager, Sequence>(nameof(CodonSequence), typeof(ProteinDrawingManager));
+        public static readonly AvaloniaProperty<Sequence> PeptideSequenceProperty = AvaloniaProperty.RegisterAttached<ProteinDrawingManager, Sequence>(nameof(PeptideSequence), typeof(ProteinDrawingManager));
 
-        public Sequence CodonSequence
+        /// <summary>
+        /// Drawing tool will get only first shift to render
+        /// </summary>
+        public Sequence PeptideSequence
         {
-            get { return (Sequence)GetValue(CodonSequenceProperty); }
-            set { SetValue(CodonSequenceProperty, value); }
+            get { return (Sequence)GetValue(PeptideSequenceProperty); }
+            set { SetValue(PeptideSequenceProperty, value); CalculateSequenceOffset(); CalculateDrawingData(); }
         }
 
         Pen drawPen;
@@ -34,7 +37,7 @@ namespace BlakApp.Controls
         Point pointOffset;
         Point pointFlipedOffset { get => new Point(pointOffset.X, -pointOffset.Y); }
         Point lineOffset;
-
+        Point sequenceOffset; //for example we need to add that offset if proline is first
 
         FullTerminus terminus;
         DrawingData[] dataToDraw;
@@ -50,11 +53,32 @@ namespace BlakApp.Controls
             text = new FormattedText("ABC", Typeface.Default, 12f, TextAlignment.Center, TextWrapping.NoWrap, new Size(20,10));
 
             terminus = DrawingHelper.ConnectTerminuses(DatabaseReader.Terminuses[0], DatabaseReader.Terminuses[1]);
+
+            Height = 420;
+
+            PropertyChanged += ProteinDrawingManager_PropertyChanged;
+        }
+
+        private void ProteinDrawingManager_PropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
+        {
+            if(e.Property == PeptideSequenceProperty)
+            {
+                PeptideSequence = (Sequence)e.NewValue;
+                InvalidateVisual();
+            }
+        }
+
+        public void CalculateSequenceOffset()
+        {
+            sequenceOffset = new Point(0, 0);
+
+            if (PeptideSequence.CodonsShift1[0].Letter == "P")
+                sequenceOffset = new Point(pointOffset.X, 0);
         }
 
         public void CalculateDrawingData()
         {
-            var sequenceToDraw = CodonSequence.CodonsShift1.Where(x => x.CodonType != CodonType.End).ToArray();
+            var sequenceToDraw = PeptideSequence.CodonsShift1.Where(x => x.CodonType != CodonType.End).ToArray();
 
             dataToDraw = new DrawingData[sequenceToDraw.Length];
 
@@ -67,17 +91,18 @@ namespace BlakApp.Controls
 
         public override void Render(DrawingContext context)
         {
+            if (PeptideSequence.CodonsShift1 == null || PeptideSequence.CodonsShift1.Length == 0)
+                return;
+
             if (dataToDraw is null)
                 CalculateDrawingData();
-
-            context.DrawText(Brushes.White, new Point(10, 10), new FormattedText(Sequence.CodonsToString(CodonSequence.CodonsShift1), new Typeface("Arial"), 60f, TextAlignment.Center, TextWrapping.Wrap, Size.Empty));
 
             double sizeOfOneCodon = 6 * pointOffset.X;
 
             for (int c = 0; c < dataToDraw.Length; c++)
             {
                 var data = dataToDraw[c];
-                var codonOffset = offset + new Point(c * sizeOfOneCodon, 0) + (c % 2 == 0 ? new Point(0, 0) : new Point(0, pointOffset.Y));
+                var codonOffset = offset + new Point(c * sizeOfOneCodon, 0) + (c % 2 == 0 ? new Point(0, 0) : new Point(0, pointOffset.Y)) + sequenceOffset;
                 var codonPointOffset = (c % 2 == 0 ? pointOffset : pointFlipedOffset);
 
                 //draw lines
@@ -129,7 +154,7 @@ namespace BlakApp.Controls
             for (int c = 0; c < dataToDraw.Length; c++)
             {
                 var data = dataToDraw[c];
-                var codonOffset = offset + new Point(c * sizeOfOneCodon, 0) + (c % 2 == 0 ? new Point(0, 0) : new Point(0, pointOffset.Y));
+                var codonOffset = offset + new Point(c * sizeOfOneCodon, 0) + (c % 2 == 0 ? new Point(0, 0) : new Point(0, pointOffset.Y)) + sequenceOffset;
                 var codonPointOffset = (c % 2 == 0 ? pointOffset : pointFlipedOffset);
 
                 for (int i = 0; i < data.Points.Length; i++)
@@ -162,7 +187,7 @@ namespace BlakApp.Controls
                     context.DrawText(Brushes.White, position + new Point(3 * (point.MolecularFormula.Length > 1 ? 1:-1), -15), text);
                 }
             }
-            Width = CodonSequence.CodonsShift1.Length * sizeOfOneCodon + offset.X + 100;
+            Width = PeptideSequence.CodonsShift1.Length * sizeOfOneCodon + offset.X + 100;
         }
 
         string ReplaceNumbersWithSubscripts(string text)

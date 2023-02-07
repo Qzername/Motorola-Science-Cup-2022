@@ -14,7 +14,7 @@
 		</StackPanel>
 		<Panel DockPanel.Dock="Bottom">
 			<ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Visible">
-				<c:ProteinDrawingManager HorizontalAlignment="Left" CodonSequence="{Binding TestSequence}"/>
+				<c:ProteinDrawingManager HorizontalAlignment="Left" PeptideSequence="{Binding TestSequence}"/>
 			</ScrollViewer>
 		</Panel>
 

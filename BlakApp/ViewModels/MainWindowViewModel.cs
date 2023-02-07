@@ -20,7 +20,7 @@ namespace BlakApp.ViewModels
             GoToDefault();
 
 #if DEBUG
-            CreatePage(0);
+            CreatePage(1);
 #endif
         }
 
@@ -30,8 +30,8 @@ namespace BlakApp.ViewModels
             Page page = id switch
             {
                 0 => new Page("Sequence Analyzer", new SequenceAnalyzerViewModel()),
-                1 => new Page("Peptide Analyzer", new PeptideAnalyzerViewModel()),
-                2 => new Page("Peptide Draw Tool", new PeptideDrawToolViewModel()),
+                1 => new Page("Peptide Draw Tool", new PeptideDrawToolViewModel()),
+                2 => new Page("Peptide Analyzer", new PeptideAnalyzerViewModel()),
                 3 => new Page("test view", new TestViewModel()),
                 _ => throw new Exception("bad id")
             };
