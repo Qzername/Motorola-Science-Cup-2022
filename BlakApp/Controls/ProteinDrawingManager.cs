@@ -14,6 +14,7 @@ using System.Diagnostics;
 using Analyzer.Models.Terminuses;
 using Analyzer.Analyzers;
 using Analyzer.Models.Drawing;
+using Avalonia.Threading;
 
 namespace BlakApp.Controls
 {
@@ -50,7 +51,7 @@ namespace BlakApp.Controls
 
             drawPen = new Pen(Brushes.White, 2d);
             
-            text = new FormattedText("ABC", Typeface.Default, 12f, TextAlignment.Center, TextWrapping.NoWrap, new Size(20,10));
+            text = new FormattedText("ABC", System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, Typeface.Default, 12f, Brushes.White);
 
             terminus = DrawingHelper.ConnectTerminuses(DatabaseReader.Terminuses[0], DatabaseReader.Terminuses[1]);
 
@@ -172,22 +173,27 @@ namespace BlakApp.Controls
                         point.Charge = 0;
                     }
 
-                    text.Text = ReplaceNumbersWithSubscripts(point.MolecularFormula);
+                    text = new FormattedText(ReplaceNumbersWithSubscripts(point.MolecularFormula), System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, Typeface.Default, 12f, Brushes.White);
 
                     var position = ChemPointPosition(point, codonPointOffset) + codonOffset;
 
                     context.DrawRectangle(Brushes.Black, null, new Rect(position.X - (point.MolecularFormula.Length > 1 ? 13:6), position.Y - 5, (point.MolecularFormula.Length > 1?26:15), 15));
-                    context.DrawText(Brushes.White, position - new Point(10,7), text);
+                    context.DrawText(text, position - ( point.MolecularFormula.Length == 1 ? new Point(5,7) : new Point(10,7)));
 
                     if (point.Charge == 0)
                         continue;
 
-                    text.Text = (point.Charge < 0 ? "-" : "+");
+                    text = new FormattedText((point.Charge < 0 ? "-" : "+"), System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, Typeface.Default, 12f, Brushes.White);
 
-                    context.DrawText(Brushes.White, position + new Point(3 * (point.MolecularFormula.Length > 1 ? 1:-1), -15), text);
+                    context.DrawText(text, position + new Point(5 * (point.MolecularFormula.Length > 1 ? 2:0.8), -15));
                 }
             }
-            Width = PeptideSequence.CodonsShift1.Length * sizeOfOneCodon + offset.X + 100;
+            Dispatcher.UIThread.Post(() =>
+            {
+                Width = PeptideSequence.CodonsShift1.Length * sizeOfOneCodon + offset.X + 100;     //set width
+            },DispatcherPriority.Render);
+
+           
         }
 
         string ReplaceNumbersWithSubscripts(string text)

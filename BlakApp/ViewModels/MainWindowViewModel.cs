@@ -20,12 +20,14 @@ namespace BlakApp.ViewModels
             GoToDefault();
 
 #if DEBUG
-            CreatePage(1);
+            CreatePage(2);
 #endif
         }
 
-        public void CreatePage(int id)
-        {
+        public void CreatePage(object objid)
+       {
+            int id = Convert.ToInt32(objid);
+
             //you cant do it in other ways
             Page page = id switch
             {
@@ -40,8 +42,10 @@ namespace BlakApp.ViewModels
             ChangePage(page);
         }
 
-        public void RemovePage(Page page)
+        public void RemovePage(object objpage)
         {
+            Page page = (Page)objpage;
+
             Pages.Remove(page);
 
             if (Pages.Count == 0)

@@ -35,6 +35,15 @@ namespace BlakApp.ViewModels
         /// <summary>
         /// Change current page
         /// </summary>
+        /// <param name="pageOBJ"></param>
+        public void ChangePage(object pageOBJ)
+        {
+            ChangePage((Page)pageOBJ);
+        }
+
+        /// <summary>
+        /// Change current page
+        /// </summary>
         public void ChangePage(Page page)
         {
             int pageID = Pages.IndexOf(page);

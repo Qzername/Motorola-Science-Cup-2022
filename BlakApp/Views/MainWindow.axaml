@@ -65,7 +65,7 @@
 							<MenuItem Command="{Binding CreatePage}" CommandParameter="0" Header="Sequence Analyzer"/>
 							<MenuItem Command="{Binding CreatePage}" CommandParameter="1" Header="Peptide Draw Tool"/>
 							<MenuItem Command="{Binding CreatePage}" CommandParameter="2" Header="Peptide Analyzer" />
-							<MenuItem Command="{Binding CreatePage}" CommandParameter="3" Header="Test view" />
+							<!--	<MenuItem Command="{Binding CreatePage}" CommandParameter="3" Header="Test view" /> -->
 						</ContextMenu>
 					</Button.ContextMenu>
 				</Button>
