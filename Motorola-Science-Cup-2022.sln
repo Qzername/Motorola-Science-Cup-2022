@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlakApp", "BlakApp\BlakApp.csproj", "{765C30A6-26B5-479D-8833-6E82C3C294C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodonEditor", "CodonEditor\CodonEditor.csproj", "{C2DAF575-586D-430D-B04E-4F572872E9D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodonEditor", "CodonEditor\CodonEditor.csproj", "{C2DAF575-586D-430D-B04E-4F572872E9D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

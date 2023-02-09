@@ -15,7 +15,7 @@ namespace BlakApp.ViewModels.Pages
             {
                 new LineSeries<double>
                 {
-                    Values = new double[] { 2, 1, 3, 5, 3, 4, 6 },
+                    Values = new double[] { 2, 1, 3, 5, 3, 4, 6,2, 1, 3, 5, 3, 4, 6,2, 1, 3, 5, 3, 4, 6,2, 1, 3, 5, 3, 4, 6,2, 1, 3, 5, 3, 4, 6,2, 1, 3, 5, 3, 4, 6,2, 1, 3, 5, 3, 4, 6,2, 1, 3, 5, 3, 4, 6,2, 1, 3, 5, 3, 4, 6,2, 1, 3, 5, 3, 4, 6, },
                     Fill = null
                 }
             };

@@ -36,13 +36,20 @@
     <PackageReference Include="Avalonia.Xaml.Interactions" Version="11.0.0-preview5" />
     <PackageReference Include="Avalonia.Xaml.Interactions.Custom" Version="11.0.0-preview5" />
     <PackageReference Include="Avalonia.Xaml.Interactivity" Version="11.0.0-preview5" />
-    <PackageReference Include="AvaloniaEdit.TextMate" Version="11.0.0-preview5" />
-    <PackageReference Include="LiveChartsCore.SkiaSharpView.Avalonia" Version="2.0.0-beta.700-11.0.0-preview4" />
-    <PackageReference Include="Markdown.Avalonia" Version="11.0.0-a8" />
-    <PackageReference Include="Markdown.Avalonia.Tight" Version="11.0.0-a9" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Analyzer\Analyzer.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LiveChartsCore">
+      <HintPath>Libraries\LiveChartsCore.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveChartsCore.SkiaSharpView">
+      <HintPath>Libraries\LiveChartsCore.SkiaSharpView.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveChartsCore.SkiaSharpView.Avalonia">
+      <HintPath>Libraries\LiveChartsCore.SkiaSharpView.Avalonia.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
