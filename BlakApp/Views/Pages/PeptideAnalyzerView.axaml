@@ -8,7 +8,19 @@
 			 xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia">
 
 
-	<lvc:CartesianChart
-        Series="{Binding Series}">
-	</lvc:CartesianChart>
+	<ScrollViewer>
+		<StackPanel>
+			<Border DockPanel.Dock="Top" CornerRadius="12" Background="#333333" Margin="10,5,10,5">
+				<StackPanel Spacing="5" Margin="5,2,2,5" >
+					<TextBlock FontSize="24" Text="Peptide analyzer"/>
+					<TextBox Text="{Binding SequenceRaw}" Height="120" TextWrapping="Wrap" Watermark="Enter sequence of codons. Blanks and numbers will be ignored."/>
+					<Button Content="Analyze" HorizontalAlignment="Center" Command="{Binding AnalyzeData}"/>
+				</StackPanel>
+			</Border>
+			<StackPanel IsVisible="{Binding IsDataVisible}">
+				<lvc:CartesianChart Height="300" Series="{Binding Series}"/>
+			</StackPanel>
+
+		</StackPanel>
+	</ScrollViewer>
 </UserControl>

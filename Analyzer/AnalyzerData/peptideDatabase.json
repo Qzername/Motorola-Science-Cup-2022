@@ -699,8 +699,75 @@
     ],
     "CodonType": 1,
     "DrawingData": {
-      "Points": null,
-      "Lines": null,
+      "Points": [
+        {
+          "ID": 0,
+          "Position": {
+            "X": 2,
+            "Y": 1
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 1,
+          "Position": {
+            "X": 2,
+            "Y": 3
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 2,
+          "Position": {
+            "X": 0,
+            "Y": 4
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 3,
+          "Position": {
+            "X": -1,
+            "Y": 2
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        },
+        {
+          "ID": 4,
+          "Position": {
+            "X": 0,
+            "Y": 0
+          },
+          "MolecularFormula": null,
+          "Charge": 0
+        }
+      ],
+      "Lines": [
+        {
+          "IDChemPoint1": 0,
+          "IDChemPoint2": 1,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 1,
+          "IDChemPoint2": 2,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 2,
+          "IDChemPoint2": 3,
+          "NumberOfBind": 1
+        },
+        {
+          "IDChemPoint1": 3,
+          "IDChemPoint2": 4,
+          "NumberOfBind": 1
+        }
+      ],
       "Data": {
         "Formula": "C-1H-4",
         "CValue": 10.47,

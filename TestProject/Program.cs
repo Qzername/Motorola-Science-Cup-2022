@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using Analyzer;
+using Analyzer.Analyzers;
 
 namespace TestProject
 {
@@ -12,7 +13,12 @@ namespace TestProject
     {
         public static void Main()
         {
-            Console.WriteLine(MassesOfElements.GetCompoundMass("C6H13NO2"));
+
+            for (int i = 0; i < 16; i ++)
+            {
+                Console.WriteLine(i + " "+ PeptideAnalyzer.CalculateCharge(CodonAnalyzer.CreateCodonsFromString("HKASNPQWAE"), i));
+
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using Analyzer.Models.Codons;
 namespace UnitTests.Analyzer
 {
     [TestClass]
-    public class AnalyzerTest
+    public class SequenceAnalyzerTest
     {
         [TestMethod]
         public void RNASequenceTest() => SequenceTest("AAAUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCUACCC");
