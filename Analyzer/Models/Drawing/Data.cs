@@ -13,10 +13,16 @@ namespace Analyzer.Models.Drawing
     public struct Data
     {
         public string Formula { get; set; }
+        public float CValue { get; set; }
+        public float NValue { get; set; }
+        public float RestValue { get; set; }
 
-        public Data(double Mass, string Formula)
+        public Data(string Formula, float CValue, float NValue, float RestValue)
         {
             this.Formula = Formula;
+            this.CValue = CValue;
+            this.NValue = NValue;
+            this.RestValue = RestValue;
         }
     }
 }

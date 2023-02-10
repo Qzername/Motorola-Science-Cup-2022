@@ -2,7 +2,10 @@
   {
     "Letter": "F",
     "Name": "Phenylalanine",
-    "IDs": [ "UUU", "UUC" ],
+    "IDs": [
+      "UUU",
+      "UUC"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -122,15 +125,24 @@
         }
       ],
       "Data": {
-        "Mass": 106.16639999999998,
-        "Formula": "CH3CH2CH0CH1CH1CH1CH1CH1"
+        "Formula": "CH3CH2CH0CH1CH1CH1CH1CH1",
+        "CValue": 9.09,
+        "NValue": 2.18,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "L",
     "Name": "Leucine",
-    "IDs": [ "UUA", "UUG", "CUU", "CUC", "CUA", "CUG" ],
+    "IDs": [
+      "UUA",
+      "UUG",
+      "CUU",
+      "CUC",
+      "CUA",
+      "CUG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -203,15 +215,24 @@
         }
       ],
       "Data": {
-        "Mass": 72.14908,
-        "Formula": "CH3CH2CH1CH3CH3"
+        "Formula": "CH3CH2CH1CH3CH3",
+        "CValue": 9.58,
+        "NValue": 2.32,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "S",
     "Name": "Serine",
-    "IDs": [ "UCU", "UCC", "UCA", "UCG", "AGU", "AGC" ],
+    "IDs": [
+      "UCU",
+      "UCC",
+      "UCA",
+      "UCG",
+      "AGU",
+      "AGC"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -256,15 +277,20 @@
         }
       ],
       "Data": {
-        "Mass": 46.068039999999996,
-        "Formula": "CH3CH2OH"
+        "Formula": "CH3CH2OH",
+        "CValue": 9.05,
+        "NValue": 2.13,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "Y",
     "Name": "Tyrosine",
-    "IDs": [ "UAU", "UAC" ],
+    "IDs": [
+      "UAU",
+      "UAC"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -398,29 +424,40 @@
         }
       ],
       "Data": {
-        "Mass": 122.16539999999998,
-        "Formula": "CH3CH2CH0CH1CH1CH1CH0CH1OH"
+        "Formula": "CH3CH2CH0CH1CH1CH1CH0CH1OH",
+        "CValue": 9.04,
+        "NValue": 2.24,
+        "RestValue": 20.2
       }
     }
   },
   {
     "Letter": "STOP",
     "Name": "STOP",
-    "IDs": [ "UAA", "UAG", "UGA" ],
+    "IDs": [
+      "UAA",
+      "UAG",
+      "UGA"
+    ],
     "CodonType": 2,
     "DrawingData": {
       "Points": null,
       "Lines": null,
       "Data": {
-        "Mass": 0.0,
-        "Formula": null
+        "Formula": null,
+        "CValue": 0.0,
+        "NValue": 0.0,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "C",
     "Name": "Cysteine",
-    "IDs": [ "UGU", "UGC" ],
+    "IDs": [
+      "UGU",
+      "UGC"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -465,15 +502,19 @@
         }
       ],
       "Data": {
-        "Mass": 62.13404,
-        "Formula": "CH3CH2SH"
+        "Formula": "CH3CH2SH",
+        "CValue": 10.0,
+        "NValue": 1.91,
+        "RestValue": 8.24
       }
     }
   },
   {
     "Letter": "W",
     "Name": "Tryptophan",
-    "IDs": [ "UGG" ],
+    "IDs": [
+      "UGG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -640,96 +681,41 @@
         }
       ],
       "Data": {
-        "Mass": 145.20293999999998,
-        "Formula": "CH3CH2CH0CH1HNCH0CH0CH1CH1CH1CH1"
+        "Formula": "CH3CH2CH0CH1HNCH0CH0CH1CH1CH1CH1",
+        "CValue": 9.34,
+        "NValue": 2.38,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "P",
     "Name": "Proline",
-    "IDs": [ "CCU", "CCC", "CCA", "CCG" ],
+    "IDs": [
+      "CCU",
+      "CCC",
+      "CCA",
+      "CCG"
+    ],
     "CodonType": 1,
     "DrawingData": {
-      "Points": [
-        {
-          "ID": 0,
-          "Position": {
-            "X": 2,
-            "Y": 1
-          },
-          "MolecularFormula": null,
-          "Charge": 0
-        },
-        {
-          "ID": 1,
-          "Position": {
-            "X": 2,
-            "Y": 3
-          },
-          "MolecularFormula": null,
-          "Charge": 0
-        },
-        {
-          "ID": 2,
-          "Position": {
-            "X": 0,
-            "Y": 4
-          },
-          "MolecularFormula": null,
-          "Charge": 0
-        },
-        {
-          "ID": 3,
-          "Position": {
-            "X": -1,
-            "Y": 2
-          },
-          "MolecularFormula": null,
-          "Charge": 0
-        },
-        {
-          "ID": 4,
-          "Position": {
-            "X": 0,
-            "Y": 0
-          },
-          "MolecularFormula": null,
-          "Charge": 0
-        }
-      ],
-      "Lines": [
-        {
-          "IDChemPoint1": 0,
-          "IDChemPoint2": 1,
-          "NumberOfBind": 1
-        },
-        {
-          "IDChemPoint1": 1,
-          "IDChemPoint2": 2,
-          "NumberOfBind": 1
-        },
-        {
-          "IDChemPoint1": 2,
-          "IDChemPoint2": 3,
-          "NumberOfBind": 1
-        },
-        {
-          "IDChemPoint1": 3,
-          "IDChemPoint2": 4,
-          "NumberOfBind": 1
-        }
-      ],
+      "Points": null,
+      "Lines": null,
       "Data": {
-        "Mass": 72.14908,
-        "Formula": "CH3CH2CH2CH2CH3C-1H-4"
+        "Formula": "C-1H-4",
+        "CValue": 10.47,
+        "NValue": 1.95,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "H",
     "Name": "Histidine",
-    "IDs": [ "CAU", "CAC" ],
+    "IDs": [
+      "CAU",
+      "CAC"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -835,15 +821,20 @@
         }
       ],
       "Data": {
-        "Mass": 96.13112,
-        "Formula": "CH3CH2CH0NCH1CH1NH"
+        "Formula": "CH3CH2CH0NCH1CH1NH",
+        "CValue": 9.09,
+        "NValue": 1.7,
+        "RestValue": 6.04
       }
     }
   },
   {
     "Letter": "Q",
     "Name": "Glutamine",
-    "IDs": [ "CAA", "CAG" ],
+    "IDs": [
+      "CAA",
+      "CAG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -930,15 +921,24 @@
         }
       ],
       "Data": {
-        "Mass": 87.12025999999999,
-        "Formula": "CH3CH2CH2CH0ONH2"
+        "Formula": "CH3CH2CH2CH0ONH2",
+        "CValue": 9.0,
+        "NValue": 2.18,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "R",
     "Name": "Arginine",
-    "IDs": [ "CGU", "CGC", "CGA", "CGG", "AGA", "AGG" ],
+    "IDs": [
+      "CGU",
+      "CGC",
+      "CGA",
+      "CGG",
+      "AGA",
+      "AGG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -1053,15 +1053,21 @@
         }
       ],
       "Data": {
-        "Mass": 115.17701999999998,
-        "Formula": "CH3CH2CH2CH2NHCH0NHNH2"
+        "Formula": "CH3CH2CH2CH2NHCH0NHNH2",
+        "CValue": 8.76,
+        "NValue": 2.16,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "I",
     "Name": "Isoleucine",
-    "IDs": [ "AUU", "AUC", "AUA" ],
+    "IDs": [
+      "AUU",
+      "AUC",
+      "AUA"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -1134,15 +1140,19 @@
         }
       ],
       "Data": {
-        "Mass": 72.14908,
-        "Formula": "CH3CH1CH3CH2CH3"
+        "Formula": "CH3CH1CH3CH2CH3",
+        "CValue": 9.6,
+        "NValue": 2.26,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "M",
     "Name": "Methionine",
-    "IDs": [ "AUG" ],
+    "IDs": [
+      "AUG"
+    ],
     "CodonType": 0,
     "DrawingData": {
       "Points": [
@@ -1215,15 +1225,22 @@
         }
       ],
       "Data": {
-        "Mass": 90.1874,
-        "Formula": "CH3CH2CH2SCH3"
+        "Formula": "CH3CH2CH2SCH3",
+        "CValue": 9.08,
+        "NValue": 2.16,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "T",
     "Name": "Threonine",
-    "IDs": [ "ACU", "ACC", "ACA", "ACG" ],
+    "IDs": [
+      "ACU",
+      "ACC",
+      "ACA",
+      "ACG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -1282,15 +1299,20 @@
         }
       ],
       "Data": {
-        "Mass": 60.094719999999995,
-        "Formula": "CH3CH1CH3OH"
+        "Formula": "CH3CH1CH3OH",
+        "CValue": 8.96,
+        "NValue": 2.2,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "N",
     "Name": "Asparagine",
-    "IDs": [ "AAU", "AAC" ],
+    "IDs": [
+      "AAU",
+      "AAC"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -1363,15 +1385,20 @@
         }
       ],
       "Data": {
-        "Mass": 73.09357999999999,
-        "Formula": "CH3CH2CH0NH2O"
+        "Formula": "CH3CH2CH0NH2O",
+        "CValue": 8.76,
+        "NValue": 2.16,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "K",
     "Name": "Lysine",
-    "IDs": [ "AAA", "AAG" ],
+    "IDs": [
+      "AAA",
+      "AAG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -1458,15 +1485,22 @@
         }
       ],
       "Data": {
-        "Mass": 88.17146,
-        "Formula": "CH3CH2CH2CH2CH2NH3H-1"
+        "Formula": "CH3CH2CH2CH2CH2NH3H-1",
+        "CValue": 9.16,
+        "NValue": 2.15,
+        "RestValue": 10.67
       }
     }
   },
   {
     "Letter": "V",
     "Name": "Valine",
-    "IDs": [ "GUU", "GUC", "GUA", "GUG" ],
+    "IDs": [
+      "GUU",
+      "GUC",
+      "GUA",
+      "GUG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -1525,15 +1559,22 @@
         }
       ],
       "Data": {
-        "Mass": 58.1224,
-        "Formula": "CH3CH1CH3CH3"
+        "Formula": "CH3CH1CH3CH3",
+        "CValue": 9.52,
+        "NValue": 2.27,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "A",
     "Name": "Alanine",
-    "IDs": [ "GCU", "GCC", "GCA", "GCG" ],
+    "IDs": [
+      "GCU",
+      "GCC",
+      "GCA",
+      "GCG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -1564,15 +1605,20 @@
         }
       ],
       "Data": {
-        "Mass": 30.06904,
-        "Formula": "CH3CH3"
+        "Formula": "CH3CH3",
+        "CValue": 9.71,
+        "NValue": 2.33,
+        "RestValue": 0.0
       }
     }
   },
   {
     "Letter": "D",
     "Name": "Aspartic acid",
-    "IDs": [ "GAU", "GAC" ],
+    "IDs": [
+      "GAU",
+      "GAC"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -1645,15 +1691,20 @@
         }
       ],
       "Data": {
-        "Mass": 74.0702,
-        "Formula": "CH3CH2CH0OH1O"
+        "Formula": "CH3CH2CH0OH1O",
+        "CValue": 9.66,
+        "NValue": 1.95,
+        "RestValue": 3.71
       }
     }
   },
   {
     "Letter": "E",
     "Name": "Glutamic acid",
-    "IDs": [ "GAA", "GAG" ],
+    "IDs": [
+      "GAA",
+      "GAG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": [
@@ -1740,22 +1791,31 @@
         }
       ],
       "Data": {
-        "Mass": 88.09687999999998,
-        "Formula": "CH3CH2CH2CH0OOH1"
+        "Formula": "CH3CH2CH2CH0OOH1",
+        "CValue": 9.58,
+        "NValue": 2.16,
+        "RestValue": 4.16
       }
     }
   },
   {
     "Letter": "G",
     "Name": "Glycine",
-    "IDs": [ "GGU", "GGC", "GGA", "GGG" ],
+    "IDs": [
+      "GGU",
+      "GGC",
+      "GGA",
+      "GGG"
+    ],
     "CodonType": 1,
     "DrawingData": {
       "Points": null,
       "Lines": null,
       "Data": {
-        "Mass": 0.0,
-        "Formula": "CH4"
+        "Formula": "CH4",
+        "CValue": 9.58,
+        "NValue": 2.34,
+        "RestValue": 0.0
       }
     }
   }

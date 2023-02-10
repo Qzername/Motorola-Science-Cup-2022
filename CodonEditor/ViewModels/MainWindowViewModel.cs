@@ -1,5 +1,6 @@
 using Analyzer;
 using Analyzer.Models.Codons;
+using Analyzer.Models.Drawing;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Media;
@@ -34,6 +35,27 @@ namespace CodonEditor.ViewModels
         {
             get => _data;
             set => this.RaiseAndSetIfChanged(ref _data, value);
+        }
+
+        string _cValue;
+        public string CValue
+        {
+            get => _cValue;
+            set => this.RaiseAndSetIfChanged(ref _cValue, value);
+        }
+
+        string _nValue;
+        public string NValue
+        {
+            get => _nValue;
+            set => this.RaiseAndSetIfChanged(ref _nValue, value);
+        }
+
+        string _restValue;
+        public string RestValue
+        {
+            get => _restValue;
+            set => this.RaiseAndSetIfChanged(ref _restValue, value);
         }
 
         int _selectedIndex;
@@ -77,6 +99,9 @@ namespace CodonEditor.ViewModels
 
             foreach (var raw in Codons)
             {
+                if (raw.Letter == "F")
+                    Debug.WriteLine(raw.DrawingData.Value.Data.CValue + " "+ Codons);
+
                 if(raw.DrawingData == null)
                 {
                     Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType));
@@ -112,11 +137,27 @@ namespace CodonEditor.ViewModels
             //saving old codon
             SaveCurrent();
 
+            Debug.WriteLine("CC: " + Codons.Single(x=>x.Letter == "F").DrawingData.Value.Data.CValue);
+
             //reading new codon
             if (SelectedIndex != -1 && Codons[SelectedIndex].DrawingData is not null)
                 DrawingManager.Current.SetRecalculatedDrawing(Codons[SelectedIndex].DrawingData.Value);
             else
                 DrawingManager.Current.CleanDrawing();
+
+            if( Codons[SelectedIndex].DrawingData.HasValue)
+            {
+                var data = Codons[SelectedIndex].DrawingData.Value.Data;
+                CValue = data.CValue.ToString();
+                NValue = data.NValue.ToString();
+                RestValue = data.RestValue.ToString();
+            }
+            else
+            {
+                CValue = "";
+                NValue = "";
+                RestValue = "";
+            }
         }
 
         void SaveCurrent()
@@ -127,6 +168,22 @@ namespace CodonEditor.ViewModels
             {
                 var copy = Codons[index];
                 copy.DrawingData = DrawingManager.Current.GetRecalculatedDrawing();
+
+                if (copy.DrawingData is null)
+                    copy.DrawingData = new Analyzer.Models.Draw.DrawingData();
+
+                var drawingData = copy.DrawingData.Value;
+
+                var data = drawingData.Data;
+
+                data.CValue = float.Parse(CValue.Replace('.', ','));
+                data.NValue = float.Parse(NValue.Replace('.', ','));
+                data.RestValue = float.Parse(RestValue.Replace('.', ','));
+
+                drawingData.Data = data;
+
+                copy.DrawingData = drawingData;
+
                 Codons[index] = copy;
             }
         }

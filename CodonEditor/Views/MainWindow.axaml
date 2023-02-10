@@ -40,6 +40,11 @@
 				
 				<TextBox Text="{Binding SelectedItem.Name}" Watermark="Codon Name"/>
 				<TextBox Text="{Binding SelectedItem.Letter}" Watermark="Codon Letter"/>
+				
+				<Label Content="DATA:"/>
+				<TextBox Text="{Binding CValue}" Watermark="NH2 Value"/>
+				<TextBox Text="{Binding NValue}" Watermark="O2 Value"/>
+				<TextBox Text="{Binding RestValue}" Watermark="3rd value (if it is there)"/>
 			</StackPanel>
 
 			<StackPanel  VerticalAlignment="Bottom" Margin="5" Spacing="5">
