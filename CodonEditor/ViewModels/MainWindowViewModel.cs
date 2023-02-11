@@ -58,6 +58,20 @@ namespace CodonEditor.ViewModels
             set => this.RaiseAndSetIfChanged(ref _restValue, value);
         }
 
+        string _hydrophobicy;
+        public string Hydrophobicy
+        {
+            get => _hydrophobicy;
+            set => this.RaiseAndSetIfChanged(ref _hydrophobicy, value);
+        }
+
+        bool _isPolar;
+        public bool IsPolar
+        {
+            get => _isPolar;
+            set => this.RaiseAndSetIfChanged(ref _isPolar, value);
+        }
+
         int _selectedIndex;
         public int SelectedIndex
         {
@@ -118,7 +132,7 @@ namespace CodonEditor.ViewModels
                 {
                     var copy = raw.DrawingData.Value.Data;
                     copy.Formula = "C-1H-4";
-                    Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType, new Analyzer.Models.Draw.DrawingData(null, null, copy)));
+                    Data.Add(new Codon(raw.Letter, raw.Name, raw.IDs, raw.CodonType, new Analyzer.Models.Draw.DrawingData(raw.DrawingData.Value.Points, raw.DrawingData.Value.Lines, copy)));
 
                 }
                 else
@@ -133,11 +147,9 @@ namespace CodonEditor.ViewModels
 
         void CodonChanged()
         {
-            //SelectedItem happens to change before CurrentItem to im using that to save the old drawing to old codon and read new drawing from new codon
+            //SelectedItem happens to change before CurrentItem (i think it is SelectedIndex now?) to im using that to save the old drawing to old codon and read new drawing from new codon
             //saving old codon
             SaveCurrent();
-
-            Debug.WriteLine("CC: " + Codons.Single(x=>x.Letter == "F").DrawingData.Value.Data.CValue);
 
             //reading new codon
             if (SelectedIndex != -1 && Codons[SelectedIndex].DrawingData is not null)
@@ -145,18 +157,24 @@ namespace CodonEditor.ViewModels
             else
                 DrawingManager.Current.CleanDrawing();
 
-            if( Codons[SelectedIndex].DrawingData.HasValue)
+            Debug.WriteLine(SelectedIndex);
+
+            if(SelectedIndex != -1 && Codons[SelectedIndex].DrawingData.HasValue)
             {
                 var data = Codons[SelectedIndex].DrawingData.Value.Data;
                 CValue = data.CValue.ToString();
                 NValue = data.NValue.ToString();
                 RestValue = data.RestValue.ToString();
+                Hydrophobicy = data.Hydrophobicy.ToString();
+                IsPolar = data.IsPolar;
             }
             else
             {
                 CValue = "";
                 NValue = "";
                 RestValue = "";
+                Hydrophobicy = "";
+                IsPolar = false;
             }
         }
 
@@ -179,6 +197,8 @@ namespace CodonEditor.ViewModels
                 data.CValue = float.Parse(CValue.Replace('.', ','));
                 data.NValue = float.Parse(NValue.Replace('.', ','));
                 data.RestValue = float.Parse(RestValue.Replace('.', ','));
+                data.Hydrophobicy = float.Parse(Hydrophobicy.Replace('.', ','));
+                data.IsPolar = IsPolar;
 
                 drawingData.Data = data;
 

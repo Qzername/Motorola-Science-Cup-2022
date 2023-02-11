@@ -45,6 +45,8 @@
 				<TextBox Text="{Binding CValue}" Watermark="NH2 Value"/>
 				<TextBox Text="{Binding NValue}" Watermark="O2 Value"/>
 				<TextBox Text="{Binding RestValue}" Watermark="3rd value (if it is there)"/>
+				<TextBox Margin="0,10,0,0" Text="{Binding Hydrophobicy}" Watermark="Hydrophobicy"/>
+				<CheckBox IsChecked="{Binding IsPolar}" Content="Is polar"/>
 			</StackPanel>
 
 			<StackPanel  VerticalAlignment="Bottom" Margin="5" Spacing="5">
