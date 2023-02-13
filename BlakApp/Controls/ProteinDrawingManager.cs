@@ -73,12 +73,18 @@ namespace BlakApp.Controls
         {
             sequenceOffset = new Point(0, 0);
 
+            if (PeptideSequence.CodonsShift1 is null)
+                return;
+
             if (PeptideSequence.CodonsShift1[0].Letter == "P")
                 sequenceOffset = new Point(pointOffset.X, 0);
         }
 
         public void CalculateDrawingData()
         {
+            if (PeptideSequence.CodonsShift1 is null)
+                return;
+
             var sequenceToDraw = PeptideSequence.CodonsShift1.Where(x => x.CodonType != CodonType.End).ToArray();
 
             dataToDraw = new DrawingData[sequenceToDraw.Length];

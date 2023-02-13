@@ -15,10 +15,32 @@
 					<TextBlock FontSize="24" Text="Peptide analyzer"/>
 					<TextBox Text="{Binding SequenceRaw}" Height="120" TextWrapping="Wrap" Watermark="Enter sequence of codons. Blanks and numbers will be ignored."/>
 					<Button Content="Analyze" HorizontalAlignment="Center" Command="{Binding AnalyzeData}"/>
+					<TextBlock HorizontalAlignment="Center" DockPanel.Dock="Bottom" Text="{Binding Error}" Foreground="Red"/>
 				</StackPanel>
 			</Border>
-			<StackPanel IsVisible="{Binding IsDataVisible}">
-				<lvc:CartesianChart Height="300" Series="{Binding Series}"/>
+			<StackPanel Margin="5" IsVisible="{Binding IsDataVisible}">
+				<Label FontSize="32" FontWeight="Bold" Content="Protein analysis" HorizontalAlignment="Center"/>
+				<Label Content="{Binding SequenceRaw, StringFormat={}Sequence: {0}}"/>
+				<Label Content="{Binding SequenceRaw.Length, StringFormat={}Length: {0}}"/>
+				<Label Content="{Binding SequenceData.Mass, StringFormat={}Mass: {0}}"/>
+				<Label Content="{Binding SequenceData.IzoelectricPoint, StringFormat={}Izoelectric Point: {0}}"/>
+				<Label Content="{Binding SequenceData.ExtinctionCoefficient, StringFormat={}Extinction Coefficient: {0}}"/>
+				
+				<Label FontSize="32" FontWeight="Bold" Content="Charge" HorizontalAlignment="Center"/>
+				<Label Content="{Binding SequenceData.NetCharge, StringFormat={}Net charge (at 7 ph): {0}}"/>
+				<Label Content="PH vs Charge: "/>
+				<lvc:CartesianChart Height="300" Series="{Binding NetChargeSeries}"/>
+				
+				<Label FontSize="32" FontWeight="Bold" Content="Hydrophobicity index" HorizontalAlignment="Center"/>
+				<Label Content="{Binding SequenceData.Hydrophobicity, StringFormat={}Hydrophobicity: {0}}"/>
+				<Label Content="Hydrophobicity at certain codons: "/>
+				<lvc:CartesianChart Height="300" Series="{Binding HydrophobicitySeries}"/>
+				
+				<Label FontSize="32" FontWeight="Bold" Content="Polarity" HorizontalAlignment="Center"/>
+				<Label Content="{Binding SequenceData.PolarCodons, StringFormat={}Polar codons: {0}}"/>
+				<Label Content="{Binding SequenceData.PolarCodons.Length, StringFormat={}Amount of polar codons: {0}}"/>
+				<Label Content="{Binding SequenceData.NonPolarCodons, StringFormat={}Non-Polar codons: {0}}"/>
+				<Label Content="{Binding SequenceData.NonPolarCodons.Length, StringFormat={}Non-Polar codons amount: {0}}"/>
 			</StackPanel>
 
 		</StackPanel>

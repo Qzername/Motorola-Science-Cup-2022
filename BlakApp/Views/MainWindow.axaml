@@ -11,7 +11,7 @@
         ExtendClientAreaTitleBarHeightHint="30"
 		
 		MinWidth="600"
-		MinHeight="400">
+		MinHeight="480">
 	
 	<Design.DataContext>
 		<vm:MainWindowViewModel/>

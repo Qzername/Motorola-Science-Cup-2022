@@ -14,6 +14,11 @@
     <EmbeddedResource Remove="Models\**" />
     <None Remove="Models\**" />
     <None Remove=".gitignore" />
+    <None Remove="Assets\1.png" />
+    <None Remove="Assets\2.png" />
+    <None Remove="Assets\3.png" />
+    <None Remove="Assets\Add.png" />
+    <None Remove="Assets\Close.png" />
     <None Remove="Assets\Home.png" />
     <None Remove="Assets\icon.ico" />
     <None Remove="Assets\Plus.png" />

@@ -13,6 +13,7 @@
 					<TextBlock FontSize="24" Text="Peptide draw tool"/>
 					<TextBox Text="{Binding SequenceRaw}" Height="120" TextWrapping="Wrap" Watermark="Enter sequence of codons. Blanks and numbers will be ignored."/>
 					<Button Content="Draw" HorizontalAlignment="Center" Command="{Binding GenerateSequence}"/>
+					<TextBlock HorizontalAlignment="Center" DockPanel.Dock="Bottom" Text="{Binding Error}" Foreground="Red"/>
 				</StackPanel>
 			</Border>
 			<Panel Margin="10,0,0,0">

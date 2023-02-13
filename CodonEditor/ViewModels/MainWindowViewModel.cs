@@ -165,7 +165,7 @@ namespace CodonEditor.ViewModels
                 CValue = data.CValue.ToString();
                 NValue = data.NValue.ToString();
                 RestValue = data.RestValue.ToString();
-                Hydrophobicy = data.Hydrophobicy.ToString();
+                Hydrophobicy = data.Hydrophobicity.ToString();
                 IsPolar = data.IsPolar;
             }
             else
@@ -197,7 +197,7 @@ namespace CodonEditor.ViewModels
                 data.CValue = float.Parse(CValue.Replace('.', ','));
                 data.NValue = float.Parse(NValue.Replace('.', ','));
                 data.RestValue = float.Parse(RestValue.Replace('.', ','));
-                data.Hydrophobicy = float.Parse(Hydrophobicy.Replace('.', ','));
+                data.Hydrophobicity = float.Parse(Hydrophobicy.Replace('.', ','));
                 data.IsPolar = IsPolar;
 
                 drawingData.Data = data;

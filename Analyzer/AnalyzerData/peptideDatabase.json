@@ -126,7 +126,7 @@
         "CValue": 9.09,
         "NValue": 2.18,
         "RestValue": 0.0,
-        "Hydrophobicy": 2.8,
+        "Hydrophobicity": 2.8,
         "IsPolar": false
       }
     }
@@ -211,7 +211,7 @@
         "CValue": 9.58,
         "NValue": 2.32,
         "RestValue": 0.0,
-        "Hydrophobicy": 3.8,
+        "Hydrophobicity": 3.8,
         "IsPolar": false
       }
     }
@@ -268,7 +268,7 @@
         "CValue": 9.05,
         "NValue": 2.13,
         "RestValue": 0.0,
-        "Hydrophobicy": -0.8,
+        "Hydrophobicity": -0.8,
         "IsPolar": true
       }
     }
@@ -414,7 +414,7 @@
         "CValue": 9.04,
         "NValue": 2.24,
         "RestValue": 20.2,
-        "Hydrophobicy": -1.3,
+        "Hydrophobicity": -1.3,
         "IsPolar": false
       }
     }
@@ -432,7 +432,7 @@
         "CValue": 0.0,
         "NValue": 0.0,
         "RestValue": 0.0,
-        "Hydrophobicy": 0.0,
+        "Hydrophobicity": 0.0,
         "IsPolar": false
       }
     }
@@ -489,7 +489,7 @@
         "CValue": 10.0,
         "NValue": 1.91,
         "RestValue": 8.24,
-        "Hydrophobicy": 2.5,
+        "Hydrophobicity": 2.5,
         "IsPolar": false
       }
     }
@@ -668,7 +668,7 @@
         "CValue": 9.34,
         "NValue": 2.38,
         "RestValue": 0.0,
-        "Hydrophobicy": -0.9,
+        "Hydrophobicity": -0.9,
         "IsPolar": false
       }
     }
@@ -753,7 +753,7 @@
         "CValue": 10.47,
         "NValue": 1.95,
         "RestValue": 0.0,
-        "Hydrophobicy": -1.6,
+        "Hydrophobicity": -1.6,
         "IsPolar": false
       }
     }
@@ -871,7 +871,7 @@
         "CValue": 9.09,
         "NValue": 1.7,
         "RestValue": 6.04,
-        "Hydrophobicy": -3.2,
+        "Hydrophobicity": -3.2,
         "IsPolar": true
       }
     }
@@ -970,7 +970,7 @@
         "CValue": 9.0,
         "NValue": 2.18,
         "RestValue": 0.0,
-        "Hydrophobicy": -3.5,
+        "Hydrophobicity": -3.5,
         "IsPolar": true
       }
     }
@@ -1097,7 +1097,7 @@
         "CValue": 8.76,
         "NValue": 2.16,
         "RestValue": 0.0,
-        "Hydrophobicy": -4.5,
+        "Hydrophobicity": -4.5,
         "IsPolar": true
       }
     }
@@ -1182,7 +1182,7 @@
         "CValue": 9.6,
         "NValue": 2.26,
         "RestValue": 0.0,
-        "Hydrophobicy": 4.5,
+        "Hydrophobicity": 4.5,
         "IsPolar": false
       }
     }
@@ -1267,7 +1267,7 @@
         "CValue": 9.08,
         "NValue": 2.16,
         "RestValue": 0.0,
-        "Hydrophobicy": 1.9,
+        "Hydrophobicity": 1.9,
         "IsPolar": false
       }
     }
@@ -1338,7 +1338,7 @@
         "CValue": 8.96,
         "NValue": 2.2,
         "RestValue": 0.0,
-        "Hydrophobicy": -0.7,
+        "Hydrophobicity": -0.7,
         "IsPolar": true
       }
     }
@@ -1423,7 +1423,7 @@
         "CValue": 8.76,
         "NValue": 2.16,
         "RestValue": 0.0,
-        "Hydrophobicy": -3.5,
+        "Hydrophobicity": -3.5,
         "IsPolar": true
       }
     }
@@ -1522,7 +1522,7 @@
         "CValue": 9.16,
         "NValue": 2.15,
         "RestValue": 10.67,
-        "Hydrophobicy": -3.9,
+        "Hydrophobicity": -3.9,
         "IsPolar": true
       }
     }
@@ -1593,7 +1593,7 @@
         "CValue": 9.52,
         "NValue": 2.27,
         "RestValue": 0.0,
-        "Hydrophobicy": 4.2,
+        "Hydrophobicity": 4.2,
         "IsPolar": false
       }
     }
@@ -1636,7 +1636,7 @@
         "CValue": 9.71,
         "NValue": 2.33,
         "RestValue": 0.0,
-        "Hydrophobicy": 1.8,
+        "Hydrophobicity": 1.8,
         "IsPolar": false
       }
     }
@@ -1721,7 +1721,7 @@
         "CValue": 9.66,
         "NValue": 1.95,
         "RestValue": 3.71,
-        "Hydrophobicy": -3.5,
+        "Hydrophobicity": -3.5,
         "IsPolar": true
       }
     }
@@ -1820,7 +1820,7 @@
         "CValue": 9.58,
         "NValue": 2.16,
         "RestValue": 4.16,
-        "Hydrophobicy": -3.5,
+        "Hydrophobicity": -3.5,
         "IsPolar": true
       }
     }
@@ -1838,7 +1838,7 @@
         "CValue": 9.58,
         "NValue": 2.34,
         "RestValue": 0.0,
-        "Hydrophobicy": -0.4,
+        "Hydrophobicity": -0.4,
         "IsPolar": false
       }
     }

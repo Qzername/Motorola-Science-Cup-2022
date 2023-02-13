@@ -4,5 +4,57 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BlakApp.Views.Pages.DefaultView">
-  Welcome to Avalonia!
+	<ScrollViewer>
+		<StackPanel Spacing="5" Margin="25">
+			<Label FontSize="32" FontWeight="Bold" HorizontalAlignment="Center" Content="Welcome to BlakApp"/>
+			<Label  FontSize="24" HorizontalAlignment="Center" Content="Quick tutorial"/>
+			<TextBlock FontSize="16">
+				BlakApp contains three tools: <LineBreak/>
+				1. Sequence Analyzer <LineBreak/>
+				2. Peptide Draw Tool <LineBreak/>
+				3. Peptide Analyzer 
+			</TextBlock>
+
+			<TextBlock HorizontalAlignment="Center" FontSize="16">
+				You can add page if you click on plus symbol on top of the app.
+			</TextBlock>
+
+			<Image Stretch="None" HorizontalAlignment="Center" Source="avares://BlakApp/Assets/Add.png"/>
+
+			<TextBlock HorizontalAlignment="Center" FontSize="16">
+				Also, you can close pages if you right click on them and then click "Close".
+			</TextBlock>
+
+			<Image Stretch="None" HorizontalAlignment="Center" Source="avares://BlakApp/Assets/Close.png"/>
+
+			<Label  FontSize="24" HorizontalAlignment="Center" Content="Sequence Analyzer"/>
+			<TextBlock TextWrapping="Wrap" FontSize="16">
+				Sequence analyzer is a tool that convert given sequence into codons. Also, it can check for peptides in that sequence. You have various ways to display peptides.
+			</TextBlock>
+
+			<Image Width="700" HorizontalAlignment="Center" Source="avares://BlakApp/Assets/1.png"/>
+
+			<Label  FontSize="24" HorizontalAlignment="Center" Content="Peptide Draw Tool"/>
+			<TextBlock TextWrapping="Wrap" FontSize="16">
+				Peptide draw tool is a tool that visualize how given codon sequence looks.
+			</TextBlock>
+
+			<Image Width="700" HorizontalAlignment="Center" Source="avares://BlakApp/Assets/2.png"/>
+
+			<Label  FontSize="24" HorizontalAlignment="Center" Content="Peptide Analyzer"/>
+			<TextBlock TextWrapping="Wrap" FontSize="16">
+				Peptide Analyzer is a tool that calculates basic properites of peptide. WARNING: Values can vary from diffrent calculators on others pages/apps due to fact that there is a lot of methods to calculate diffrent values.
+			</TextBlock>
+
+			<Image Width="700" HorizontalAlignment="Center" Source="avares://BlakApp/Assets/3.png"/>
+
+			<Label  FontSize="24" HorizontalAlignment="Center" Content="About authors"/>
+			<TextBlock HorizontalAlignment="Center"  TextWrapping="Wrap" FontSize="16">
+				Made for Motorola Science Cup 2023 by Walter Black Racing Team
+			</TextBlock>
+			<TextBlock HorizontalAlignment="Center"  TextWrapping="Wrap" FontSize="16">
+				Hubert Szymik, Jakub Pasiński, Alan Bluma, Łukasz Kwieciński, Gracjan Statkiewicz
+			</TextBlock>
+		</StackPanel>	
+	</ScrollViewer>
 </UserControl>

@@ -77,7 +77,16 @@ namespace Analyzer.Analyzers
                 realSequence[i + 1] = rawSequence[i];
 
             int numberOfNegative = sequence.Count(x => !GetChargeOfCodon(x));
+
+            if (numberOfNegative == 0)
+                return realSequence.Last();
+
             int index = realSequence.Length - numberOfNegative;
+
+            if (index <=     0)
+                return realSequence.First();
+
+            Debug.WriteLine(index);
 
             point = (realSequence[index] + realSequence[index - 1]) / 2;
 
@@ -109,6 +118,9 @@ namespace Analyzer.Analyzers
 
         static bool GetChargeOfCodon(Codon codon)
         {
+            if(codon.DrawingData.Value.Points is null)
+                return true;
+
             return codon.DrawingData.Value.Points.Any(y => y.Charge < 0) ? false : true;
         }
     }

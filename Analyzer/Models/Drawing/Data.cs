@@ -16,7 +16,7 @@ namespace Analyzer.Models.Drawing
         public float CValue { get; set; }
         public float NValue { get; set; }
         public float RestValue { get; set; }
-        public float Hydrophobicy { get; set; }
+        public float Hydrophobicity { get; set; }
         public bool IsPolar { get; set; }
 
         public Data(string Formula, float CValue, float NValue, float RestValue, float Hydrophobicy, bool IsPolar)
@@ -25,7 +25,7 @@ namespace Analyzer.Models.Drawing
             this.CValue = CValue;
             this.NValue = NValue;
             this.RestValue = RestValue;
-            this.Hydrophobicy = Hydrophobicy;
+            this.Hydrophobicity = Hydrophobicy;
             this.IsPolar = IsPolar;
         }
     }
