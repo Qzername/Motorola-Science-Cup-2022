@@ -45,6 +45,8 @@ namespace BlakApp.ViewModels.Pages
             }
 
             SequenceRaw = SequenceRaw.ToUpper();
+            SequenceRaw = SequenceRaw.Replace("[STOP]",string.Empty);
+            SequenceRaw = SequenceRaw.Replace("(START)",string.Empty);
             SequenceRaw = new string(SequenceRaw.Where(char.IsLetter).ToArray());
             
             try
