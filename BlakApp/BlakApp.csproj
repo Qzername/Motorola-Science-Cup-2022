@@ -57,4 +57,9 @@
       <HintPath>Libraries\LiveChartsCore.SkiaSharpView.Avalonia.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Highlighting\Codon.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 using Analyzer.Models;
 using Analyzer.Models.Codons;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Media;
 using AvaloniaEdit;
 using AvaloniaEdit.Document;
@@ -45,6 +46,13 @@ namespace BlakApp.ViewModels.Pages
             get => _checkBackwards;
             set => this.RaiseAndSetIfChanged(ref _checkBackwards, value);
         }
+        
+        bool _addSpaces;
+        public bool AddSpaces
+        {
+            get => _addSpaces;
+            set => this.RaiseAndSetIfChanged(ref _addSpaces, value);
+        }
 
         string _sequenceRaw;
         public string SequenceRaw
@@ -59,13 +67,6 @@ namespace BlakApp.ViewModels.Pages
             get => _error;
             set => this.RaiseAndSetIfChanged(ref _error, value);
         }
-        
-        int? _typeOfProteinShowing;
-        public int? TypeOfProteinShowing
-        {
-            get => _typeOfProteinShowing;
-            set => this.RaiseAndSetIfChanged(ref _typeOfProteinShowing, value);
-        }
 
         ObservableCollection<ShiftObject> _shifts;
         /// <summary>
@@ -73,6 +74,12 @@ namespace BlakApp.ViewModels.Pages
         /// </summary>
         public ObservableCollection<ShiftObject> Shifts { get => _shifts; set => this.RaiseAndSetIfChanged(ref _shifts, value); }
 
+        IHighlightingDefinition _syntax;
+        public IHighlightingDefinition Syntax
+        {
+            get=> _syntax;
+            set=> this.RaiseAndSetIfChanged(ref _syntax, value);
+        }
 
         public SequenceAnalyzerViewModel()
         {
@@ -82,6 +89,19 @@ namespace BlakApp.ViewModels.Pages
             Error = string.Empty;
 
             Shifts = new ObservableCollection<ShiftObject>();
+
+            LoadSyntax();
+        }
+
+        void LoadSyntax()
+        {
+            IHighlightingDefinition xshd;
+            using (XmlTextReader reader = new XmlTextReader("Highlighting/Codon.xshd"))
+            {
+                xshd = HighlightingLoader.Load(reader, HighlightingManager.Instance);
+            }
+
+            Syntax = xshd;
         }
 
         public void Reset()
@@ -109,12 +129,6 @@ namespace BlakApp.ViewModels.Pages
                 return;
             }
 
-            if(TypeOfProteinShowing == null)
-            {
-                Error = "Choose type of protein visualization";
-                return;
-            }
-
             for (int i = Shifts.Count - 1; i > -1; i--)
                 Shifts.RemoveAt(i);
 
@@ -131,9 +145,49 @@ namespace BlakApp.ViewModels.Pages
                     AnalyzeSequence("Backwards", reverse);
                 }
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                Error = "Sequence contains illegal characters";
+                Error = "Sequence contains illegal characters" + ex.Message;
+            }
+        }
+
+        public async void OpenFromFile()
+        {
+            try
+            {
+                var dialog = new OpenFileDialog();
+
+                dialog.Filters = new List<FileDialogFilter>()
+                {
+                    new FileDialogFilter()
+                    {
+                        Name= "Text files",
+                        Extensions = new List<string>()
+                        {
+                            "txt",
+                            "json",
+                            "bat",
+                        }
+                    }
+                };
+
+                dialog.AllowMultiple = false;
+            
+                if (Avalonia.Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                {
+                    string[]? result = await dialog.ShowAsync(desktop.MainWindow);
+
+                    if (result is null)
+                        return;
+
+                    var path = result.First();
+
+                    SequenceRaw = File.ReadAllText(path);
+                }
+            }
+            catch (Exception)
+            {
+                Error = "Select valid file";
             }
         }
 
@@ -153,69 +207,35 @@ namespace BlakApp.ViewModels.Pages
                 var proteins = SequenceAnalyzer.DetectProteins(shift);
                 var final = Sequence.CodonsToString(shift, false);
 
-                //this is hacky way to have good wrapping
-                char[] raw = new char[final.Length * 2];
-
-                for(int i = 0; i<final.Length;i++)
-                {
-                    raw[i * 2] = final[i];
-                    raw[i * 2 + 1] = ' ';
-                }
-
-                final = new string(raw);
-
-                int lastOne = shift.Length*2;
-
-                List<string> elements = new List<string>();
-
-                for(int i = proteins.Length-1;i>-1;i--)
-                {
-                    var protein = proteins[i];
-
-                    int endLength = (protein.StartPosition + protein.Codons.Length)*2;
-                    int startLength = (protein.StartPosition)*2;
-
-                    elements.Add(StyleCheck(final.Substring(endLength, lastOne - endLength)));
-                    elements.Add(ProteinShowingCheck(StyleCheck(final.Substring(startLength, endLength - startLength))));
-
-                    lastOne = startLength;
-                }
-
-                if(lastOne != 0)
-                {
-                    elements.Add(StyleCheck(final.Substring(0, lastOne)));
-                }
-
-                elements.Reverse();
-
-                string text = string.Empty;
-
-                foreach (string element in elements)
-                    text += element;
-
                 ShiftObject obj = new ShiftObject()
                 {
                     Name = name,
-                    Text = new TextDocument() { Text = text }
+                    Text = new TextDocument() { Text = StyleCheck(final) }
                 };
 
                 Shifts.Add(obj);
             }
         }
 
-        string ProteinShowingCheck(string text) => TypeOfProteinShowing switch
-        {
-            0 => "\n\nProtein:\n\n" + text + "\n\nRest:\n\n",
-            1 => "***PROTEIN START*** " +text + "***PROTEIN END*** ",
-            _ => text,
-        };
-
         string StyleCheck(string text)
         {
+            if(AddSpaces)
+            {
+                char[] raw = new char[text.Length * 2];
+
+                for (int i = 0; i < text.Length; i++)
+                {
+                    raw[i * 2] = text[i];
+                    raw[i * 2 + 1] = ' ';
+                }
+
+                text = new string(raw);
+            }
+
             if (IsVerboseSelected)
             {
-                text = text.Replace("M", "M ( s t a r t )");
-                text = text.Replace("-", "[ s t o p ]");
+                text = text.Replace("M", "M(start)");
+                text = text.Replace("-", "[stop]");
             }
 
             return text;

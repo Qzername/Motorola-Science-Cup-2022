@@ -1,0 +1,8 @@
+﻿<SyntaxDefinition name="Codon"
+        xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+	<RuleSet>
+        <Rule foreground="Red">
+			[M][A-Za-z \[\(\)]*[-\]]
+		</Rule>
+    </RuleSet>
+</SyntaxDefinition>
