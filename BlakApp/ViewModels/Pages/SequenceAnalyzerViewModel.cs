@@ -145,9 +145,9 @@ namespace BlakApp.ViewModels.Pages
                     AnalyzeSequence("Backwards", reverse);
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Error = "Sequence contains illegal characters" + ex.Message;
+                Error = "Sequence contains illegal characters";
             }
         }
 
